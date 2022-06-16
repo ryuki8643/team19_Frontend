@@ -1,7 +1,5 @@
 import React from "react";
-import {exampleSearchDataType,exampleWeekDataType} from "../ExampleData/ExampleDataType";
-import {exampleDayDataShowType} from "../ExampleData/ExampleDataType";
-import Box from '@mui/material/Box';
+
 import Timeline from '@mui/lab/Timeline';
 import TimelineItem from '@mui/lab/TimelineItem';
 import TimelineSeparator from '@mui/lab/TimelineSeparator';

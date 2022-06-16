@@ -1,6 +1,6 @@
 import React from "react";
 
-import {eventDataType, exampleDayDataShowType} from "../ExampleData/ExampleDataType";
+import {eventDataType, exampleDayDataShowType} from "../../ExampleData/ExampleDataType";
 import { styled } from '@mui/material/styles';
 
 import Paper from '@mui/material/Paper';

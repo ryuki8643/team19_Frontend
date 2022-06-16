@@ -1,10 +1,14 @@
 import React from 'react'
 
-import WeekShowApp from "./weekShowApp";
+import WeekShowAppbyMuiLab from "./MuilabCalendar/weekShowAppbyMuiLab";
+import FullCalendarApp from "./fullCarendar/fullCalendar";
 
 const WeekShowHome = () => {
     return (
-        <WeekShowApp/>
+        <>
+            <WeekShowAppbyMuiLab/>
+            <FullCalendarApp/>
+        </>
     )
 }
 

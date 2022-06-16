@@ -1,11 +1,11 @@
 import React from "react";
-import {exampleWeekData2} from "../ExampleData/ExampleData";
+import {exampleWeekData2} from "../../ExampleData/ExampleData";
 import DayDataShowComponent from "./dayDataShowComponent";
 import {Box, Grid} from "@mui/material";
-import TimelineComponent from "./TimelineComponent";
 
 
-const WeekShowApp = () => {
+
+const WeekShowAppbyMuiLab = () => {
 
 
     return (
@@ -47,4 +47,4 @@ const WeekShowApp = () => {
     )
 }
 
-export default WeekShowApp
+export default WeekShowAppbyMuiLab
