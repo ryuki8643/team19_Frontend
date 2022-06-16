@@ -1,6 +1,7 @@
+import {exampleDayDataType,exampleSearchDataType,exampleUserDataType,exampleWeekDataType} from "./ExampleDataType";
 //フロントエンド->バックエンド
 
-export const exampleDayData={
+export const exampleDayData:exampleDayDataType={
     userId:"1234",
     day:"2022/06/07",
     content:
@@ -22,7 +23,7 @@ export const exampleDayData={
         }
 }
 
-export const exampleUser=
+export const exampleUser:exampleUserDataType=
 {
     userName:"example",
     email:"example@example.com",
@@ -33,7 +34,7 @@ export const exampleUser=
 
 
 //バックエンド->フロントエンド
-export const exampleSearchData=
+export const exampleSearchData:exampleSearchDataType=
 {
     "1234":
         {
@@ -78,7 +79,7 @@ export const exampleSearchData=
 
 
 
-export const exampleWeekData1={
+export const exampleWeekData1:exampleWeekDataType={
     id:"1234",
     StartDay:"2022/06/13",
     age:20,
@@ -92,11 +93,12 @@ export const exampleWeekData1={
                     eventDescription:"プログラミング"
                 },
         2:
-            {   eventName:"ミーティング",
+            {
+                eventName:"ミーティング",
             eventStart:"12:00",
             eventEnd:"16:00",
             eventDescription:"偉い人と会議"
-            }
+            },
         },
     Tuesday:
         {1:
@@ -131,14 +133,6 @@ export const exampleWeekData1={
                 }
         },
     Saturday:
-        {1:
-                {   eventName:"コーディング",
-                    eventStart:"10:00",
-                    eventEnd:"11:00",
-                    eventDescription:"プログラミング"
-                }
-        },
-    TuesDay:
         {1:
                 {   eventName:"コーディング",
                     eventStart:"10:00",
