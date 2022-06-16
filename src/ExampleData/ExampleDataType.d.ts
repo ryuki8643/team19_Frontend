@@ -5,16 +5,7 @@ export type exampleDayDataType =
         userId: String,
         day: String,
         content:
-            {
-                [key: Number]:
-                    {
-                        eventName: String,
-                        eventStart: String,
-                        eventEnd: String,
-                        eventDescription: String
-                    },
-
-            }
+            exampleDayDataShowType
     }
 export type exampleUserDataType={
     userName:String,
@@ -54,60 +45,30 @@ export type exampleWeekDataType={
     role:String,
     company:String,
     Monday:
-        {[key:number]:
-                {   eventName:String,
-                    eventStart:String,
-                    eventEnd:String,
-                    eventDescription:String
-                },
-        },
+        exampleDayDataShowType
     Tuesday:
-        {[key:number]:
-                {   eventName:String,
-                    eventStart:String,
-                    eventEnd:String,
-                    eventDescription:String
-                },
-        },
+        exampleDayDataShowType
     Wednesday:
-        {[key:number]:
-                {   eventName:String,
-                    eventStart:String,
-                    eventEnd:String,
-                    eventDescription:String
-                },
-        },
+        exampleDayDataShowType
     Thursday:
-        {[key:number]:
-                {   eventName:String,
-                    eventStart:String,
-                    eventEnd:String,
-                    eventDescription:String
-                },
-        },
+        exampleDayDataShowType
     Friday:
-        {[key:number]:
-                {   eventName:String,
-                    eventStart:String,
-                    eventEnd:String,
-                    eventDescription:String
-                },
-        },
+        exampleDayDataShowType
     Saturday:
-        {[key:number]:
-                {   eventName:String,
-                    eventStart:String,
-                    eventEnd:String,
-                    eventDescription:String
-                },
-        },
+        exampleDayDataShowType
     Sunday:
-        {[key:number]:
-                {   eventName:String,
-                    eventStart:String,
-                    eventEnd:String,
-                    eventDescription:String
-                },
-        },
+        exampleDayDataShowType
 
 }
+
+export type exampleDayDataShowType=
+    {[key:Number]:
+        eventDataType
+    }
+export type eventDataType=
+    {
+        eventName:String,
+        eventStart:String,
+        eventEnd:String,
+        eventDescription:String
+    }

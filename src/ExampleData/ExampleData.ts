@@ -152,7 +152,7 @@ export const exampleWeekData1:exampleWeekDataType={
 }
 
 
-export const exampleWeekData2={
+export const exampleWeekData2:exampleWeekDataType={
     id:"1234",
     StartDay:"2022/06/20",
     age:20,
@@ -212,14 +212,7 @@ export const exampleWeekData2={
                     eventDescription:"プログラミング"
                 }
         },
-    TuesDay:
-        {1:
-                {   eventName:"コーディング",
-                    eventStart:"10:00",
-                    eventEnd:"11:00",
-                    eventDescription:"プログラミング"
-                }
-        },
+
     Sunday:
         {1:
                 {   eventName:"コーディング",
@@ -233,14 +226,15 @@ export const exampleWeekData2={
 
 
 
-export const exampleWeekData3={
+export const exampleWeekData3:exampleWeekDataType={
     id:"2233",
     StartDay:"2022/06/13",
     age:20,
     role:"エンジニア",
     company:"Yahoo",
     Monday:
-        {1:
+        {
+            1:
                 {   eventName:"コーディング",
                     eventStart:"9:00",
                     eventEnd:"12:00",
@@ -254,7 +248,8 @@ export const exampleWeekData3={
                 }
         },
     Tuesday:
-        {1:
+        {
+            1:
                 {   eventName:"コーディング",
                     eventStart:"10:00",
                     eventEnd:"11:00",
@@ -262,7 +257,8 @@ export const exampleWeekData3={
                 }
         },
     Wednesday:
-        {1:
+        {
+            1:
                 {   eventName:"コーディング",
                     eventStart:"10:00",
                     eventEnd:"11:00",
@@ -270,7 +266,8 @@ export const exampleWeekData3={
                 }
         },
     Thursday:
-        {1:
+        {
+            1:
                 {   eventName:"コーディング",
                     eventStart:"10:00",
                     eventEnd:"11:00",
@@ -278,7 +275,8 @@ export const exampleWeekData3={
                 }
         },
     Friday:
-        {1:
+        {
+            1:
                 {   eventName:"コーディング",
                     eventStart:"10:00",
                     eventEnd:"11:00",
@@ -286,15 +284,8 @@ export const exampleWeekData3={
                 }
         },
     Saturday:
-        {1:
-                {   eventName:"コーディング",
-                    eventStart:"10:00",
-                    eventEnd:"11:00",
-                    eventDescription:"プログラミング"
-                }
-        },
-    TuesDay:
-        {1:
+        {
+            1:
                 {   eventName:"コーディング",
                     eventStart:"10:00",
                     eventEnd:"11:00",
@@ -302,7 +293,8 @@ export const exampleWeekData3={
                 }
         },
     Sunday:
-        {1:
+        {
+            1:
                 {   eventName:"コーディング",
                     eventStart:"10:00",
                     eventEnd:"11:00",
