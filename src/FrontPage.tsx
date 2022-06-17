@@ -1,6 +1,6 @@
 import React from 'react';
-import { BrowserRouter, Routes, Route } from "react-router-dom"
-import WeekShowHome from "./weekDataShowPage/weekShowHome";
+import {  Routes, Route } from "react-router-dom"
+import WeekShowHomeAxios from "./weekDataShowPage/weekShowHomeAxios";
 import DayEditHome from "./DayDataEditPage/dayEditHome";
 import Selector from "./Selector/Selector";
 
@@ -11,7 +11,7 @@ const FrontPage: React.FC = () => {
 
                 <Selector />
                 <Routes>
-                    <Route index element={<WeekShowHome />} />
+                    <Route index element={<WeekShowHomeAxios />} />
                     <Route path="/Edit" element={<DayEditHome />} />
 
 
