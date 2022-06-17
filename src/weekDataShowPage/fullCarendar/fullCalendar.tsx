@@ -34,7 +34,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
     const [open, setOpen] = React.useState(false);
     const [close,setClose] =useState(false)
-    const [description,setDescription]=useState("No description")
+    const [description,setDescription]=useState(<div></div> as JSX.Element)
 
     const setEventsFunc=()=>{
         let getItems=MakeEventsArray(FullCalendarAppProps.compareWeekShowData)
@@ -63,9 +63,12 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
 
     const handleClick = (info:EventClickArg) => {
         setOpen((prev) => !prev);
-        const dialogText=info.el.innerText+"\n"+
-            "-----------説明------------------\n"+
-            info.event.extendedProps.memo
+        const dialogText=
+            <Box>
+                <Box>{info.el.innerText}</Box>
+                <Box>説明</Box>
+                <Box>{info.event.extendedProps.memo}</Box>
+            </Box>
         setDescription(dialogText)
 
     };
