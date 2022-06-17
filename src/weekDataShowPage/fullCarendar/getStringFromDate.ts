@@ -5,7 +5,6 @@ export const getStringFromDate=(dateStr:string,plusDate:number)=> {
 
 
     let year_str = date.getFullYear().toString();
-    //月だけ+1すること
     let month_str = (date.getMonth()+1).toString();
     let day_str = date.getDate().toString();
 

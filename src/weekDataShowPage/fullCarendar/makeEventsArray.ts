@@ -1,12 +1,9 @@
 import {eventDataType, exampleDayDataType, exampleWeekDataType} from "../../ExampleData/ExampleDataType";
 import {getStringFromDate} from "./getStringFromDate";
 import {calendarEventsType} from "./fullCalendar";
-import {exampleWeekData2} from "../../ExampleData/ExampleData";
 
-type makeEventsArrayType={
-    exampleWeekData:exampleWeekDataType
 
-}
+
 
 export const MakeEventsArray=(fullCalendarProps:exampleWeekDataType)=>{
     let items:calendarEventsType[]=[]
@@ -24,7 +21,8 @@ export const MakeEventsArray=(fullCalendarProps:exampleWeekDataType)=>{
                     start: NowDate.toString() + " " + startTime,
                     end: NowDate.toString() + " " + endTime,
                     title: dataS[i].eventName,
-                    memo: dataS[i].eventDescription
+                    memo: dataS[i].eventDescription,
+                    color:"3788D8"
 
                 }
             );

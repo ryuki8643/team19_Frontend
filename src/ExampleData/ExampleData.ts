@@ -254,6 +254,12 @@ export const exampleWeekData3:exampleWeekDataType={
                     eventStart:"10:00",
                     eventEnd:"11:00",
                     eventDescription:"プログラミング"
+                },
+            2:
+                {   eventName:"ミーティング",
+                    eventStart:"12:00",
+                    eventEnd:"16:00",
+                    eventDescription:"偉い人と会議"
                 }
         },
     Wednesday:
@@ -263,6 +269,12 @@ export const exampleWeekData3:exampleWeekDataType={
                     eventStart:"10:00",
                     eventEnd:"11:00",
                     eventDescription:"プログラミング"
+                },
+            2:
+                {   eventName:"ミーティング",
+                    eventStart:"12:00",
+                    eventEnd:"16:00",
+                    eventDescription:"偉い人と会議"
                 }
         },
     Thursday:

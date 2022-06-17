@@ -23,7 +23,7 @@ export type exampleSearchDataType={
             company:string,
             weekList:
                 {
-                    [key:Number]:
+                    [key:number]:
                         {
                             day:string,
                             dayCount:number,

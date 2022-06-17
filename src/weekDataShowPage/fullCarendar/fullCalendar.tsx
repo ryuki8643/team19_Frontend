@@ -1,44 +1,62 @@
 import FullCalendar, {EventSourceInput} from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid'
-import React, {useState,useEffect} from "react";
-import {eventDataType, exampleDayDataShowType, exampleWeekDataType} from "../../ExampleData/ExampleDataType";
-import TimelineComponent from "../MuilabCalendar/TimelineComponent";
+import React, {useEffect, useState} from "react";
+import { exampleWeekDataType} from "../../ExampleData/ExampleDataType";
+
 import {MakeEventsArray} from "./makeEventsArray";
-import {exampleWeekData1} from "../../ExampleData/ExampleData";
+
 import {Button} from "@mui/material";
 
 export type calendarEventsType={
-    id:String,
-    title:String,
-    start:String,
-    end:String,
-    memo:String
+    id:string,
+    title:string,
+    start:string,
+    end:string,
+    memo:string
+    color:string
+}
+
+type FullCalendarAppPropsType={
+    weekShowData:exampleWeekDataType
+    compareBool:boolean
+    compareWeekShowData:exampleWeekDataType
 }
 
 
+function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
 
-function FullCalendarApp() {
-
-    const [dayEvents,setDayEvents]=useState([{
-        id:"0",
-        title:"sample",
-        start:"2022-06-17 10:00",
-        end:"2022-06-18 11:10",
-        memo:"sample event"
-
-    }] as calendarEventsType[])
+    const [dayEvents,setDayEvents]=useState([] as calendarEventsType[])
+    const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
 
     const setEventsFunc=()=>{
-        let getItems=MakeEventsArray(exampleWeekData1)
-        console.log(getItems)
-//        let getItems=[{        id:"sample",         title:"sample",         start:"2022-06-14 06:00",         end:"2022-06-16 11:10",         memo:"sample event"}]
+        let getItems=MakeEventsArray(FullCalendarAppProps.compareWeekShowData)
+
+        getItems.forEach(
+            function(item){
+
+                item["color"]="red"
+            }
+
+        )
         setDayEvents(dayEvents.concat(getItems))
+        setCompareButtonDisabled(true)
     }
-    useEffect(()=>{console.log(dayEvents,"結果")},[dayEvents])
+    useEffect((()=>{
+        let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
+        setDayEvents(getItems)
+    }),[FullCalendarAppProps.weekShowData])
+
+    useEffect((()=>{
+        if(!FullCalendarAppProps.compareBool){
+        let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
+        setDayEvents(getItems)}
+    }),[FullCalendarAppProps.compareBool])
+
+
 
     return (
         <>
-            <Button onClick={()=>setEventsFunc()}>反映</Button>
+            {FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} disabled={compareButtonDisabled}>比較</Button>}
             <FullCalendar
                 firstDay={1}
                 plugins={[timeGridPlugin]}
