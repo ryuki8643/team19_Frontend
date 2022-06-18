@@ -65,11 +65,13 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
         setOpen((prev) => !prev);
         const dialogText=
             <Box>
+                <Box>{info.event._def.publicId.slice(0,10)}</Box>
                 <Box>{info.el.innerText}</Box>
                 <Box>説明</Box>
                 <Box>{info.event.extendedProps.memo}</Box>
             </Box>
         setDescription(dialogText)
+        console.log(info)
 
     };
 
@@ -100,6 +102,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
             <Box onClick={()=>handleClickAway()}>
             {FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} disabled={compareButtonDisabled}>比較</Button>}
             <FullCalendar
+                scrollTime={'09:00:00'}
 
                 eventClick={(info)=>{handleClick(info)}}
                 firstDay={1}
