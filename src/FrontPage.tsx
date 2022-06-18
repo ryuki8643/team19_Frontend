@@ -3,7 +3,7 @@ import {  Routes, Route } from "react-router-dom"
 import WeekShowHomeAxios from "./weekDataShowPage/weekShowHomeAxios";
 import DayEditHome from "./DayDataEditPage/dayEditHome";
 import Selector from "./Selector/Selector";
-import SignUpPageHome from "./SignUpPage/SignUpPageHome";
+
 
 const FrontPage: React.FC = () => {
     return (
@@ -11,7 +11,7 @@ const FrontPage: React.FC = () => {
 
 
             <Selector />
-            <SignUpPageHome/>
+
             <Routes>
                 <Route index element={<WeekShowHomeAxios />} />
                 <Route path="/Edit" element={<DayEditHome />} />

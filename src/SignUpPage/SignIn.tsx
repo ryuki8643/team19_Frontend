@@ -9,15 +9,16 @@ import {
 import {authExample} from "./firebaseConfig";
 import firebase from "firebase/compat";
 import {Navigate} from "react-router-dom";
+import {SignUpInput} from "./SignUpInput";
 
-const Login = () => {
+const SignIn = () => {
     const [loginEmail, setLoginEmail] = useState("");
     const [loginPassword, setLoginPassword] = useState("");
 
     /* ↓関数「handleSubmit」を定義 */
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-
+        console.log(loginEmail,loginPassword)
         try {
             await signInWithEmailAndPassword(
                 authExample,
@@ -40,20 +41,15 @@ const Login = () => {
 
     return (
         <>
-            {/* ↓ログインしている場合、マイページにリダイレクトする設定 */}
-            {user ? (
-                <Navigate to={`/`} />
-            ) : (
-                <>
-                    <h1>ログインページ</h1>
-                    {/* onSubmitを追加↓ */}
-                    <form onSubmit={handleSubmit}>
-                        ...略...
-                    </form>
-                </>
-            )}
+            <h1>ログインページ</h1>
+            <form onSubmit={handleSubmit}>
+                <SignUpInput showType={"email"} contentTitle={"メールアドレス"} registerContent={loginEmail} setRegisterContent={setLoginEmail}/>
+                <SignUpInput showType={"password"} contentTitle={"パスワード"} registerContent={loginPassword} setRegisterContent={setLoginPassword}/>
+                <button>ログイン</button>
+
+            </form>
         </>
     );
 };
 
-export default Login;
+export default SignIn;

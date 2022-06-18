@@ -3,24 +3,35 @@ import React, {useEffect, useState} from "react";
 import { createUserWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
 import {authExample} from "./firebaseConfig";
 import firebase from "firebase/compat";
+import {SignUpInput} from "./SignUpInput";
 
 
 const Register = () => {
     const [registerEmail, setRegisterEmail] = useState("");
     const [registerPassword, setRegisterPassword] = useState("");
+    const [registerRole,setRegisterRole]=useState("")
+    const [registerCompany,setRegisterCompany]=useState("")
+    const [registerAge,setRegisterAge]=useState("")
 
     /* ↓関数「handleSubmit」を定義 */
     const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        try {
-            await createUserWithEmailAndPassword(
-                authExample,
-                registerEmail,
-                registerPassword
-            );
-        } catch(error) {
-            alert("正しく入力してください");
+        if(registerAge && registerCompany && registerEmail && registerPassword && registerRole){
+
+            try {
+                await createUserWithEmailAndPassword(
+                    authExample,
+                    registerEmail,
+                    registerPassword
+                );
+            } catch (error) {
+                alert("正しく入力してください\n" +
+                    "");
+
+            }
+        } else{
+            alert("新規登録時はすべての項目を登録してください");
         }
     };
 
@@ -34,33 +45,25 @@ const Register = () => {
             setUser(currentUser as firebase.User|null);
         });
     }, []);
+
+
     return (
         <>
             <h1>新規登録</h1>
             {/* ↓「onSubmit」を追加 */}
             <form onSubmit={handleSubmit}>
-                <div>
-                    <label>メールアドレス</label>
-                    <input
-                        name="email"
-                        type="email"
-                        value={registerEmail}
-                        onChange={(e) => setRegisterEmail(e.target.value)}
-                    />
-                </div>
-                <div>
-                    <label>パスワード</label>
-                    <input
-                        name="password"
-                        type="password"
-                        value={registerPassword}
-                        onChange={(e) => setRegisterPassword(e.target.value)}
-                    />
-                </div>
+                <SignUpInput showType={"email"} registerContent={registerEmail} setRegisterContent={setRegisterEmail} contentTitle={"メールアドレス"}/>
+                <SignUpInput showType={"password"} registerContent={registerPassword} setRegisterContent={setRegisterPassword}　contentTitle={"パスワード"}/>
+                <SignUpInput showType={"text"} registerContent={registerRole} setRegisterContent={setRegisterRole} contentTitle={"役職"}/>
+
+                <SignUpInput showType={"text"} registerContent={registerCompany} setRegisterContent={setRegisterCompany} contentTitle={"会社"}/>
+                <SignUpInput showType={"text"} contentTitle={"年齢"} registerContent={registerAge} setRegisterContent={setRegisterAge}/>
                 <button>登録する</button>
             </form>
         </>
     );
 };
+
+
 
 export default Register;

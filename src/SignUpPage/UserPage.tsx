@@ -8,10 +8,11 @@ import {
     Navigate
 } from "react-router-dom";
 import firebase from "firebase/compat";
+import {DialogContent,Box} from "@mui/material";
+import SignIn from "./SignIn";
+import Register from "./SignUp";
 
-const Mypage = () => {
-
-
+const MyPage = () => {
     const [loading, setLoading] = useState(true);
 
     const [user, setUser] = React.useState<firebase.User|null>(null)
@@ -21,20 +22,20 @@ const Mypage = () => {
             setUser(currentUser as firebase.User|null);
         });
     }, []);
-
     const navigate = useNavigate();
-
     const logout = async () => {
         await signOut(authExample);
-        navigate("/login/");
+        
     }
-
     return (
-        <>
-            {!loading && (
-                <>
+        <Box>
+
+
                     {!user ? (
-                        <Navigate to={`/login/`} />
+                        <>
+                        <SignIn/>
+                        <Register/>
+                        </>
                     ) : (
                         <>
                             <h1>マイページ</h1>
@@ -42,10 +43,10 @@ const Mypage = () => {
                             <button onClick={logout}>ログアウト</button>
                         </>
                     )}
-                </>
-            )}
-        </>
+
+
+        </Box>
     );
 };
 
-export default Mypage;
+export default MyPage;

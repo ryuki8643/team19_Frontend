@@ -19,7 +19,9 @@ const Selector: React.FC = () => {
     const [loginUser, setLoginUser] = React.useState<firebase.User|null>(null)
 
     const [modalOpen,setModalOpen] =useState(false)
-    
+
+    const [signUpBool,setSignUpBool]=useState(false)
+
 
     useEffect(() => {
         onAuthStateChanged(authExample, (currentUser ) => {
@@ -47,6 +49,7 @@ const Selector: React.FC = () => {
                         <Link to="/Edit" className="selectorLink"  >Edit</Link>
                         <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true)}>Login</Button>
                         <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen}/>
+                        <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool}/>
                     </Toolbar>
                 </AppBar>
             </Box>
