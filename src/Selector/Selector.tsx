@@ -47,7 +47,7 @@ const Selector: React.FC = () => {
                         </Typography>
                         <Link to="/" className="selectorLink">Home</Link>
                         <Link to="/Edit" className="selectorLink"  >Edit</Link>
-                        <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true)}>Login</Button>
+                        <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true)}>{loginUser ? "User Info":"Login"}</Button>
                         <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
                         <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>
                     </Toolbar>

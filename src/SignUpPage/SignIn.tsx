@@ -20,7 +20,7 @@ const SignIn = () => {
     /* ↓関数「handleSubmit」を定義 */
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        
+
         try {
             await signInWithEmailAndPassword(
                 authExample,

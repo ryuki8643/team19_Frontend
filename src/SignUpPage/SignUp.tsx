@@ -18,17 +18,19 @@ const Register = () => {
         e.preventDefault();
 
         if(registerAge && registerCompany && registerEmail && registerPassword && registerRole){
+            if(registerPassword.length>5){
+                try {
+                    await createUserWithEmailAndPassword(
+                        authExample,
+                        registerEmail,
+                        registerPassword
+                    );
+                } catch (error) {
+                    alert("すでに登録されたメールアドレスです");
 
-            try {
-                await createUserWithEmailAndPassword(
-                    authExample,
-                    registerEmail,
-                    registerPassword
-                );
-            } catch (error) {
-                alert("正しく入力してください\n" +
-                    "");
-
+                }
+            } else{
+                alert("パスワードが５文字以下です。")
             }
         } else{
             alert("新規登録時はすべての項目を登録してください");
