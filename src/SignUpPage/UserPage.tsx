@@ -12,34 +12,33 @@ import {DialogContent,Box} from "@mui/material";
 import SignIn from "./SignIn";
 import Register from "./SignUp";
 
-const MyPage = () => {
+type MyPagePropsType={
+    signUpBool:boolean
+    user:firebase.User|null
+}
+
+const MyPage = (MyPageProps:MyPagePropsType )=> {
     const [loading, setLoading] = useState(true);
 
-    const [user, setUser] = React.useState<firebase.User|null>(null)
 
-    useEffect(() => {
-        onAuthStateChanged(authExample, (currentUser ) => {
-            setUser(currentUser as firebase.User|null);
-        });
-    }, []);
     const navigate = useNavigate();
     const logout = async () => {
         await signOut(authExample);
-        
+
     }
     return (
         <Box>
 
 
-                    {!user ? (
+                    {!MyPageProps.user ? (
                         <>
-                        <SignIn/>
-                        <Register/>
+                        {MyPageProps.signUpBool ? <SignIn/>:
+                            <Register/>}
                         </>
                     ) : (
                         <>
-                            <h1>マイページ</h1>
-                            <p>{user?.email}</p>
+
+                            <p>{MyPageProps.user?.email}</p>
                             <button onClick={logout}>ログアウト</button>
                         </>
                     )}

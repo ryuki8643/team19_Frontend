@@ -9,6 +9,7 @@ import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import UserPage from "../SignUpPage/UserPage";
+import firebase from "firebase/compat";
 
 
 
@@ -31,11 +32,14 @@ export const ButtonStyle={
 type UserDialogPropsType={
     modalOpen:boolean
     setModalOpen(open:boolean):void
+    user:firebase.User|null
 }
 
 export function UserDialog(UserDialogProps:UserDialogPropsType) {
 
     const [scroll, setScroll] = React.useState("paper" as "paper" | "body" | undefined);
+    const [signUpBool,setSignUpBool]=React.useState(true)
+
 
     const handleClickOpen = (scrollType:"paper" | "body" | undefined) => () => {
         UserDialogProps.setModalOpen(true);
@@ -71,19 +75,18 @@ export function UserDialog(UserDialogProps:UserDialogPropsType) {
                 aria-describedby="scroll-dialog-description"
             >
 
-                <Typography variant='h4'>&nbsp;SDGs Map Options</Typography>
-                <Typography variant='h6' sx={{marginLeft:2.5}}>Current Data</Typography>
+                <Typography variant='h4'>&nbsp;{!UserDialogProps.user ? signUpBool ? "ログイン": "新規登録":"ユーザー情報"}</Typography>
 
-                <DialogContent>
-                    <UserPage/>
+
+                <DialogContent dividers={scroll === 'paper'} ref={componentRef}>
+                    <UserPage signUpBool={signUpBool} user={UserDialogProps.user}/>
                 </DialogContent>
 
                 <DialogActions>
-                    <Button onClick={returnTop}>Top</Button>
-                    <Button onClick={returnMiddle}>Middle</Button>
-                    <Button onClick={returnBottom}>Bottom</Button>
+                    {signUpBool ? <Button onClick={() => setSignUpBool(false)}>サインアップ</Button>
+                    :<Button onClick={() => setSignUpBool(true)}>サインイン</Button>}
 
-                    <Button onClick={handleClose}>Close</Button>
+                    <Button onClick={handleClose}>閉じる</Button>
                 </DialogActions>
 
             </Dialog>

@@ -48,8 +48,8 @@ const Selector: React.FC = () => {
                         <Link to="/" className="selectorLink">Home</Link>
                         <Link to="/Edit" className="selectorLink"  >Edit</Link>
                         <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true)}>Login</Button>
-                        <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen}/>
-                        <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool}/>
+                        <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
+                        <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>
                     </Toolbar>
                 </AppBar>
             </Box>

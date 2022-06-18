@@ -35,21 +35,13 @@ const Register = () => {
         }
     };
 
-    /* ↓state変数「user」を定義 */
-    const [user, setUser] = React.useState<firebase.User|null>(null);
 
 
-    /* ↓ログインしているかどうかを判定する */
-    useEffect(() => {
-        onAuthStateChanged(authExample, (currentUser ) => {
-            setUser(currentUser as firebase.User|null);
-        });
-    }, []);
 
 
     return (
         <>
-            <h1>新規登録</h1>
+
             {/* ↓「onSubmit」を追加 */}
             <form onSubmit={handleSubmit}>
                 <SignUpInput showType={"email"} registerContent={registerEmail} setRegisterContent={setRegisterEmail} contentTitle={"メールアドレス"}/>
