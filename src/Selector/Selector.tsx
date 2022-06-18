@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Link } from 'react-router-dom';
 import './Style/Selector.css'
 
@@ -9,8 +9,23 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
+import firebase from "firebase/compat";
+import {onAuthStateChanged} from "firebase/auth";
+import {authExample} from "../SignUpPage/firebaseConfig";
+import {ButtonStyle, UserDialog} from "./LoginAndUserPageDailog";
 
 const Selector: React.FC = () => {
+
+    const [loginUser, setLoginUser] = React.useState<firebase.User|null>(null)
+
+    const [modalOpen,setModalOpen] =useState(false)
+    
+
+    useEffect(() => {
+        onAuthStateChanged(authExample, (currentUser ) => {
+            setLoginUser(currentUser as firebase.User|null);
+        });
+    }, []);
     return (
 
             <Box sx={{ flexGrow: 1 }}>
@@ -30,7 +45,8 @@ const Selector: React.FC = () => {
                         </Typography>
                         <Link to="/" className="selectorLink">Home</Link>
                         <Link to="/Edit" className="selectorLink"  >Edit</Link>
-                        <Button color="inherit">Login</Button>
+                        <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true)}>Login</Button>
+                        <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen}/>
                     </Toolbar>
                 </AppBar>
             </Box>
