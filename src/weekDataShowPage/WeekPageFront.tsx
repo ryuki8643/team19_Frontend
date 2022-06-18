@@ -50,24 +50,49 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
             <Grid container spacing={2} >
                 <Grid item xs={6}>
-                    <SelectWeekDataBox UserId={UserId} SetUserId={SetUserId} SearchData={WeekPageFrontPageProps.axiosSearchData}/>
+                    <SelectWeekDataBox
+                        UserId={UserId}
+                        SetUserId={SetUserId}
+                        SearchData={WeekPageFrontPageProps.axiosSearchData}
+
+                    />
                 </Grid>
                 <Grid item xs={6}>
                     <SelectWeekDataBox2 UserId={UserId} SetWeekShowStart={SetWeekShowStart} weekShowStart={weekShowStart} searchTree={searchTreeExampleArray}/>
                 </Grid>
             </Grid>
 
-            {!compareBool && <AddBoxIcon onClick={()=>setCompareBool(true)} color={"primary"}></AddBoxIcon>}
-            {compareBool && <RemoveIcon onClick={()=>setCompareBool(false)} color={"primary"}></RemoveIcon>}
+            {!compareBool &&
+                <AddBoxIcon onClick={()=>setCompareBool(true)}
+                            color={"primary"}>
+
+                </AddBoxIcon>}
+            {compareBool &&
+                <RemoveIcon
+                    onClick={()=>setCompareBool(false)}
+                    color={"primary"}>
+
+                </RemoveIcon>}
 
 
             {compareBool &&
                 <Grid container spacing={2} >
                     <Grid item xs={6}>
-                        <SelectWeekDataBox UserId={compareUserId} SetUserId={SetCompareUserId} SearchData={WeekPageFrontPageProps.axiosSearchData}/>
+                        <SelectWeekDataBox
+                            UserId={compareUserId}
+                            SetUserId={SetCompareUserId}
+                            SearchData={WeekPageFrontPageProps.axiosSearchData}
+
+                        />
+
+
                     </Grid>
                     <Grid item xs={6}>
-                        <SelectWeekDataBox2 UserId={compareUserId} SetWeekShowStart={SetCompareWeekShowStart} weekShowStart={compareWeekShowStart} searchTree={searchTreeExampleArray}/>
+                        <SelectWeekDataBox2
+                            UserId={compareUserId}
+                            SetWeekShowStart={SetCompareWeekShowStart}
+                            weekShowStart={compareWeekShowStart}
+                            searchTree={searchTreeExampleArray}/>
                     </Grid>
                 </Grid>
 
@@ -79,6 +104,7 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
                 weekShowData={WeekPageFrontPageProps.axiosWeekDataExchange[UserId][weekShowStart]}
                 compareBool={compareBool}
                 compareWeekShowData={WeekPageFrontPageProps.axiosWeekDataExchange[compareUserId][compareWeekShowStart]}
+                weekShowStart={weekShowStart}
             />
 
         </Container>

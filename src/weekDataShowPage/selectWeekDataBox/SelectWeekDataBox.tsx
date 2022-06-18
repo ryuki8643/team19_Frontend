@@ -9,6 +9,7 @@ type SelectWeekDataType={
     UserId:string
     SearchData:exampleSearchDataType
     SetUserId(id:string):void
+
 }
 const SelectWeekDataBox = (SelectWeekDataProps:SelectWeekDataType) => {
     const handleChange = (event: SelectChangeEvent) => {

@@ -25,6 +25,7 @@ type FullCalendarAppPropsType={
     weekShowData:exampleWeekDataType
     compareBool:boolean
     compareWeekShowData:exampleWeekDataType
+    weekShowStart:string
 }
 
 
@@ -35,6 +36,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
     const [open, setOpen] = React.useState(false);
     const [close,setClose] =useState(false)
     const [description,setDescription]=useState(<div></div> as JSX.Element)
+    const [defaultDay,setDefaultDay]=useState("2022-06-13")
 
     const setEventsFunc=()=>{
         let getItems=MakeEventsArray(FullCalendarAppProps.compareWeekShowData)
@@ -50,8 +52,10 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
         setCompareButtonDisabled(true)
     }
     useEffect((()=>{
+        if (FullCalendarAppProps.weekShowData!==undefined){
         let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
-        setDayEvents(getItems)
+
+        setDayEvents(getItems)}
     }),[FullCalendarAppProps.weekShowData])
 
     useEffect((()=>{
@@ -97,13 +101,19 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
         bgcolor: 'background.paper',
         zIndex:10000
     };
+
+    useEffect(()=>{
+        setDefaultDay(FullCalendarAppProps.weekShowStart.replace(/\//g,"-"))
+        console.log(FullCalendarAppProps.weekShowStart.replace(/\//g,"-"))
+    },[FullCalendarAppProps.weekShowStart])
     return (
         <ClickAwayListener onClickAway={()=>handleClickAway()} >
             <Box onClick={()=>handleClickAway()}>
             {FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} disabled={compareButtonDisabled}>比較</Button>}
             <FullCalendar
                 scrollTime={'09:00:00'}
-
+                showNonCurrentDates={true}
+                initialDate={'2022-06-20'}
                 eventClick={(info)=>{handleClick(info)}}
                 firstDay={1}
                 plugins={[timeGridPlugin, interactionPlugin]}
