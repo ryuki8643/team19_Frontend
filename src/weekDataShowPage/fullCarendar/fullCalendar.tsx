@@ -1,6 +1,6 @@
-import FullCalendar, {EventClickArg, EventSourceInput, MountArg} from '@fullcalendar/react';
+import FullCalendar, {createRef, EventClickArg, EventSourceInput, MountArg, RefObject} from '@fullcalendar/react';
 import timeGridPlugin from '@fullcalendar/timegrid'
-import React, {useEffect, useState} from "react";
+import React, {useEffect, useRef, useState} from "react";
 import { exampleWeekDataType} from "../../ExampleData/ExampleDataType";
 import MenuItem from '@mui/material/MenuItem';
 import {MakeEventsArray} from "./makeEventsArray";
@@ -11,6 +11,7 @@ import { SxProps } from '@mui/system';
 import {Button, ClickAwayListener, Menu, Modal} from "@mui/material";
 import {EventContentArg} from "@fullcalendar/core";
 import zIndex from "@mui/material/styles/zIndex";
+import {axiosDataExchangeType} from "../../DataExchange/DataExchangeExample";
 
 export type calendarEventsType={
     id:string,
@@ -26,6 +27,9 @@ type FullCalendarAppPropsType={
     compareBool:boolean
     compareWeekShowData:exampleWeekDataType
     weekShowStart:string
+    SetWeekShowStart(week:string):void
+    userId:string
+    weekDataExchange:axiosDataExchangeType
 }
 
 
@@ -37,6 +41,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
     const [close,setClose] =useState(false)
     const [description,setDescription]=useState(<div></div> as JSX.Element)
     const [defaultDay,setDefaultDay]=useState("2022-06-13")
+    const ref=useRef<FullCalendar>(null!);
 
     const setEventsFunc=()=>{
         let getItems=MakeEventsArray(FullCalendarAppProps.compareWeekShowData)
@@ -51,18 +56,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
         setDayEvents(dayEvents.concat(getItems))
         setCompareButtonDisabled(true)
     }
-    useEffect((()=>{
-        if (FullCalendarAppProps.weekShowData!==undefined){
-        let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
 
-        setDayEvents(getItems)}
-    }),[FullCalendarAppProps.weekShowData])
-
-    useEffect((()=>{
-        if(!FullCalendarAppProps.compareBool){
-        let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
-        setDayEvents(getItems)}
-    }),[FullCalendarAppProps.compareBool])
 
 
     const handleClick = (info:EventClickArg) => {
@@ -101,19 +95,39 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
         bgcolor: 'background.paper',
         zIndex:10000
     };
+    useEffect((()=>{
+        if (FullCalendarAppProps.weekShowData!==undefined){
+            let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
+
+            setDayEvents(getItems)}
+    }),[FullCalendarAppProps.weekShowData])
+
+    useEffect((()=>{
+        if(!FullCalendarAppProps.compareBool){
+            let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
+            setDayEvents(getItems)}
+    }),[FullCalendarAppProps.compareBool])
 
     useEffect(()=>{
         setDefaultDay(FullCalendarAppProps.weekShowStart.replace(/\//g,"-"))
         console.log(FullCalendarAppProps.weekShowStart.replace(/\//g,"-"))
     },[FullCalendarAppProps.weekShowStart])
+
+    useEffect(()=>{
+        let calendarApi = ref.current.getApi()
+        calendarApi.gotoDate(defaultDay)
+
+    },[defaultDay])
+
     return (
         <ClickAwayListener onClickAway={()=>handleClickAway()} >
             <Box onClick={()=>handleClickAway()}>
             {FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} disabled={compareButtonDisabled}>比較</Button>}
             <FullCalendar
+                ref={ref as RefObject<FullCalendar>}
                 scrollTime={'09:00:00'}
                 showNonCurrentDates={true}
-                initialDate={'2022-06-20'}
+                initialDate={defaultDay}
                 eventClick={(info)=>{handleClick(info)}}
                 firstDay={1}
                 plugins={[timeGridPlugin, interactionPlugin]}

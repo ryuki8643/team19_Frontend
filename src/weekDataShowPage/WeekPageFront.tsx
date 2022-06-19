@@ -105,6 +105,9 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
                 compareBool={compareBool}
                 compareWeekShowData={WeekPageFrontPageProps.axiosWeekDataExchange[compareUserId][compareWeekShowStart]}
                 weekShowStart={weekShowStart}
+                SetWeekShowStart={SetWeekShowStart}
+                userId={UserId}
+                weekDataExchange={WeekPageFrontPageProps.axiosWeekDataExchange}
             />
 
         </Container>

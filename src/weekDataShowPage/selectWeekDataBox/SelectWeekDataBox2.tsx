@@ -3,6 +3,7 @@ import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, {SelectChangeEvent} from '@mui/material/Select';
+import {useEffect} from "react";
 
 type SelectWeekDataType={
     UserId:string
@@ -15,6 +16,13 @@ const SelectWeekDataBox2 = (SelectWeekDataProps:SelectWeekDataType) => {
     const handleChange = (event: SelectChangeEvent) => {
         SelectWeekDataProps.SetWeekShowStart(event.target.value as string);
     };
+    useEffect(()=>{
+
+
+        if(SelectWeekDataProps.UserId)
+                SelectWeekDataProps.SetWeekShowStart(SelectWeekDataProps.searchTree[SelectWeekDataProps.UserId][0])
+
+    },[SelectWeekDataProps.UserId])
 
     return (
         <FormControl fullWidth>
