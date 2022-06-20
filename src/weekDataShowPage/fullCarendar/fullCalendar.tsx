@@ -12,6 +12,11 @@ import {Button, ClickAwayListener, Menu, Modal} from "@mui/material";
 import {EventContentArg} from "@fullcalendar/core";
 import zIndex from "@mui/material/styles/zIndex";
 import {axiosDataExchangeType} from "../../DataExchange/DataExchangeExample";
+import bootstrap5Plugin from '@fullcalendar/bootstrap5';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap-icons/font/bootstrap-icons.css'; // needs additional webpack config!
+
+
 
 export type calendarEventsType={
     id:string,
@@ -61,8 +66,20 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
 
     const handleClick = (info:EventClickArg) => {
         setOpen((prev) => !prev);
+        const styles: SxProps = {
+            position: 'fixed',
+            width: 200,
+            top: info.jsEvent.y+80,
+            left: info.jsEvent.x+75,
+            transform: 'translate(-50%, -50%)',
+            border: '1px solid',
+            p: 1,
+            bgcolor: 'background.paper',
+            zIndex:10000
+        };
         const dialogText=
-            <Box>
+
+            <Box sx={styles}>
                 <Box>{info.event._def.publicId.slice(0,10)}</Box>
                 <Box>{info.el.innerText}</Box>
                 <Box>説明</Box>
@@ -74,27 +91,17 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
     };
 
     const handleClickAway = () => {
-        if(close){
-            setClose(false)
-        }else{
-            setClose(true)
-        }
-        if (close){
-        setOpen(false)
-        };
-    };
 
-    const styles: SxProps = {
-        position: 'fixed',
-        width: 200,
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
-        border: '1px solid',
-        p: 1,
-        bgcolor: 'background.paper',
-        zIndex:10000
+        setOpen(false)
+
     };
+    const renderEventContent = (eventInfo: EventContentArg) => (
+        <>
+            <b>{eventInfo.timeText}</b>
+            <i>{eventInfo.event.title}</i>
+        </>
+    );
+
     useEffect((()=>{
         if (FullCalendarAppProps.weekShowData!==undefined){
             let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
@@ -124,13 +131,16 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
             <Box onClick={()=>handleClickAway()}>
             {FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} disabled={compareButtonDisabled}>比較</Button>}
             <FullCalendar
+                themeSystem={'bootstrap5'}
                 ref={ref as RefObject<FullCalendar>}
                 scrollTime={'09:00:00'}
                 showNonCurrentDates={true}
                 initialDate={defaultDay}
-                eventClick={(info)=>{handleClick(info)}}
+                eventMouseEnter={(info)=>{handleClick(info)}}
+                eventMouseLeave={()=>{handleClickAway()}}
+
                 firstDay={1}
-                plugins={[timeGridPlugin, interactionPlugin]}
+                plugins={[timeGridPlugin, interactionPlugin,bootstrap5Plugin]}
                 locale="ja" // 日本語
                 stickyHeaderDates={true}
                 events={dayEvents as EventSourceInput}
@@ -143,13 +153,14 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 }}
 
 
+
             />
             {open ? (
-                <Portal>
-                    <Box sx={styles} onClick={handleClickAway}>
+
+                    <Box  onClick={handleClickAway}>
                         {description}
                     </Box>
-                </Portal>
+
             ) : null}
 
 

@@ -11,6 +11,8 @@ import firebase from "firebase/compat";
 import {DialogContent,Box} from "@mui/material";
 import SignIn from "./SignIn";
 import Register from "./SignUp";
+import {DataExchangeExample} from "../DataExchange/DataExchangeExample";
+import {exampleCurrentIdData, exampleSearchData} from "../ExampleData/ExampleData";
 
 type MyPagePropsType={
     signUpBool:boolean
@@ -37,8 +39,14 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                         </>
                     ) : (
                         <>
-
-                            <p>{MyPageProps.user?.email}</p>
+                            {MyPageProps.user.uid ? exampleCurrentIdData[MyPageProps.user.uid] ?
+                                <>
+                                    <Box>年齢:{exampleCurrentIdData[MyPageProps.user.uid].age}</Box>
+                                    <Box>企業:{exampleCurrentIdData[MyPageProps.user.uid].company}</Box>
+                                    <Box>役職:{exampleCurrentIdData[MyPageProps.user.uid].role}</Box>
+                                </>
+                                :"":""}
+                            <Box>メール:{MyPageProps.user?.email}</Box>
                             <button onClick={logout}>ログアウト</button>
                         </>
                     )}

@@ -73,3 +73,11 @@ export type eventDataType=
         eventDescription:string
     }
 
+export type currentUserIdDataType={
+    [key:string]:
+        {
+            age:number,
+            role:string,
+            company:string,
+        }
+}
