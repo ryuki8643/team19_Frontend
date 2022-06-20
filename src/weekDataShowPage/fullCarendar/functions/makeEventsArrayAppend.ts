@@ -26,7 +26,7 @@ export const MakeEventsArrayAppend=(fullCalendarProps:exampleWeekDataType,minusD
                     end: NowDate.toString() + " " + endTime,
                     title: dataS[i].eventName,
                     memo: dataS[i].eventDescription,
-                    color:"3788D8"
+                    className:"default-event"
 
                 }
             );

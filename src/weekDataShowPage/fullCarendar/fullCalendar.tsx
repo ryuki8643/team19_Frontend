@@ -27,7 +27,7 @@ export type calendarEventsType={
     start:string,
     end:string,
     memo:string
-    color:string
+    className:string
 }
 
 type FullCalendarAppPropsType={
@@ -58,7 +58,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
             getItems.forEach(
                 function(item){
 
-                    item["color"]="red"
+                    item["className"]="compare-event"
                 }
 
             )
@@ -127,7 +127,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 getItemsConcat.forEach(
                     function(item){
 
-                        item["color"]="red"
+                        item["className"]="compare-event"
                     }
 
                 )
@@ -148,7 +148,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 getItemsConcat.forEach(
                     function(item){
 
-                        item["color"]="red"
+                        item["className"]="compare-event"
                     }
 
                 )
@@ -206,7 +206,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                     return<div> aaaa</div>
                 }}
                 viewClassNames={"calendarRootView"}
-                eventClassNames={"calendarEventView"}
+
 
 
 
