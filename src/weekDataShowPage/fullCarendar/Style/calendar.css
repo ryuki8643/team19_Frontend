@@ -1,0 +1,25 @@
+.calendarEventView{
+    border-radius: 10px;
+    color:red;
+}
+.calendarRootView{
+
+}
+.calendarIndicatorClassNames{
+    border-radius: 10px;
+    color:red;
+    background-color:lightblue;
+}
+
+
+.fc-scrollgrid  fc-scrollgrid-liquid{
+    border-radius: 10px;
+}
+.fc .fc-col-header-cell-cushion {
+    display: inline-block;
+    padding: 2px 4px;
+}
+
+* {
+    border-radius: 10px;
+}

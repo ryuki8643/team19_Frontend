@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import {onAuthStateChanged, signOut} from "firebase/auth";
-import {authExample} from "./firebaseConfig";
+import {authExample} from "../firebaseConfig";
 import {
     useNavigate,
     Navigate
@@ -11,8 +11,8 @@ import firebase from "firebase/compat";
 import {DialogContent,Box} from "@mui/material";
 import SignIn from "./SignIn";
 import Register from "./SignUp";
-import {DataExchangeExample} from "../DataExchange/DataExchangeExample";
-import {exampleCurrentIdData, exampleSearchData} from "../ExampleData/ExampleData";
+import {DataExchangeExample} from "../../DataExchange/DataExchangeExample";
+import {exampleCurrentIdData, exampleSearchData} from "../../ExampleData/ExampleData";
 
 type MyPagePropsType={
     signUpBool:boolean

@@ -44,8 +44,8 @@ export const exampleSearchData:exampleSearchDataType=
 {
     "cIZ9KPVRKCSluw9Oqpx6AAIQMLg1":
         {
-            age:25,
-            role:"神",
+            age:29,
+            role:"ペンギン",
             company:"Yahoo",
             weekList:
                 {1:

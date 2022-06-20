@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from "react";
 /* ↓「createUserWithEmailAndPassword」と「auth」をimport */
 import { createUserWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
-import {authExample} from "./firebaseConfig";
+import {authExample} from "../firebaseConfig";
 import firebase from "firebase/compat";
-import {SignUpInput} from "./SignUpInput";
+import {SignUpInput} from "../SignUpInput";
 
 
 const Register = () => {

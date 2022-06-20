@@ -8,7 +8,7 @@ import Typography from '@mui/material/Typography';
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
-import UserPage from "../SignUpPage/UserPage";
+import UserPage from "../SignUpPage/UserPageComponent/UserPage";
 import firebase from "firebase/compat";
 
 

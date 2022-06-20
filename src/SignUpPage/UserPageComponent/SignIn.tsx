@@ -6,10 +6,10 @@ import {
     signInWithEmailAndPassword,
     onAuthStateChanged
 } from "firebase/auth";
-import {authExample} from "./firebaseConfig";
+import {authExample} from "../firebaseConfig";
 import firebase from "firebase/compat";
 import {Navigate} from "react-router-dom";
-import {SignUpInput} from "./SignUpInput";
+import {SignUpInput} from "../SignUpInput";
 
 
 
