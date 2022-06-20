@@ -3,7 +3,7 @@ import timeGridPlugin from '@fullcalendar/timegrid'
 import React, {useEffect, useRef, useState} from "react";
 import { exampleWeekDataType} from "../../ExampleData/ExampleDataType";
 import MenuItem from '@mui/material/MenuItem';
-import {MakeEventsArray} from "./makeEventsArray";
+import {MakeEventsArray} from "./functions/makeEventsArray";
 import Box from '@mui/material/Box';
 import interactionPlugin from "@fullcalendar/interaction";
 import Portal from '@mui/material/Portal';
@@ -16,7 +16,7 @@ import bootstrap5Plugin from '@fullcalendar/bootstrap5';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'; // needs additional webpack config!
 import "./Style/calendar.css"
-import {MakeEventsArrayAppend} from "./makeEventsArrayAppend";
+import {MakeEventsArrayAppend} from "./functions/makeEventsArrayAppend";
 
 
 
@@ -52,17 +52,28 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
     const ref=useRef<FullCalendar>(null!);
 
     const setEventsFunc=()=>{
-        let getItems=MakeEventsArrayAppend(FullCalendarAppProps.compareWeekShowData,defaultDay)
+        if (!compareButtonDisabled){
+            let getItems=MakeEventsArrayAppend(FullCalendarAppProps.compareWeekShowData,defaultDay)
 
-        getItems.forEach(
-            function(item){
+            getItems.forEach(
+                function(item){
 
-                item["color"]="red"
+                    item["color"]="red"
+                }
+
+            )
+            setDayEvents(dayEvents.concat(getItems))
+        } else{
+            if (FullCalendarAppProps.weekShowData!==undefined){
+                let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
+
+
+
+                setDayEvents(getItems)
+
             }
-
-        )
-        setDayEvents(dayEvents.concat(getItems))
-        setCompareButtonDisabled(true)
+        }
+        setCompareButtonDisabled(!compareButtonDisabled)
     }
 
 
@@ -171,7 +182,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
     return (
         <ClickAwayListener onClickAway={()=>handleClickAway()} >
             <Box onClick={()=>handleClickAway()}>
-            {FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} disabled={compareButtonDisabled}>比較</Button>}
+            {FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} >{!compareButtonDisabled ? "比較":"表示を一つに"}</Button>}
             <FullCalendar
 
                 themeSystem={'bootstrap5'}

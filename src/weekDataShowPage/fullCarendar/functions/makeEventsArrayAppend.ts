@@ -1,12 +1,16 @@
-import {eventDataType, exampleDayDataType, exampleWeekDataType} from "../../ExampleData/ExampleDataType";
+import {eventDataType, exampleDayDataType, exampleWeekDataType} from "../../../ExampleData/ExampleDataType";
 import {getStringFromDate} from "./getStringFromDate";
-import {calendarEventsType} from "./fullCalendar";
+import {calendarEventsType} from "../fullCalendar";
 
 
 
 
-export const MakeEventsArray=(fullCalendarProps:exampleWeekDataType)=>{
+export const MakeEventsArrayAppend=(fullCalendarProps:exampleWeekDataType,minusDate:string)=>{
     let items:calendarEventsType[]=[]
+    const CompareMinusDate=new Date(minusDate)
+    const nowDate=new Date(fullCalendarProps.StartDay)
+    const compareDateNum=nowDate.getDate()-CompareMinusDate.getDate()
+    console.log(compareDateNum)
 
     const makeDayArray=(dayData:exampleDayDataType,NowDate:string)=> {
         let dataS = Object.values(dayData) as eventDataType[];
@@ -31,25 +35,25 @@ export const MakeEventsArray=(fullCalendarProps:exampleWeekDataType)=>{
 
     makeDayArray(
         fullCalendarProps["Monday"] as exampleDayDataType,
-        getStringFromDate(fullCalendarProps["StartDay"] as string,0))
+        getStringFromDate(fullCalendarProps["StartDay"] as string,0-compareDateNum))
     makeDayArray(
         fullCalendarProps["Tuesday"] as exampleDayDataType,
-        getStringFromDate(fullCalendarProps["StartDay"] as string,1))
+        getStringFromDate(fullCalendarProps["StartDay"] as string,1-compareDateNum))
     makeDayArray(
         fullCalendarProps["Wednesday"] as exampleDayDataType,
-        getStringFromDate(fullCalendarProps["StartDay"] as string,2))
+        getStringFromDate(fullCalendarProps["StartDay"] as string,2-compareDateNum))
     makeDayArray(
         fullCalendarProps["Thursday"] as exampleDayDataType,
-        getStringFromDate(fullCalendarProps["StartDay"] as string,3))
+        getStringFromDate(fullCalendarProps["StartDay"] as string,3-compareDateNum))
     makeDayArray(
         fullCalendarProps["Friday"] as exampleDayDataType,
-        getStringFromDate(fullCalendarProps["StartDay"] as string,4))
+        getStringFromDate(fullCalendarProps["StartDay"] as string,4-compareDateNum))
     makeDayArray(
         fullCalendarProps["Saturday"] as exampleDayDataType,
-        getStringFromDate(fullCalendarProps["StartDay"] as string,5))
+        getStringFromDate(fullCalendarProps["StartDay"] as string,5-compareDateNum))
     makeDayArray(
         fullCalendarProps["Sunday"] as exampleDayDataType,
-        getStringFromDate(fullCalendarProps["StartDay"] as string,6))
+        getStringFromDate(fullCalendarProps["StartDay"] as string,6-compareDateNum))
 
     return items
 
