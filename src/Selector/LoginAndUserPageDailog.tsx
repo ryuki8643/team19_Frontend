@@ -83,8 +83,10 @@ export function UserDialog(UserDialogProps:UserDialogPropsType) {
                 </DialogContent>
 
                 <DialogActions>
-                    {signUpBool ? <Button onClick={() => setSignUpBool(false)}>サインアップ</Button>
-                    :<Button onClick={() => setSignUpBool(true)}>サインイン</Button>}
+                    {UserDialogProps.user ? "":!signUpBool ?
+                        <Button onClick={() => setSignUpBool(true)}>サインイン</Button>
+                        :<Button onClick={() => setSignUpBool(false)}>サインアップ</Button>
+                    }
 
                     <Button onClick={handleClose}>閉じる</Button>
                 </DialogActions>

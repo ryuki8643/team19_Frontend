@@ -100,7 +100,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 <Box>{info.event.extendedProps.memo}</Box>
             </Box>
         setDescription(dialogText)
-        console.log(info)
+
 
     };
 
@@ -206,6 +206,16 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                     return<div> aaaa</div>
                 }}
                 viewClassNames={"calendarRootView"}
+                allDaySlot={false}
+                headerToolbar={{
+                    start:"",
+                    center:"",
+                    end:""
+
+
+                }}
+                titleRangeSeparator={' \u2022 '}
+
 
 
 

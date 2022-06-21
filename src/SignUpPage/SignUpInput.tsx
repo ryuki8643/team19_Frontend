@@ -1,5 +1,5 @@
 import React from "react";
-import {Input, Typography} from '@mui/material';
+import {Input, TextField, Typography} from '@mui/material';
 
 type SignUpInputType={
     contentTitle:string
@@ -11,9 +11,11 @@ type SignUpInputType={
 export const SignUpInput=(SignUpInputProps:SignUpInputType)=>{
     return (
         <div>
-            <Typography>{SignUpInputProps.contentTitle}</Typography>
-            <Input
-                name="email"
+
+            <TextField
+                sx={{marginTop:1}}
+                label={SignUpInputProps.contentTitle}
+
                 type={SignUpInputProps.showType}
                 value={SignUpInputProps.registerContent}
                 onChange={(e) => SignUpInputProps.setRegisterContent(e.target.value)}

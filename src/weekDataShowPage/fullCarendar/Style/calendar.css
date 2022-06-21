@@ -12,13 +12,8 @@
 }
 
 
-.fc-scrollgrid  fc-scrollgrid-liquid{
-    border-radius: 10px;
-}
-.fc .fc-col-header-cell-cushion {
-    display: inline-block;
-    padding: 2px 4px;
-}
+
+
 
 * {
     border-radius: 10px;
@@ -43,7 +38,7 @@ a.default-event:hover {
 
 a.compare-event {
     color: #000;
-    background-color: red;
+    background-color: #FF6600;
     border-bottom: 5px solid orangered;
     border-right: 5px solid orangered;
 }
@@ -51,7 +46,7 @@ a.compare-event {
 a.compare-event:hover {
     margin-top: 3px;
     color: #000;
-    background: red;
+    background: #FF6600;
     border-bottom: 2px solid orangered;
     border-right: 2px solid orangered;;
 }

@@ -8,7 +8,7 @@ import {
     Navigate
 } from "react-router-dom";
 import firebase from "firebase/compat";
-import {DialogContent,Box} from "@mui/material";
+import {DialogContent, Box, Button} from "@mui/material";
 import SignIn from "./SignIn";
 import Register from "./SignUp";
 import {DataExchangeExample} from "../../DataExchange/DataExchangeExample";
@@ -47,7 +47,7 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                                 </>
                                 :"":""}
                             <Box>メール:{MyPageProps.user?.email}</Box>
-                            <button onClick={logout}>ログアウト</button>
+                            <Button onClick={logout}>ログアウト</Button>
                         </>
                     )}
 

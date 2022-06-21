@@ -11,6 +11,7 @@ import firebase from "firebase/compat";
 import {Navigate} from "react-router-dom";
 import {SignUpInput} from "../SignUpInput";
 
+import {Button, FormControl} from "@mui/material";
 
 
 const SignIn = () => {
@@ -40,7 +41,7 @@ const SignIn = () => {
             <form onSubmit={handleSubmit}>
                 <SignUpInput showType={"email"} contentTitle={"メールアドレス"} registerContent={loginEmail} setRegisterContent={setLoginEmail}/>
                 <SignUpInput showType={"password"} contentTitle={"パスワード"} registerContent={loginPassword} setRegisterContent={setLoginPassword}/>
-                <button>ログイン</button>
+                <Button sx={{textAlign:"left",display:"block"}} onClick={handleSubmit}>ログイン</Button>
 
             </form>
         </>
