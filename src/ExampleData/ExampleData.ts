@@ -1,4 +1,10 @@
-import {exampleDayDataType,exampleSearchDataType,exampleUserDataType,exampleWeekDataType} from "./ExampleDataType";
+import {
+    currentUserIdDataType,
+    exampleDayDataType,
+    exampleSearchDataType,
+    exampleUserDataType,
+    exampleWeekDataType
+} from "./ExampleDataType";
 //フロントエンド->バックエンド
 
 export const exampleDayData:exampleDayDataType={
@@ -36,6 +42,21 @@ export const exampleUser:exampleUserDataType=
 //バックエンド->フロントエンド
 export const exampleSearchData:exampleSearchDataType=
 {
+    "cIZ9KPVRKCSluw9Oqpx6AAIQMLg1":
+        {
+            age:29,
+            role:"ペンギン",
+            company:"Yahoo",
+            weekList:
+                {1:
+                        {
+                            day:"2022/06/13",
+                            dayCount:7,
+                            value:0
+                        },
+
+                },
+        },
     "1234":
         {
             age:20,
@@ -314,4 +335,128 @@ export const exampleWeekData3:exampleWeekDataType={
                 }
         },
 
+}
+
+export const exampleWeekData4:exampleWeekDataType={
+    id:"cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
+    StartDay:"2022/06/13",
+    age:29,
+    role:"ペンギン",
+    company:"Yahoo",
+    Monday:
+        {
+            1:
+                {   eventName:"コーディング",
+                    eventStart:"9:00",
+                    eventEnd:"12:00",
+                    eventDescription:"プログラミング"
+                },
+            2:
+                {   eventName:"ミーティング",
+                    eventStart:"12:00",
+                    eventEnd:"16:00",
+                    eventDescription:"偉い人と会議"
+                }
+        },
+    Tuesday:
+        {
+            1:
+                {   eventName:"コーディング",
+                    eventStart:"10:00",
+                    eventEnd:"11:00",
+                    eventDescription:"プログラミング"
+                },
+            2:
+                {   eventName:"ミーティング",
+                    eventStart:"12:00",
+                    eventEnd:"16:00",
+                    eventDescription:"偉い人と会議"
+                }
+        },
+    Wednesday:
+        {
+            1:
+                {   eventName:"コーディング",
+                    eventStart:"10:00",
+                    eventEnd:"11:00",
+                    eventDescription:"プログラミング"
+                },
+            2:
+                {   eventName:"ミーティング",
+                    eventStart:"12:00",
+                    eventEnd:"16:00",
+                    eventDescription:"偉い人と会議"
+                }
+        },
+    Thursday:
+        {
+            1:
+                {   eventName:"コーディング",
+                    eventStart:"10:00",
+                    eventEnd:"11:00",
+                    eventDescription:"プログラミング"
+                },
+            2:
+                {   eventName:"ミーティング",
+                    eventStart:"12:00",
+                    eventEnd:"16:00",
+                    eventDescription:"偉い人と会議"
+                }
+        },
+    Friday:
+        {
+            1:
+                {   eventName:"コーディング",
+                    eventStart:"10:00",
+                    eventEnd:"11:00",
+                    eventDescription:"プログラミング"
+                },
+            2:
+                {   eventName:"ミーティング",
+                    eventStart:"12:00",
+                    eventEnd:"16:00",
+                    eventDescription:"偉い人と会議"
+                }
+        },
+    Saturday:
+        {
+            1:
+                {   eventName:"コーディング",
+                    eventStart:"10:00",
+                    eventEnd:"11:00",
+                    eventDescription:"プログラミング"
+                },
+            2:
+                {   eventName:"ミーティング",
+                    eventStart:"12:00",
+                    eventEnd:"16:00",
+                    eventDescription:"偉い人と会議"
+                }
+        },
+    Sunday:
+        {
+            1:
+                {   eventName:"コーディング",
+                    eventStart:"10:00",
+                    eventEnd:"11:00",
+                    eventDescription:"プログラミング"
+                },
+            2:
+                {   eventName:"ミーティング",
+                    eventStart:"12:00",
+                    eventEnd:"16:00",
+                    eventDescription:"偉い人と会議"
+                }
+        },
+
+}
+
+
+export const exampleCurrentIdData:currentUserIdDataType={
+    "cIZ9KPVRKCSluw9Oqpx6AAIQMLg1":
+        {
+            age:25,
+            role:"神",
+            company:"Yahoo"
+        }
 }

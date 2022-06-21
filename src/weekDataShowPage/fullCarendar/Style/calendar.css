@@ -1,0 +1,52 @@
+.calendarEventView{
+    border-radius: 10px;
+    color:red;
+}
+.calendarRootView{
+
+}
+.calendarIndicatorClassNames{
+    border-radius: 10px;
+    color:red;
+    background-color:lightblue;
+}
+
+
+
+
+
+* {
+    border-radius: 10px;
+}
+
+
+a.default-event {
+    color: #000;
+    background-color: blue;
+    border-bottom: 5px solid #039be5;
+    border-right: 5px solid #039be5;
+}
+
+a.default-event:hover {
+    margin-top: 3px;
+    color: #000;
+    background: blue;
+    border-bottom: 2px solid #039be5;
+    border-right: 2px solid #039be5;;
+}
+
+
+a.compare-event {
+    color: #000;
+    background-color: #FF6600;
+    border-bottom: 5px solid orangered;
+    border-right: 5px solid orangered;
+}
+
+a.compare-event:hover {
+    margin-top: 3px;
+    color: #000;
+    background: #FF6600;
+    border-bottom: 2px solid orangered;
+    border-right: 2px solid orangered;;
+}
