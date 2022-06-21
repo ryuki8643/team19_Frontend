@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import FullCalendarApp from "./fullCarendar/fullCalendar";
 
 import SelectWeekDataBox from "./selectWeekDataBox/SelectWeekDataBox";
@@ -10,21 +10,40 @@ import Grid from '@mui/material/Grid';
 import {Container} from "@mui/material";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import RemoveIcon from '@mui/icons-material/Remove';
-
+import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
+import {useLocation} from "react-router-dom";
 
 type WeekPageFrontPageType={
     axiosSearchData:exampleSearchDataType
     axiosWeekDataExchange:axiosDataExchangeType
+
 }
 
 const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
     const [UserId,SetUserId]=useState("1234")
     const [weekShowStart,SetWeekShowStart]=useState("2022/06/13")
-
+    const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
     const [compareBool,setCompareBool]=useState(false)
     const [compareUserId,SetCompareUserId]=useState("1234")
     const [compareWeekShowStart,SetCompareWeekShowStart]=useState("2022/06/13")
+
+    const location=useLocation()
+    console.log(location,"aaa")
+    useEffect(()=>{
+        if(location.state){
+            console.log("aaa")
+            const getSearchState=location.state as {user:string,getFromSearch:boolean}
+
+            if (getSearchState.getFromSearch) {
+                SetUserId(getSearchState.user)
+                setCompareButtonDisabled(false)
+                setCompareBool(false)
+
+            }
+        }
+    },[location])
+
 
     const searchTreeExampleArray={} as {[key:string]:string[]}
 
@@ -70,11 +89,13 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
                 </AddBoxIcon>}
             {compareBool &&
-                <RemoveIcon
-                    onClick={()=>setCompareBool(false)}
-                    color={"primary"}>
+                <IndeterminateCheckBoxIcon
+                    onClick={()=>{setCompareBool(false);setCompareButtonDisabled(false)}}
+                    color={"primary"}
+                    sx={{zIndex:100,marginBottom:2}}
+                >
 
-                </RemoveIcon>}
+                </IndeterminateCheckBoxIcon>}
 
 
             {compareBool &&
@@ -103,6 +124,8 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
 
             <FullCalendarApp
+                compareButtonDisabled={compareButtonDisabled}
+                setCompareButtonDisabled={setCompareButtonDisabled}
                 weekShowData={WeekPageFrontPageProps.axiosWeekDataExchange[UserId][weekShowStart]}
                 compareBool={compareBool}
                 compareWeekShowData={WeekPageFrontPageProps.axiosWeekDataExchange[compareUserId][compareWeekShowStart]}
