@@ -25,6 +25,7 @@ a.default-event {
     background-color: blue;
     border-bottom: 5px solid #039be5;
     border-right: 5px solid #039be5;
+    border-radius: 10px;
 }
 
 a.default-event:hover {
@@ -41,6 +42,7 @@ a.compare-event {
     background-color: #FF6600;
     border-bottom: 5px solid orangered;
     border-right: 5px solid orangered;
+    border-radius: 10px;
 }
 
 a.compare-event:hover {
