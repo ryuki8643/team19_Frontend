@@ -19,7 +19,12 @@ export const SearchButton=(SearchButtonProps:SearchButtonPropsType)=> {
         <TextField sx={{
             flexGrow:1,
             backgroundColor:"white"
-        }} onChange={(event)=>setSearchInput(event.target?.value)}></TextField>
+        }}
+                   onChange={(event)=>setSearchInput(event.target?.value)}
+                   onKeyPress={event => {
+
+                   }}
+        ></TextField>
 
         <Button variant="contained" size="large"
                 onClick={()=>SearchButtonProps.navigate("/Search",
