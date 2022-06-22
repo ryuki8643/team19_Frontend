@@ -14,8 +14,9 @@ import {onAuthStateChanged} from "firebase/auth";
 import {authExample} from "../SignUpPage/firebaseConfig";
 import {ButtonStyle, UserDialog} from "./LoginAndUserPageDailog";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
-import {TextField} from "@mui/material";
+import {Drawer, List, ListItemButton, ListItemIcon, ListItemText,ListItem} from "@mui/material";
 import {SearchButton} from "../SearchPage/SearchButton";
+import {SelectorDrawer} from "./SelectorDrawer";
 
 type SelectorPropsType={
     SearchData:exampleSearchDataType
@@ -29,6 +30,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
     const [modalOpen,setModalOpen] =useState(false)
 
     const [signUpBool,setSignUpBool]=useState(false)
+    const [drawerOpen,setDrawerOpen]=useState(false)
 
 
     const navigate=useNavigate()
@@ -37,6 +39,20 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
             setLoginUser(currentUser as firebase.User|null);
         });
     }, []);
+    const toggleDrawer =
+        ( open: boolean) =>
+            (event: React.KeyboardEvent | React.MouseEvent) => {
+                if (
+                    event.type === 'keydown' &&
+                    ((event as React.KeyboardEvent).key === 'Tab' ||
+                        (event as React.KeyboardEvent).key === 'Shift')
+                ) {
+                    return;
+                }
+
+                setDrawerOpen(open)
+            };
+
     return (
 
             <Box sx={{ flexGrow: 1 }}>
@@ -48,9 +64,11 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                             color="inherit"
                             aria-label="menu"
                             sx={{ mr: 2 }}
+                            onClick={()=>setDrawerOpen(true)}
                         >
                             <MenuIcon />
                         </IconButton>
+                        <SelectorDrawer drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} SearchData={SelectorProps.SearchData}/>
                         <Button   sx={[ {
                             color:'#FFFFFF',
                             height: '70%',

@@ -22,7 +22,7 @@ const SelectWeekDataBox2 = (SelectWeekDataProps:SelectWeekDataType) => {
             SelectWeekDataProps.SetWeekShowStart(value.week)
         }
     }
-
+    const which=true
 
 
     const weekDataAutoCompleteObject={} as {[key:string]: {week:string,text:string}}
@@ -44,25 +44,26 @@ const SelectWeekDataBox2 = (SelectWeekDataProps:SelectWeekDataType) => {
 
     return (
         <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Weeks</InputLabel>
-            <Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value={SelectWeekDataProps.weekShowStart}
-                label="Weeks"
-                onChange={handleChange}
-            >
-                {(SelectWeekDataProps.searchTree[SelectWeekDataProps.UserId]
+            {!which && <><InputLabel id="demo-simple-select-label">Weeks</InputLabel>
+                <Select
+                    labelId="demo-simple-select-label"
+                    id="demo-simple-select"
+                    value={SelectWeekDataProps.weekShowStart}
+                    label="Weeks"
+                    onChange={handleChange}
+                >
+                    {(SelectWeekDataProps.searchTree[SelectWeekDataProps.UserId]
 
-                ).map((value)=>{
-                    return(
-                        <MenuItem value={value} key={value}>{value.replace("/","年").replace("/","月")}日の週</MenuItem>
-                    )
-                })}
+                    ).map((value) => {
+                        return (
+                            <MenuItem value={value}
+                                      key={value}>{value.replace("/", "年").replace("/", "月")}日の週</MenuItem>
+                        )
+                    })}
 
 
-            </Select>
-            <Autocomplete
+                </Select></>}
+            {which && <Autocomplete
                 renderInput={(params) => <TextField {...params} label="Weeks" /> }
                 getOptionLabel={(option) => option.text}
                 options={Object.values(weekDataAutoCompleteObject)}
@@ -71,7 +72,7 @@ const SelectWeekDataBox2 = (SelectWeekDataProps:SelectWeekDataType) => {
                     autoCompleteHandleChange(value)
                 }}
 
-            />
+            />}
 
         </FormControl>)
 }

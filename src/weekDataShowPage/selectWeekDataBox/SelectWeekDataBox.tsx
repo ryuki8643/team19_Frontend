@@ -28,34 +28,37 @@ const SelectWeekDataBox = (SelectWeekDataProps:SelectWeekDataType) => {
 
     })
 
+    const which=true
+
 
 
 
     return (
         <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Users</InputLabel>
-            <Select
+            {!which && <>
+                <InputLabel id="demo-simple-select-label">Users</InputLabel>
+                <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
                 value={SelectWeekDataProps.UserId}
                 label="Users"
                 onChange={handleChange}
-            >
-                {Object.keys(SelectWeekDataProps.SearchData).map((value)=>{
-                    return(
-                        <MenuItem value={value} key={value}>{SelectWeekDataProps.SearchData[value].company+" "+SelectWeekDataProps.SearchData[value].age+"歳 "+SelectWeekDataProps.SearchData[value].role}</MenuItem>
-                    )
-                })}
-            </Select>
+                >
+            {Object.keys(SelectWeekDataProps.SearchData).map((value)=>{
+                return(
+                <MenuItem value={value} key={value}>{SelectWeekDataProps.SearchData[value].company+" "+SelectWeekDataProps.SearchData[value].age+"歳 "+SelectWeekDataProps.SearchData[value].role}</MenuItem>
+                )
+            })}
+                </Select></>}
 
-            <Autocomplete
+            {which && <Autocomplete
                 renderInput={(params) => <TextField {...params} label="Users" /> }
                 options={Object.values(autoCompleteObject)}
                 value={autoCompleteObject[SelectWeekDataProps.UserId]}
                 getOptionLabel={(option) => option.text}
                 onChange={((event, value, reason, details) => {
                     autocompleteHandleClick(value)
-                })}/>
+                })}/>}
         </FormControl>)
 }
 
