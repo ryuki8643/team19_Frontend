@@ -8,8 +8,8 @@ import {calendarEventsType} from "../fullCalendar";
 export const MakeEventsArray=(fullCalendarProps:exampleWeekDataType)=>{
     let items:calendarEventsType[]=[]
 
-    const makeDayArray=(dayData:exampleDayDataType,NowDate:string)=> {
-        let dataS = Object.values(dayData) as eventDataType[];
+    const makeDayArray=(dayData:eventDataType[],NowDate:string)=> {
+        let dataS = dayData
 
         for (let i = 0; i < dataS.length; i++) {
             let startTime=("00"+dataS[i].eventStart).slice(-5)
@@ -30,25 +30,25 @@ export const MakeEventsArray=(fullCalendarProps:exampleWeekDataType)=>{
     }
 
     makeDayArray(
-        fullCalendarProps["Monday"] as exampleDayDataType,
+        fullCalendarProps["Monday"],
         getStringFromDate(fullCalendarProps["StartDay"] as string,0))
     makeDayArray(
-        fullCalendarProps["Tuesday"] as exampleDayDataType,
+        fullCalendarProps["Tuesday"],
         getStringFromDate(fullCalendarProps["StartDay"] as string,1))
     makeDayArray(
-        fullCalendarProps["Wednesday"] as exampleDayDataType,
+        fullCalendarProps["Wednesday"],
         getStringFromDate(fullCalendarProps["StartDay"] as string,2))
     makeDayArray(
-        fullCalendarProps["Thursday"] as exampleDayDataType,
+        fullCalendarProps["Thursday"],
         getStringFromDate(fullCalendarProps["StartDay"] as string,3))
     makeDayArray(
-        fullCalendarProps["Friday"] as exampleDayDataType,
+        fullCalendarProps["Friday"],
         getStringFromDate(fullCalendarProps["StartDay"] as string,4))
     makeDayArray(
-        fullCalendarProps["Saturday"] as exampleDayDataType,
+        fullCalendarProps["Saturday"],
         getStringFromDate(fullCalendarProps["StartDay"] as string,5))
     makeDayArray(
-        fullCalendarProps["Sunday"] as exampleDayDataType,
+        fullCalendarProps["Sunday"],
         getStringFromDate(fullCalendarProps["StartDay"] as string,6))
 
     return items

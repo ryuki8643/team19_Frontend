@@ -5,10 +5,10 @@ export type exampleDayDataType =
         userId: string,
         day: string,
         content:
-            exampleDayDataShowType
+            eventDataType[]
     }
 export type exampleUserDataType={
-    userName:string,
+    userId:string,
     email:string,
     age:number,
     role:string,
@@ -22,17 +22,17 @@ export type exampleSearchDataType={
             role:string,
             company:string,
             weekList:
-                {
-                    [key:number]:
+
+
                         {
                             day:string,
                             dayCount:number,
-                            value:number},
+                            value:number}[],
 
 
 
 
-                },
+
 
         },
 
@@ -45,19 +45,19 @@ export type exampleWeekDataType={
     role:string,
     company:string,
     Monday:
-        exampleDayDataShowType
+        eventDataType[]
     Tuesday:
-        exampleDayDataShowType
+        eventDataType[]
     Wednesday:
-        exampleDayDataShowType
+        eventDataType[]
     Thursday:
-        exampleDayDataShowType
+        eventDataType[]
     Friday:
-        exampleDayDataShowType
+        eventDataType[]
     Saturday:
-        exampleDayDataShowType
+        eventDataType[]
     Sunday:
-        exampleDayDataShowType
+        eventDataType[]
 
 }
 
@@ -73,11 +73,10 @@ export type eventDataType=
         eventDescription:string
     }
 
-export type currentUserIdDataType={
-    [key:string]:
+export type currentUserIdDataType=
         {
             age:number,
             role:string,
             company:string,
         }
-}
+
