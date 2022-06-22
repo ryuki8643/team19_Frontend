@@ -52,6 +52,7 @@ const DayCalender = () => {
         console.log(dailyItems.content)
         //setDayEventsData()
     }
+
     return (
         <>
             <Grid
@@ -73,6 +74,20 @@ const DayCalender = () => {
                         initialView="timeGridDay"
                         weekends={true}
                         editable={true}
+                        allDaySlot={false}
+                        customButtons={{
+                            myCustomButton: {
+                                text: 'Custom Button!',
+                                click: function () {
+                                    alert('clicked the custom button!');
+                                },
+                            },
+                        }}
+                        headerToolbar={{
+                            start: 'title',
+                            center: '',
+                            end: 'myCustomButton'
+                        }}
                         eventClick={(clickInfo) => {
                             if (
                                 window.confirm(`このイベント「${clickInfo.event.title}」を削除しますか`)

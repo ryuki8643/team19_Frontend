@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { FilledInput, TextField } from '@mui/material';
+import { TextField } from '@mui/material';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -9,6 +9,16 @@ import SendIcon from '@mui/icons-material/Send';
 import AddIcon from '@mui/icons-material/Add';
 import axios from 'axios';
 import { exampleDayDataType } from "../ExampleData/ExampleDataType";
+
+const sendData = (data: exampleDayDataType) => {
+    console.log(data)
+    /*
+    axios.post(`http://localhost:8000`, { data })
+        .then(res => {
+            console.log(res)
+        })
+        */
+}
 
 type Prop = {
     dailyItems: exampleDayDataType,
@@ -141,10 +151,10 @@ const EventForm: React.FC<Prop> = ({ addItems, dailyItems }) => {
             <Button variant="contained" disableElevation endIcon={<AddIcon />} disabled={isAbailableButton()} onClick={() => setItems()}>
                 Add
             </Button>
-            <Button variant="contained" disableElevation endIcon={<SendIcon />}>
+            <Button variant="contained" disableElevation endIcon={<SendIcon />} onClick={() => sendData(dailyItems)} >
                 Submit
             </Button>
-        </Stack>
+        </Stack >
     )
 }
 
