@@ -6,6 +6,12 @@ export type axiosDataExchangeType={
 }
 
 export const DataExchangeExample:{[key:string]:{[key:string]:exampleWeekDataType}}={
+
+    "cIZ9KPVRKCSluw9Oqpx6AAIQMLg1":{
+        "2022/06/13":exampleWeekData3,
+
+
+    },
     "1234":{
         "2022/06/13":exampleWeekData1,
         "2022/06/20":exampleWeekData2,
