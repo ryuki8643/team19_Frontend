@@ -49,15 +49,15 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
     const searchTreeExampleArray={} as {[key:string]:string[]}
 
-    Object.entries(WeekPageFrontPageProps.axiosSearchData).forEach(
+    WeekPageFrontPageProps.axiosSearchData["UserData"].forEach(
         function(item){
 
-            Object.entries(item[1]["weekList"]).forEach(
+            (item["weekList"]).forEach(
                 function(itemChild){
-                    if (searchTreeExampleArray[item[0]]){
-                        searchTreeExampleArray[item[0]].push(itemChild[1].day)
+                    if (searchTreeExampleArray[item.UserId]){
+                        searchTreeExampleArray[item.UserId].push(itemChild.day)
                     } else{
-                        searchTreeExampleArray[item[0]]=[itemChild[1].day]
+                        searchTreeExampleArray[item.UserId]=[itemChild.day]
                     }
                 }
             )

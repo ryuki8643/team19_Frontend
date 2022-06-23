@@ -6,17 +6,30 @@ import {useEffect, useState} from "react";
 
 export const SearchPage=()=>{
     const locationState=useLocation().state as {searchInput:string,SearchData:exampleSearchDataType}
-    const autoCompleteObject={} as {[key:string]:{user:string,text:string}}
-    Object.keys(locationState.SearchData).forEach((value)=>{
-        autoCompleteObject[value]={user:value,text:locationState.SearchData[value].company+" "+locationState.SearchData[value].age+"歳 "+locationState.SearchData[value].role}
+    const autoCompleteObject={} as {[key:number]:{user:string,text:string,company:string,age:number,role:string}}
+    locationState.SearchData["UserData"].forEach((value,index)=>{
+        console.log(value)
+        if (value) {
+            autoCompleteObject[index] = {
+                    user: value.UserId,
+                    text: value.company + " " + value.age + "歳 " + value.role,
+                    company: value.company,
+                    age: value.age,
+                    role: value.role
 
+            }
+        }
     })
+    const [companyInput,setCompanyInput]=useState("")
+    const [roleInput,setRoleInput]=useState("")
+    const [ageDownInput,setAgeInput]=useState("")
+    const [ageUpInput,setUpAgeInput]=useState("")
 
     const [searchInputCustom,setSearchInputCustom]=useState(locationState.searchInput)
 
 
     const navigate=useNavigate()
-    const filteredData=Object.values(autoCompleteObject).filter((value)=>{
+    const filteredData=Object.values(autoCompleteObject).filter((value,index)=>{
         return value.text.toLowerCase().indexOf(searchInputCustom.toLowerCase()) > -1
 
 
@@ -42,20 +55,26 @@ export const SearchPage=()=>{
 
 
             <Grid container spacing={2}>
-                <Grid item xs={12} key={"a"}>
-                    <TextField>企業</TextField>
-                    <TextField></TextField>
-                    <TextField　>企業</TextField>
 
-                </Grid>
-            {Object.values(filteredData).map((value)=>{
+                    <Grid item xs={12} key={"a"}>
+                        <Paper>
+
+                            <TextField sx={{width:"25%",margin:"2%"}} label={"企業"}>企業</TextField>
+                            <TextField sx={{width:"25%",margin:"2%"}}　label={"役職"}>役職</TextField>
+                            <TextField　type={"number"} sx={{width:"17%",margin:"2%"}}　label={"年齢下限"}>年齢</TextField>
+                            <TextField　type={"number"} sx={{width:"17%",margin:"2%"}}label={"年齢上限"}>年齢</TextField>
+                    </Paper>
+                    </Grid>
+
+            {(filteredData).map((value,index)=>{
+                console.log(value,index);
                 return (
-                    <Grid item xs={4} key={locationState.SearchData[value.user].company+locationState.SearchData[value.user].role+locationState.SearchData[value.user].age}>
+                    <Grid item xs={4} key={value.company+locationState.SearchData["UserData"][index].role+value.age}>
                         <Paper elevation={4} onClick={()=>goToHomeWithUser(value.user)}>
-                            <Box>企業：{locationState.SearchData[value.user].company}</Box>
-                            <Box>役職：{locationState.SearchData[value.user].role}</Box>
-                            <Box>年齢；{locationState.SearchData[value.user].age}</Box>
-                            {Object.values(locationState.SearchData[value.user].weekList).map((value)=>{
+                            <Box>企業：{value.company}</Box>
+                            <Box>役職：{value.role}</Box>
+                            <Box>年齢；{value.age}</Box>
+                            {Object.values(locationState.SearchData["UserData"][index].weekList).map((value)=>{
                                 return (
 
                                         <Box key={value.day}>

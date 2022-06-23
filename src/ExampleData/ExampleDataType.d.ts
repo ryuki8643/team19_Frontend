@@ -16,8 +16,9 @@ export type exampleUserDataType={
 }
 
 export type exampleSearchDataType={
-    [key:string]:
+    UserData:
         {
+            UserId:string
             age:number,
             role:string,
             company:string,
@@ -34,12 +35,12 @@ export type exampleSearchDataType={
 
 
 
-        },
+        }[],
 
 }
 
 export type exampleWeekDataType={
-    id:string,
+    UserId:string,
     StartDay:string,
     age:number,
     role:string,

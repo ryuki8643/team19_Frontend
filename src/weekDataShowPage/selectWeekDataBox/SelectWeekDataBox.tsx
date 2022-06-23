@@ -5,7 +5,7 @@ import FormControl from '@mui/material/FormControl';
 import Select, {SelectChangeEvent} from '@mui/material/Select';
 import {exampleSearchDataType} from "../../ExampleData/ExampleDataType";
 import {Autocomplete,TextField} from "@mui/material";
-import {useEffect, useState} from "react";
+import {Key, useEffect, useState} from "react";
 
 type SelectWeekDataType={
     UserId:string
@@ -23,8 +23,8 @@ const SelectWeekDataBox = (SelectWeekDataProps:SelectWeekDataType) => {
             SelectWeekDataProps.SetUserId(value.user)}
     }
     const autoCompleteObject={} as {[key:string]:{user:string,text:string}}
-    Object.keys(SelectWeekDataProps.SearchData).forEach((value)=>{
-        autoCompleteObject[value]={user:value,text:SelectWeekDataProps.SearchData[value].company+" "+SelectWeekDataProps.SearchData[value].age+"歳 "+SelectWeekDataProps.SearchData[value].role}
+    SelectWeekDataProps.SearchData["UserData"].forEach((value)=>{
+        autoCompleteObject[value.UserId]={user:value.UserId,text:value.company+" "+value.age+"歳 "+value.role}
 
     })
 
@@ -44,9 +44,9 @@ const SelectWeekDataBox = (SelectWeekDataProps:SelectWeekDataType) => {
                 label="Users"
                 onChange={handleChange}
                 >
-            {Object.keys(SelectWeekDataProps.SearchData).map((value)=>{
+            {SelectWeekDataProps.SearchData["UserData"].map((value)=>{
                 return(
-                <MenuItem value={value} key={value}>{SelectWeekDataProps.SearchData[value].company+" "+SelectWeekDataProps.SearchData[value].age+"歳 "+SelectWeekDataProps.SearchData[value].role}</MenuItem>
+                <MenuItem value={value.UserId} key={value.UserId}>{value.company+" "+value.age+"歳 "+value.role}</MenuItem>
                 )
             })}
                 </Select></>}

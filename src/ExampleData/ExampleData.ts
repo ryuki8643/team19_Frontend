@@ -43,8 +43,9 @@ export const exampleUser:exampleUserDataType=
 //バックエンド->フロントエンド
 export const exampleSearchData:exampleSearchDataType=
 {
-    "cIZ9KPVRKCSluw9Oqpx6AAIQMLg1":
+    UserData:[
         {
+            UserId:"cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
             age:29,
             role:"ペンギン",
             company:"Yahoo",
@@ -58,8 +59,9 @@ export const exampleSearchData:exampleSearchDataType=
 
                 ],
         },
-    "1234":
+
         {
+            UserId:"1234",
             age:20,
             role:"エンジニア",
             company:"Yahoo",
@@ -81,8 +83,9 @@ export const exampleSearchData:exampleSearchDataType=
                 ],
 
         },
-    "2233":
+
         {
+            UserId:"2233",
             age:25,
             role:"神",
             company:"Yahoo",
@@ -94,14 +97,15 @@ export const exampleSearchData:exampleSearchDataType=
                             value:0
                         },
 
-                ]
-    },
+                ],
+        },
+    ],
 }
 
 
 
 export const exampleWeekData1:exampleWeekDataType={
-    id:"1234",
+    UserId:"1234",
     StartDay:"2022/06/13",
     age:20,
     role:"エンジニア",
@@ -174,7 +178,7 @@ export const exampleWeekData1:exampleWeekDataType={
 
 
 export const exampleWeekData2:exampleWeekDataType={
-    id:"1234",
+    UserId:"1234",
     StartDay:"2022/06/20",
     age:20,
     role:"エンジニア",
@@ -248,7 +252,7 @@ export const exampleWeekData2:exampleWeekDataType={
 
 
 export const exampleWeekData3:exampleWeekDataType={
-    id:"2233",
+    UserId:"2233",
     StartDay:"2022/06/13",
     age:20,
     role:"エンジニア",
@@ -331,7 +335,7 @@ export const exampleWeekData3:exampleWeekDataType={
 }
 
 export const exampleWeekData4:exampleWeekDataType={
-    id:"cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
+    UserId:"cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
     StartDay:"2022/06/13",
     age:29,
     role:"ペンギン",
