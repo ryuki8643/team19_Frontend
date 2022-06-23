@@ -202,7 +202,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
     return (
         <ClickAwayListener onClickAway={()=>handleClickAway()} >
             <Box onClick={()=>handleClickAway()}>
-            {FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} >{!FullCalendarAppProps.compareButtonDisabled ? "比較":"表示を一つに"}</Button>}
+            {/*{FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} >{!FullCalendarAppProps.compareButtonDisabled ? "比較":"表示を一つに"}</Button>}*/}
             <FullCalendar
 
                 themeSystem={'bootstrap5'}

@@ -7,11 +7,13 @@ import SelectWeekDataBox2 from "./selectWeekDataBox/SelectWeekDataBox2";
 import {axiosDataExchangeType} from "../DataExchange/DataExchangeExample";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
 import Grid from '@mui/material/Grid';
-import {Container} from "@mui/material";
+import {Container, Fab} from "@mui/material";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import RemoveIcon from '@mui/icons-material/Remove';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import {useLocation} from "react-router-dom";
+import AddIcon from '@mui/icons-material/Add';
+
 
 type WeekPageFrontPageType={
     axiosSearchData:exampleSearchDataType
@@ -29,10 +31,10 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
     const [compareWeekShowStart,SetCompareWeekShowStart]=useState("2022/06/13")
 
     const location=useLocation()
-    console.log(location,"aaa")
+
     useEffect(()=>{
         if(location.state){
-            console.log("aaa")
+
             const getSearchState=location.state as {user:string,getFromSearch:boolean}
 
             if (getSearchState.getFromSearch) {
@@ -47,15 +49,15 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
     const searchTreeExampleArray={} as {[key:string]:string[]}
 
-    Object.entries(WeekPageFrontPageProps.axiosSearchData).forEach(
+    WeekPageFrontPageProps.axiosSearchData["UserData"].forEach(
         function(item){
 
-            Object.entries(item[1]["weekList"]).forEach(
+            (item["weekList"]).forEach(
                 function(itemChild){
-                    if (searchTreeExampleArray[item[0]]){
-                        searchTreeExampleArray[item[0]].push(itemChild[1].day)
+                    if (searchTreeExampleArray[item.UserId]){
+                        searchTreeExampleArray[item.UserId].push(itemChild.day)
                     } else{
-                        searchTreeExampleArray[item[0]]=[itemChild[1].day]
+                        searchTreeExampleArray[item.UserId]=[itemChild.day]
                     }
                 }
             )
@@ -84,10 +86,11 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
             </Grid>
 
             {!compareBool &&
-                <AddBoxIcon onClick={()=>setCompareBool(true)}
+                <Fab onClick={()=>{setCompareBool(true);setCompareButtonDisabled(true)}}
                             color={"primary"}>
+                    <AddIcon/>
 
-                </AddBoxIcon>}
+                </Fab>}
             {compareBool &&
                 <IndeterminateCheckBoxIcon
                     onClick={()=>{setCompareBool(false);setCompareButtonDisabled(false)}}
