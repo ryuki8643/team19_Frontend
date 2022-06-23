@@ -23,8 +23,8 @@ const SelectWeekDataBox = (SelectWeekDataProps:SelectWeekDataType) => {
             SelectWeekDataProps.SetUserId(value.user)}
     }
     const autoCompleteObject={} as {[key:string]:{user:string,text:string}}
-    SelectWeekDataProps.SearchData["UserData"].forEach((value)=>{
-        autoCompleteObject[value.UserId]={user:value.UserId,text:value.company+" "+value.age+"歳 "+value.role}
+    SelectWeekDataProps.SearchData["userData"].forEach((value)=>{
+        autoCompleteObject[value.userId]={user:value.userId,text:value.company+" "+value.age+"歳 "+value.role}
 
     })
 
@@ -44,9 +44,9 @@ const SelectWeekDataBox = (SelectWeekDataProps:SelectWeekDataType) => {
                 label="Users"
                 onChange={handleChange}
                 >
-            {SelectWeekDataProps.SearchData["UserData"].map((value)=>{
+            {SelectWeekDataProps.SearchData["userData"].map((value)=>{
                 return(
-                <MenuItem value={value.UserId} key={value.UserId}>{value.company+" "+value.age+"歳 "+value.role}</MenuItem>
+                <MenuItem value={value.userId} key={value.userId}>{value.company+" "+value.age+"歳 "+value.role}</MenuItem>
                 )
             })}
                 </Select></>}

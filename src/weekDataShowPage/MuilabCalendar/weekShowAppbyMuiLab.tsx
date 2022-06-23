@@ -16,25 +16,25 @@ const WeekShowAppbyMuiLab = () => {
 
 
                 <DayDataShowComponent
-                    exampleDayData={exampleWeekData2["Monday"]}
+                    exampleDayData={exampleWeekData2["monday"]}
                 />
                 <DayDataShowComponent
-                    exampleDayData={exampleWeekData2["Tuesday"]}
+                    exampleDayData={exampleWeekData2["tuesday"]}
                 />
                 <DayDataShowComponent
-                    exampleDayData={exampleWeekData2["Wednesday"]}
+                    exampleDayData={exampleWeekData2["wednesday"]}
                 />
                 <DayDataShowComponent
-                    exampleDayData={exampleWeekData2["Thursday"]}
+                    exampleDayData={exampleWeekData2["thursday"]}
                 />
                 <DayDataShowComponent
-                    exampleDayData={exampleWeekData2["Friday"]}
+                    exampleDayData={exampleWeekData2["friday"]}
                 />
                 <DayDataShowComponent
-                    exampleDayData={exampleWeekData2["Saturday"]}
+                    exampleDayData={exampleWeekData2["saturday"]}
                 />
                 <DayDataShowComponent
-                    exampleDayData={exampleWeekData2["Sunday"]}
+                    exampleDayData={exampleWeekData2["sunday"]}
                 />
 
 

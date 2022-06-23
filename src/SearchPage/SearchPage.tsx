@@ -7,11 +7,11 @@ import {useEffect, useState} from "react";
 export const SearchPage=()=>{
     const locationState=useLocation().state as {searchInput:string,SearchData:exampleSearchDataType}
     const autoCompleteObject={} as {[key:number]:{user:string,text:string,company:string,age:number,role:string}}
-    locationState.SearchData["UserData"].forEach((value,index)=>{
-        
+    locationState.SearchData["userData"].forEach((value,index)=>{
+
         if (value) {
             autoCompleteObject[index] = {
-                    user: value.UserId,
+                    user: value.userId,
                     text: value.company + " " + value.age + "歳 " + value.role,
                     company: value.company,
                     age: value.age,
@@ -124,12 +124,12 @@ export const SearchPage=()=>{
             {(filteredData).map((value,index)=>{
 
                 return (
-                    <Grid item xs={4} key={value.company+locationState.SearchData["UserData"][index].role+value.age}>
+                    <Grid item xs={4} key={value.company+locationState.SearchData["userData"][index].role+value.age}>
                         <Paper elevation={4} onClick={()=>goToHomeWithUser(value.user)}>
                             <Box>企業：{value.company}</Box>
                             <Box>役職：{value.role}</Box>
                             <Box>年齢；{value.age}</Box>
-                            {Object.values(locationState.SearchData["UserData"][index].weekList).map((value)=>{
+                            {Object.values(locationState.SearchData["userData"][index].weekList).map((value)=>{
                                 return (
 
                                         <Box key={value.day}>

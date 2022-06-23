@@ -8,7 +8,7 @@ export type exampleDayDataType =
             eventDataType[]
     }
 export type exampleUserDataType={
-    userId:string,
+    firebaseUid:string,
     email:string,
     age:number,
     role:string,
@@ -16,9 +16,9 @@ export type exampleUserDataType={
 }
 
 export type exampleSearchDataType={
-    UserData:
+    userData:
         {
-            UserId:string
+            userId:string
             age:number,
             role:string,
             company:string,
@@ -28,7 +28,7 @@ export type exampleSearchDataType={
                         {
                             day:string,
                             dayCount:number,
-                            value:number}[],
+                            eventCount:number}[],
 
 
 
@@ -40,24 +40,24 @@ export type exampleSearchDataType={
 }
 
 export type exampleWeekDataType={
-    UserId:string,
-    StartDay:string,
+    userId:string,
+    startDate:string,
     age:number,
     role:string,
     company:string,
-    Monday:
+    monday:
         eventDataType[]
-    Tuesday:
+    tuesday:
         eventDataType[]
-    Wednesday:
+    wednesday:
         eventDataType[]
-    Thursday:
+    thursday:
         eventDataType[]
-    Friday:
+    friday:
         eventDataType[]
-    Saturday:
+    saturday:
         eventDataType[]
-    Sunday:
+    sunday:
         eventDataType[]
 
 }

@@ -32,7 +32,7 @@ export const exampleDayData:exampleDayDataType={
 
 export const exampleUser:exampleUserDataType=
 {
-    userId:"1234",
+    firebaseUid:"1234",
     email:"example@example.com",
     age:20,
     role:"Engineer",
@@ -43,9 +43,9 @@ export const exampleUser:exampleUserDataType=
 //バックエンド->フロントエンド
 export const exampleSearchData:exampleSearchDataType=
 {
-    UserData:[
+    userData:[
         {
-            UserId:"cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
+            userId:"cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
             age:29,
             role:"ペンギン",
             company:"Yahoo",
@@ -54,14 +54,14 @@ export const exampleSearchData:exampleSearchDataType=
                         {
                             day:"2022/06/13",
                             dayCount:7,
-                            value:0
+                            eventCount:0
                         },
 
                 ],
         },
 
         {
-            UserId:"1234",
+            userId:"1234",
             age:20,
             role:"エンジニア",
             company:"Yahoo",
@@ -70,12 +70,12 @@ export const exampleSearchData:exampleSearchDataType=
                         {
                             day:"2022/06/13",
                             dayCount:7,
-                            value:0},
+                            eventCount:0},
 
                         {
                             day:"2022/06/20",
                             dayCount:7,
-                            value:0}
+                            eventCount:0}
 
 
 
@@ -85,7 +85,7 @@ export const exampleSearchData:exampleSearchDataType=
         },
 
         {
-            UserId:"2233",
+            userId:"2233",
             age:25,
             role:"神",
             company:"Yahoo",
@@ -94,7 +94,7 @@ export const exampleSearchData:exampleSearchDataType=
                         {
                             day:"2022/06/13",
                             dayCount:7,
-                            value:0
+                            eventCount:0
                         },
 
                 ],
@@ -105,12 +105,12 @@ export const exampleSearchData:exampleSearchDataType=
 
 
 export const exampleWeekData1:exampleWeekDataType={
-    UserId:"1234",
-    StartDay:"2022/06/13",
+    userId:"1234",
+    startDate:"2022/06/13",
     age:20,
     role:"エンジニア",
     company:"Yahoo",
-    Monday:
+    monday:
         [
                 {   eventName:"コーディング",
                     eventStart:"9:00",
@@ -125,7 +125,7 @@ export const exampleWeekData1:exampleWeekDataType={
             eventDescription:"偉い人と会議"
             },
         ],
-    Tuesday:
+    tuesday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -133,7 +133,7 @@ export const exampleWeekData1:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Wednesday:
+    wednesday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -141,7 +141,7 @@ export const exampleWeekData1:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Thursday:
+    thursday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -149,7 +149,7 @@ export const exampleWeekData1:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Friday:
+    friday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -157,7 +157,7 @@ export const exampleWeekData1:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Saturday:
+    saturday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -165,7 +165,7 @@ export const exampleWeekData1:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Sunday:
+    sunday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -178,12 +178,12 @@ export const exampleWeekData1:exampleWeekDataType={
 
 
 export const exampleWeekData2:exampleWeekDataType={
-    UserId:"1234",
-    StartDay:"2022/06/20",
+    userId:"1234",
+    startDate:"2022/06/20",
     age:20,
     role:"エンジニア",
     company:"Yahoo",
-    Monday:
+    monday:
         [
                 {   eventName:"コーディング",
                     eventStart:"9:00",
@@ -197,7 +197,7 @@ export const exampleWeekData2:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Tuesday:
+    tuesday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -205,7 +205,7 @@ export const exampleWeekData2:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Wednesday:
+    wednesday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -213,7 +213,7 @@ export const exampleWeekData2:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Thursday:
+    thursday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -221,7 +221,7 @@ export const exampleWeekData2:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Friday:
+    friday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -229,7 +229,7 @@ export const exampleWeekData2:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Saturday:
+    saturday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -238,7 +238,7 @@ export const exampleWeekData2:exampleWeekDataType={
                 }
         ],
 
-    Sunday:
+    sunday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -252,12 +252,12 @@ export const exampleWeekData2:exampleWeekDataType={
 
 
 export const exampleWeekData3:exampleWeekDataType={
-    UserId:"2233",
-    StartDay:"2022/06/13",
+    userId:"2233",
+    startDate:"2022/06/13",
     age:20,
     role:"エンジニア",
     company:"Yahoo",
-    Monday:
+    monday:
         [
                 {   eventName:"コーディング",
                     eventStart:"9:00",
@@ -271,7 +271,7 @@ export const exampleWeekData3:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Tuesday:
+    tuesday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -285,7 +285,7 @@ export const exampleWeekData3:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Wednesday:
+    wednesday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -299,7 +299,7 @@ export const exampleWeekData3:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Thursday:
+    thursday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -307,7 +307,7 @@ export const exampleWeekData3:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Friday:
+    friday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -315,7 +315,7 @@ export const exampleWeekData3:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Saturday:
+    saturday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -323,7 +323,7 @@ export const exampleWeekData3:exampleWeekDataType={
                     eventDescription:"プログラミング"
                 }
         ],
-    Sunday:
+    sunday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -335,12 +335,12 @@ export const exampleWeekData3:exampleWeekDataType={
 }
 
 export const exampleWeekData4:exampleWeekDataType={
-    UserId:"cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
-    StartDay:"2022/06/13",
+    userId:"cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
+    startDate:"2022/06/13",
     age:29,
     role:"ペンギン",
     company:"Yahoo",
-    Monday:
+    monday:
         [
                 {   eventName:"コーディング",
                     eventStart:"9:00",
@@ -354,7 +354,7 @@ export const exampleWeekData4:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Tuesday:
+    tuesday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -368,7 +368,7 @@ export const exampleWeekData4:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Wednesday:
+    wednesday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -382,7 +382,7 @@ export const exampleWeekData4:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Thursday:
+    thursday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -396,7 +396,7 @@ export const exampleWeekData4:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Friday:
+    friday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -410,7 +410,7 @@ export const exampleWeekData4:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Saturday:
+    saturday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
@@ -424,7 +424,7 @@ export const exampleWeekData4:exampleWeekDataType={
                     eventDescription:"偉い人と会議"
                 }
         ],
-    Sunday:
+    sunday:
         [
                 {   eventName:"コーディング",
                     eventStart:"10:00",
