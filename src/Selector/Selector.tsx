@@ -20,6 +20,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+
 
 type SelectorPropsType={
     SearchData:exampleSearchDataType
@@ -88,7 +90,9 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                                 color: '#EEEEEE',
                                 backgroundColor: '#3085D2',
                             }}]}
-                              onClick={()=>navigate("/")}>
+                              onClick={()=>navigate("/")}
+                                  startIcon={<CalendarMonthIcon/>}
+                        >
                             IT Life App
                         </Button>
 
