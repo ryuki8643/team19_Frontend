@@ -8,6 +8,7 @@ import AddIcon from "@mui/icons-material/Add";
 import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
 import FullCalendarApp from "../weekDataShowPage/fullCarendar/fullCalendar";
 import {WeekPageFrontPageType} from "../weekDataShowPage/WeekPageFront";
+import CloseIcon from '@mui/icons-material/Close';
 
 export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const [UserId,SetUserId]=useState("1234")
@@ -60,7 +61,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
             <Grid container spacing={2}  >
 
-                <Grid item xs={6}>
+                <Grid item xs={5}>
                     <Paper elevation={5} sx={{borderRadius:"10px"}}>
 
                     <SelectWeekDataBox
@@ -74,14 +75,13 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                     </Paper>
                 </Grid>
 
-
-
-
-
-
-
-
-                    <Grid item xs={6}>
+                <Grid item xs={2}>
+                    <Paper elevation={5} sx={{borderRadius:"10px"}}>
+                        <Box sx={{fontSize:"58px",fontWeight:900,textAlign:"center"}}>V</Box>
+                        <Box sx={{fontSize:"58px",fontWeight:900,textAlign:"center"}}>S</Box>
+                    </Paper>
+                </Grid>
+                <Grid item xs={5}>
                         <Paper elevation={5} sx={{borderRadius:"10px"}}>
                         <SelectWeekDataBox
                             UserId={compareUserId}
