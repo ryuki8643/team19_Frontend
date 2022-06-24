@@ -152,7 +152,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
             let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
 
             let getItemsConcat=[] as calendarEventsType[]
-            if(FullCalendarAppProps.compareBool && FullCalendarAppProps.compareButtonDisabled){
+            if(FullCalendarAppProps.compareBool ){
                 getItemsConcat=MakeEventsArrayAppend(FullCalendarAppProps.compareWeekShowData,defaultDay)
 
                 getItemsConcat.forEach(
@@ -164,15 +164,18 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 )
 
             }
+            console.log((getItemsConcat),"a")
             setDayEvents(getItems.concat(getItemsConcat))
 
         }
+        console.log(FullCalendarAppProps.compareWeekShowData,)
     }),[FullCalendarAppProps.compareWeekShowData])
 
     useEffect((()=>{
         if(!FullCalendarAppProps.compareBool){
             let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
             setDayEvents(getItems)}
+
     }),[FullCalendarAppProps.compareBool])
 
     useEffect(()=>{
