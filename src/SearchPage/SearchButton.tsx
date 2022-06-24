@@ -1,8 +1,10 @@
 import Button from "@mui/material/Button";
 import React, {useEffect, useState} from "react";
-import {TextField} from "@mui/material";
+import {TextField,Box} from "@mui/material";
 import {NavigateFunction} from "react-router-dom";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
+import SearchIcon from '@mui/icons-material/Search';
+import {ButtonStyle} from "../Selector/LoginAndUserPageDailog";
 
 
 type SearchButtonPropsType={
@@ -31,21 +33,21 @@ export const SearchButton=(SearchButtonProps:SearchButtonPropsType)=> {
         }
     },[EnterKey])
     return (
-        <>
-        <TextField sx={{
-            flexGrow:1,
-            backgroundColor:"white"
-        }}
-                   onChange={(event)=>setSearchInput(event.target?.value)}
-                   onKeyPress={event => {
-                       if (event.key==="Enter"){
-                           setEnterKey(true)
-                       }
+        <Box sx={{marginLeft:"auto"}}>
+        {/*<TextField sx={{*/}
 
-                   }}
-        ></TextField>
+        {/*    backgroundColor:"white"*/}
+        {/*}}*/}
+        {/*           onChange={(event)=>setSearchInput(event.target?.value)}*/}
+        {/*           onKeyPress={event => {*/}
+        {/*               if (event.key==="Enter"){*/}
+        {/*                   setEnterKey(true)*/}
+        {/*               }*/}
 
-        <Button variant="contained" size="large"
+        {/*           }}*/}
+        {/*></TextField>*/}
+
+        <Button variant="contained" size="large" sx={ButtonStyle}
                 onClick={()=>SearchButtonProps.navigate("/Search",
                     {
                         state:
@@ -54,7 +56,7 @@ export const SearchButton=(SearchButtonProps:SearchButtonPropsType)=> {
                                 SearchData:SearchButtonProps.SearchData,
 
 
-                            }})}>検索</Button>
+                            }})} startIcon={<SearchIcon/>}></Button>
 
-    </>)
+    </Box>)
 }

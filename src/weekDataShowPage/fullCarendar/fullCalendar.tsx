@@ -8,7 +8,7 @@ import Box from '@mui/material/Box';
 import interactionPlugin from "@fullcalendar/interaction";
 import Portal from '@mui/material/Portal';
 import { SxProps } from '@mui/system';
-import {Button, ClickAwayListener, Menu, Modal} from "@mui/material";
+import {Button, ClickAwayListener, Menu, Modal, Paper} from "@mui/material";
 import {EventContentArg} from "@fullcalendar/core";
 import zIndex from "@mui/material/styles/zIndex";
 import {axiosDataExchangeType} from "../../DataExchange/DataExchangeExample";
@@ -17,6 +17,8 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap-icons/font/bootstrap-icons.css'; // needs additional webpack config!
 import "./Style/calendar.css"
 import {MakeEventsArrayAppend} from "./functions/makeEventsArrayAppend";
+import listPlugin from '@fullcalendar/list';
+
 
 
 
@@ -93,13 +95,19 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
             bgcolor: 'background.paper',
             zIndex:10000
         };
+        let eventNowTime=new Date()
+        if (info.event._instance?.range.start){
+        eventNowTime= new Date(info.event._instance?.range.start.getTime());
+        eventNowTime?.setHours(eventNowTime?.getHours() -9)}
         const dialogText=
 
             <Box sx={styles}>
-                <Box>{info.event._def.publicId.slice(0,10)}</Box>
+                {}
+                <Box>{eventNowTime && eventNowTime.getMonth()+"月"+(eventNowTime.getDate())+"日"}</Box>
                 <Box>{info.el.innerText}</Box>
                 <Box>説明</Box>
                 <Box>{info.event.extendedProps.memo}</Box>
+
             </Box>
         setDescription(dialogText)
 
@@ -200,10 +208,9 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
 
 
     return (
-        <ClickAwayListener onClickAway={()=>handleClickAway()} >
-            <Box onClick={()=>handleClickAway()}>
-            {/*{FullCalendarAppProps.compareBool && <Button onClick={()=>setEventsFunc()} >{!FullCalendarAppProps.compareButtonDisabled ? "比較":"表示を一つに"}</Button>}*/}
-            <FullCalendar
+        <Paper elevation={5} sx={{borderRadius:"10px"}}>
+            <Box onClick={()=>handleClickAway()} sx={{margin:2}}>
+                <FullCalendar
 
                 themeSystem={'bootstrap5'}
                 ref={ref as RefObject<FullCalendar>}
@@ -214,7 +221,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 eventMouseLeave={()=>{handleClickAway()}}
 
                 firstDay={1}
-                plugins={[timeGridPlugin, interactionPlugin,bootstrap5Plugin]}
+                plugins={[timeGridPlugin, interactionPlugin,bootstrap5Plugin,listPlugin]}
                 locale="ja" // 日本語
                 stickyHeaderDates={true}
                 events={dayEvents as EventSourceInput}
@@ -222,9 +229,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 editable={true}
                 selectable={false}
                 selectMirror={true}
-                eventDidMount={(mountArg:MountArg<EventContentArg>)=>{
-                    return<div> aaaa</div>
-                }}
+
                 viewClassNames={"calendarRootView"}
                 allDaySlot={false}
                 headerToolbar={{
@@ -235,6 +240,10 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
 
                 }}
                 titleRangeSeparator={' \u2022 '}
+                slotMinTime={"09:00:00"}
+                slotMaxTime={"21:00:00"}
+                dayHeaderClassNames={"dayHeader"}
+
 
 
 
@@ -252,7 +261,8 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
 
 
         </Box>
-        </ClickAwayListener>
+            <pre></pre>
+        </Paper>
     );
 }
 

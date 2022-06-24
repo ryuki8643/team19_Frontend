@@ -1,32 +1,19 @@
-import React, {useEffect, useState} from 'react';
-import FullCalendarApp from "./fullCarendar/fullCalendar";
-
-import SelectWeekDataBox from "./selectWeekDataBox/SelectWeekDataBox";
-import SelectWeekDataBox2 from "./selectWeekDataBox/SelectWeekDataBox2";
-
-import {axiosDataExchangeType} from "../DataExchange/DataExchangeExample";
-import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
-import Grid from '@mui/material/Grid';
-import {Container, Fab, Paper} from "@mui/material";
-import AddBoxIcon from '@mui/icons-material/AddBox';
-import RemoveIcon from '@mui/icons-material/Remove';
-import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
+import {Box, Container, Fab, Paper} from "@mui/material";
+import React, {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
-import AddIcon from '@mui/icons-material/Add';
+import Grid from "@mui/material/Grid";
+import SelectWeekDataBox from "../weekDataShowPage/selectWeekDataBox/SelectWeekDataBox";
+import SelectWeekDataBox2 from "../weekDataShowPage/selectWeekDataBox/SelectWeekDataBox2";
+import AddIcon from "@mui/icons-material/Add";
+import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox";
+import FullCalendarApp from "../weekDataShowPage/fullCarendar/fullCalendar";
+import {WeekPageFrontPageType} from "../weekDataShowPage/WeekPageFront";
 
-
-export type WeekPageFrontPageType={
-    axiosSearchData:exampleSearchDataType
-    axiosWeekDataExchange:axiosDataExchangeType
-
-}
-
-const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
-
+export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const [UserId,SetUserId]=useState("1234")
     const [weekShowStart,SetWeekShowStart]=useState("2022/06/13")
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
-    const [compareBool,setCompareBool]=useState(false)
+    const [compareBool,setCompareBool]=useState(true)
     const [compareUserId,SetCompareUserId]=useState("1234")
     const [compareWeekShowStart,SetCompareWeekShowStart]=useState("2022/06/13")
 
@@ -68,23 +55,53 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
 
     return (
-        <Container maxWidth="xl" sx={{marginTop:4}}>
+        <Container maxWidth="xl" sx={{marginTop:2}} >
 
-            <Paper elevation={5} sx={{borderRadius:"10px"}}>
-            <Grid container spacing={2} >
+
+            <Grid container spacing={2}  >
+
                 <Grid item xs={6}>
+                    <Paper elevation={5} sx={{borderRadius:"10px"}}>
+
                     <SelectWeekDataBox
                         UserId={UserId}
                         SetUserId={SetUserId}
                         SearchData={WeekPageFrontPageProps.axiosSearchData}
 
                     />
-                </Grid>
-                <Grid item xs={6}>
+
                     <SelectWeekDataBox2 UserId={UserId} SetWeekShowStart={SetWeekShowStart} weekShowStart={weekShowStart} searchTree={searchTreeExampleArray}/>
+                    </Paper>
                 </Grid>
-            </Grid>
-            </Paper>
+
+
+
+
+
+
+
+
+                    <Grid item xs={6}>
+                        <Paper elevation={5} sx={{borderRadius:"10px"}}>
+                        <SelectWeekDataBox
+                            UserId={compareUserId}
+                            SetUserId={SetCompareUserId}
+                            SearchData={WeekPageFrontPageProps.axiosSearchData}
+
+                        />
+
+
+
+                        <SelectWeekDataBox2
+                            UserId={compareUserId}
+                            SetWeekShowStart={SetCompareWeekShowStart}
+                            weekShowStart={compareWeekShowStart}
+                            searchTree={searchTreeExampleArray}/>
+                    </Paper>
+                    </Grid>
+
+                </Grid>
+
 
 
 
@@ -105,4 +122,3 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
     );
 }
 
-export default WeekPageFrontPage;
