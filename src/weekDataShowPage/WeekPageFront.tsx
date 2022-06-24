@@ -7,7 +7,7 @@ import SelectWeekDataBox2 from "./selectWeekDataBox/SelectWeekDataBox2";
 import {axiosDataExchangeType} from "../DataExchange/DataExchangeExample";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
 import Grid from '@mui/material/Grid';
-import {Container, Fab, Paper} from "@mui/material";
+import {Container, Fab, Paper, Typography} from "@mui/material";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import RemoveIcon from '@mui/icons-material/Remove';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
@@ -71,6 +71,7 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
         <Container maxWidth="xl" sx={{marginTop:4}}>
 
             <Paper elevation={5} sx={{borderRadius:"10px"}}>
+                <Typography variant={"h6"} sx={{marginLeft:2,marginTop:3}}>匿名ウサギ</Typography>
             <Grid container spacing={2} >
                 <Grid item xs={6}>
                     <SelectWeekDataBox

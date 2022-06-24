@@ -33,7 +33,7 @@ export const SearchButton=(SearchButtonProps:SearchButtonPropsType)=> {
         }
     },[EnterKey])
     return (
-        <Box sx={{marginLeft:"auto"}}>
+        <Box >
         {/*<TextField sx={{*/}
 
         {/*    backgroundColor:"white"*/}

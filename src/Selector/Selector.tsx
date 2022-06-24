@@ -85,7 +85,9 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                         <Button   sx={[ {
                             color:'#FFFFFF',
                             height: '70%',
-                            fontSize:'160%'},   {
+                            fontSize:'160%'
+                            ,marginRight:"auto"
+                        },   {
                             '&:hover': {
                                 color: '#EEEEEE',
                                 backgroundColor: '#3085D2',
@@ -93,9 +95,10 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                               onClick={()=>navigate("/")}
                                   startIcon={<CalendarMonthIcon/>}
                         >
-                            IT Life App
+                            IT Life
                         </Button>
-
+                        {window.innerWidth > 600 &&<>
+                            {console.log(window.innerWidth)}
                         <SearchButton
                             navigate={navigate}
                             SearchData={SelectorProps.SearchData}
@@ -109,6 +112,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                         >
 
                         </Button>
+
                         <Button   sx={ButtonStyle}
                                   size="large"
                                   onClick={()=>navigate("/Compare")}
@@ -116,7 +120,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                                   variant={"contained"}
                         >
 
-                        </Button>
+                        </Button></>}
                         <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true) } startIcon={loginButton} size="large"> </Button>
                         <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
                         <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>

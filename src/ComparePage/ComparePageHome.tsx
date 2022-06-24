@@ -1,4 +1,4 @@
-import {Box, Container, Fab, Paper} from "@mui/material";
+import {Box, Container, Fab, Paper, Typography} from "@mui/material";
 import React, {useEffect, useState} from "react";
 import {useLocation} from "react-router-dom";
 import Grid from "@mui/material/Grid";
@@ -61,9 +61,11 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
             <Grid container spacing={2}  >
 
-                <Grid item xs={5}>
-                    <Paper elevation={5} sx={{borderRadius:"10px"}}>
 
+                <Grid item xs={5}>
+
+                    <Paper elevation={5} sx={{borderRadius:"10px"}}>
+                        <Typography variant={"h6"} sx={{marginLeft:2}}>匿名ペンギン</Typography>
                     <SelectWeekDataBox
                         UserId={UserId}
                         SetUserId={SetUserId}
@@ -77,12 +79,14 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
                 <Grid item xs={2}>
                     <Paper elevation={5} sx={{borderRadius:"10px"}}>
-                        <Box sx={{fontSize:"58px",fontWeight:900,textAlign:"center"}}>V</Box>
-                        <Box sx={{fontSize:"58px",fontWeight:900,textAlign:"center"}}>S</Box>
+
+                        <Box sx={{fontSize:"69px",fontWeight:900,textAlign:"center"}}>V</Box>
+                        <Box sx={{fontSize:"69px",fontWeight:900,textAlign:"center"}}>S</Box>
                     </Paper>
                 </Grid>
                 <Grid item xs={5}>
                         <Paper elevation={5} sx={{borderRadius:"10px"}}>
+                            <Typography variant={"h6"} sx={{marginLeft:2}}>匿名ワニ</Typography>
                         <SelectWeekDataBox
                             UserId={compareUserId}
                             SetUserId={SetCompareUserId}
