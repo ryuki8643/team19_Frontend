@@ -34,7 +34,7 @@ const SelectWeekDataBox = (SelectWeekDataProps:SelectWeekDataType) => {
 
 
     return (
-        <FormControl fullWidth>
+        <FormControl fullWidth >
             {!which && <>
                 <InputLabel id="demo-simple-select-label">Users</InputLabel>
                 <Select
@@ -52,6 +52,9 @@ const SelectWeekDataBox = (SelectWeekDataProps:SelectWeekDataType) => {
                 </Select></>}
 
             {which && <Autocomplete
+                sx={{margin:2}}
+
+
                 renderInput={(params) => <TextField {...params} label="Users" /> }
                 options={Object.values(autoCompleteObject)}
                 value={autoCompleteObject[SelectWeekDataProps.UserId]}

@@ -1,7 +1,7 @@
 import React from "react";
 import {exampleWeekData2} from "../../ExampleData/ExampleData";
 import DayDataShowComponent from "./dayDataShowComponent";
-import {Box, Grid} from "@mui/material";
+import { Grid} from "@mui/material";
 
 
 
