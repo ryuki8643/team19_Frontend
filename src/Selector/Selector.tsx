@@ -21,7 +21,8 @@ import LockOpenIcon from '@mui/icons-material/LockOpen';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
-
+import HomeIcon from '@mui/icons-material/Home';
+import {ButtonGroup} from "@mui/material";
 
 type SelectorPropsType={
     SearchData:exampleSearchDataType
@@ -70,35 +71,16 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
 
             <Box sx={{ flexGrow: 1 ,marginTop:1}}>
                 <AppBar position="static">
-                    <Toolbar>
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            sx={{ mr: 2 }}
-                            onClick={()=>setDrawerOpen(true)}
-                        >
-                            <MenuIcon />
-                        </IconButton>
-                        <SelectorDrawer drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} SearchData={SelectorProps.SearchData} setModalOpen={setModalOpen} loginUser={loginUser}/>
-                        <Button   sx={[ {
-                            color:'#FFFFFF',
-                            height: '70%',
-                            fontSize:'160%'
-                            ,marginRight:"auto"
-                        },   {
-                            '&:hover': {
-                                color: '#EEEEEE',
-                                backgroundColor: '#3085D2',
-                            }}]}
+
+                        <ButtonGroup sx={{borderRadius:"10px"}}>
+
+                        <Button   sx={ButtonStyle}
                               onClick={()=>navigate("/")}
-                                  startIcon={<CalendarMonthIcon/>}
+
                         >
-                            IT Life
+                            <HomeIcon/>HOME
                         </Button>
-                        {window.innerWidth > 600 &&<>
-                            {console.log(window.innerWidth)}
+
                         <SearchButton
                             navigate={navigate}
                             SearchData={SelectorProps.SearchData}
@@ -107,24 +89,28 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                         <Button   sx={ButtonStyle}
                                   size="large"
                                   onClick={()=>navigate("/Edit")}
-                                  startIcon={<EditIcon />}
+
                                   variant={"contained"}
-                        >
+                        ><EditIcon />EDIT
 
                         </Button>
 
                         <Button   sx={ButtonStyle}
                                   size="large"
-                                  onClick={()=>navigate("/Compare")}
-                                  startIcon={<CompareArrowsIcon />}
+                                  onClick={()=>navigate("/Individual")}
+
                                   variant={"contained"}
                         >
+                            <CalendarMonthIcon />DATAS
 
-                        </Button></>}
-                        <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true) } startIcon={loginButton} size="large"> </Button>
+                        </Button>
+                        <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true) }  size="large">
+                            {loginButton}LOGIN
+                        </Button>
                         <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
                         <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>
-                    </Toolbar>
+                        </ButtonGroup>
+
                 </AppBar>
             </Box>
 

@@ -23,12 +23,18 @@ export type WeekPageFrontPageType={
 
 const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
-    const [UserId,SetUserId]=useState("1234")
-    const [weekShowStart,SetWeekShowStart]=useState("2022/06/13")
+    const [UserId,SetUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role!=="学生"
+        })}.userData[0].userId)
+    const [weekShowStart,SetWeekShowStart]=useState(WeekPageFrontPageProps.axiosSearchData.userData[0].weekList[0].day)
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
-    const [compareBool,setCompareBool]=useState(false)
-    const [compareUserId,SetCompareUserId]=useState("1234")
-    const [compareWeekShowStart,SetCompareWeekShowStart]=useState("2022/06/13")
+    const [compareBool,setCompareBool]=useState(true)
+    const [compareUserId,SetCompareUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role==="学生"
+        })}.userData[0].userId)
+    const [compareWeekShowStart,SetCompareWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role!=="学生"
+        })}.userData[0].weekList[0].day)
 
     const location=useLocation()
 

@@ -83,6 +83,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
 
 
     const handleClick = (info:EventClickArg) => {
+        console.log(info)
         setOpen((prev) => !prev);
         const styles: SxProps = {
             position: 'fixed',
@@ -148,7 +149,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
         }
     }),[FullCalendarAppProps.weekShowData])
     useEffect((()=>{
-        if (FullCalendarAppProps.weekShowData!==undefined){
+        if (FullCalendarAppProps.weekShowData!==undefined && FullCalendarAppProps.compareWeekShowData!==undefined){
             let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
 
             let getItemsConcat=[] as calendarEventsType[]
@@ -229,7 +230,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 stickyHeaderDates={true}
                 events={dayEvents as EventSourceInput}
                 titleFormat={{year: '2-digit', month: 'short', day: '2-digit'}}
-                editable={true}
+                editable={false}
                 selectable={false}
                 selectMirror={true}
 
@@ -246,6 +247,8 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 slotMinTime={"09:00:00"}
                 slotMaxTime={"21:00:00"}
                 dayHeaderClassNames={"dayHeader"}
+                eventClick={(info)=>{handleClick(info)}}
+                dayHeaderFormat={{weekday:"narrow"}}
 
 
 

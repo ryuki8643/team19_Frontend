@@ -22,10 +22,10 @@ const FrontPage: React.FC = () => {
 
 
             <Routes>
-                <Route index element={<WeekShowHomeAxios SearchData={exampleSearchData} axiosWeekDataExchange={DataExchangeExample}/>} />
+                <Route index  element={<ComparePageHome axiosSearchData={exampleSearchData} axiosWeekDataExchange={DataExchangeExample}/>}/>
                 <Route path="/Edit" element={<DayEditHome />} />
                 <Route path="/Search" element={<SearchPage/>}/>
-                <Route path="/Compare" element={<ComparePageHome axiosSearchData={exampleSearchData} axiosWeekDataExchange={DataExchangeExample}/>}/>
+                <Route path="/Individual" element={<WeekShowHomeAxios SearchData={exampleSearchData} axiosWeekDataExchange={DataExchangeExample}/>}/>
 
 
             </Routes>

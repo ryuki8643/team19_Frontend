@@ -11,12 +11,20 @@ import {WeekPageFrontPageType} from "../weekDataShowPage/WeekPageFront";
 import CloseIcon from '@mui/icons-material/Close';
 
 export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
-    const [UserId,SetUserId]=useState("1234")
-    const [weekShowStart,SetWeekShowStart]=useState("2022/06/13")
+    const [UserId,SetUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role!=="学生"
+        })}.userData[0].userId)
+    const [weekShowStart,SetWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role!=="学生"
+        })}.userData[0].weekList[0].day)
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
     const [compareBool,setCompareBool]=useState(true)
-    const [compareUserId,SetCompareUserId]=useState("1234")
-    const [compareWeekShowStart,SetCompareWeekShowStart]=useState("2022/06/13")
+    const [compareUserId,SetCompareUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role==="学生"
+        })}.userData[0].userId)
+    const [compareWeekShowStart,SetCompareWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role!=="学生"
+        })}.userData[0].weekList[0].day)
 
     const location=useLocation()
 
@@ -65,11 +73,13 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                 <Grid item xs={5}>
 
                     <Paper elevation={5} sx={{borderRadius:"10px"}}>
-                        <Typography variant={"h6"} sx={{marginLeft:2}}>匿名ペンギン</Typography>
+                        <Typography variant={"h6"} sx={{marginLeft:2}}>社会ペンギン</Typography>
                     <SelectWeekDataBox
                         UserId={UserId}
                         SetUserId={SetUserId}
-                        SearchData={WeekPageFrontPageProps.axiosSearchData}
+                        SearchData={{"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+                                return value.role!=="学生"
+                            })}}
 
                     />
 
@@ -86,11 +96,13 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                 </Grid>
                 <Grid item xs={5}>
                         <Paper elevation={5} sx={{borderRadius:"10px"}}>
-                            <Typography variant={"h6"} sx={{marginLeft:2}}>匿名ワニ</Typography>
+                            <Typography variant={"h6"} sx={{marginLeft:2}}>学生ワニ</Typography>
                         <SelectWeekDataBox
                             UserId={compareUserId}
                             SetUserId={SetCompareUserId}
-                            SearchData={WeekPageFrontPageProps.axiosSearchData}
+                            SearchData={{"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+                                return value.role==="学生"
+                            })}}
 
                         />
 

@@ -21,13 +21,13 @@ import firebase from "firebase/compat";
 export const ButtonStyle={
 
 
-    fontSize:'160%',
+    fontSize:'80%',
     color:"white",
     backgroundColor:'#FF6600',
 
+    width:"20%",
 
-
-    margin:1
+    margin:"1%"
 
 
 }
