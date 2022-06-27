@@ -102,14 +102,14 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
         eventNowTime?.setHours(eventNowTime?.getHours() -9)}
         const dialogText=
 
-            <Box sx={styles}>
-                {}
+            <Box sx={styles}><Paper elevation={5} sx={{marginTop:-2,marginLeft:-1,marginRight:-0.6,marginBottom:-1.6,borderRadius:"10px"}}>
+                <Box sx={{margin:1}}>
                 <Box>{eventNowTime && eventNowTime.getMonth()+"月"+(eventNowTime.getDate())+"日"}</Box>
                 <Box>{info.el.innerText}</Box>
                 <Box>説明</Box>
                 <Box>{info.event.extendedProps.memo}</Box>
-
             </Box>
+            </Paper></Box>
         setDescription(dialogText)
 
 
@@ -245,7 +245,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 }}
                 titleRangeSeparator={' \u2022 '}
                 slotMinTime={"09:00:00"}
-                slotMaxTime={"21:00:00"}
+                height={650}
                 dayHeaderClassNames={"dayHeader"}
                 eventClick={(info)=>{handleClick(info)}}
                 dayHeaderFormat={{weekday:"narrow"}}

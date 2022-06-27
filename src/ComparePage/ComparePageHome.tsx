@@ -92,7 +92,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
                     <Paper elevation={5} sx={{borderRadius:"10px"}}>
                         <pre></pre>
-                        <Typography variant={"h6"} sx={{marginLeft:2,display:"flex"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#1960d2",marginTop:"auto",marginBottom:"auto"}}></Box>社会ペンギン</Typography>
+                        <Typography variant={"h6"} sx={{marginLeft:2,display:"flex"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#1960d2",marginTop:"auto",marginBottom:"auto",marginRight:1}}></Box>社会ペンギン</Typography>
                     <SelectWeekDataBox
                         UserId={UserId}
                         SetUserId={SetUserId}
@@ -116,7 +116,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                 <Grid item xs={5}>
                         <Paper elevation={5} sx={{borderRadius:"10px"}}>
                             <pre></pre>
-                            <Typography variant={"h6"} sx={{marginLeft:2,display:"flex"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#FF6600",marginTop:"auto",marginBottom:"auto"}}></Box>学生ワニ</Typography>
+                            <Typography variant={"h6"} sx={{marginLeft:2,display:"flex"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#FF6600",marginTop:"auto",marginBottom:"auto",marginRight:1}}></Box>学生ワニ</Typography>
                         <SelectWeekDataBox
                             UserId={compareUserId}
                             SetUserId={SetCompareUserId}
