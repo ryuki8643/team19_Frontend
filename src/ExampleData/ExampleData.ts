@@ -111,6 +111,11 @@ export const exampleSearchData:exampleSearchDataType=
                         dayCount:7,
                         eventCount:0
                     },
+                    {
+                        day: "2022/06/20",
+                        dayCount: 7,
+                        eventCount: 0
+                    }
 
                 ],
         },
@@ -137,7 +142,7 @@ export const exampleSearchData:exampleSearchDataType=
             weekList:
                 [
                     {
-                        day:"2022/06/13",
+                        day:"2022/06/06",
                         dayCount:7,
                         eventCount:0
                     },

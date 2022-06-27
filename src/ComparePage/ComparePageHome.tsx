@@ -11,6 +11,7 @@ import {WeekPageFrontPageType} from "../weekDataShowPage/WeekPageFront";
 import CloseIcon from '@mui/icons-material/Close';
 import { SearchDataAPI} from "../DataExchange/APIaxios";
 import {DataExchangeExample} from "../DataExchange/DataExchangeExample";
+import {useWindowSize} from "../SearchPage/windowSize";
 
 
 export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
@@ -30,6 +31,8 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
         })}.userData[0].weekList[0].day)
     const [weekShowData,setWeekShowData]=useState(DataExchangeExample[UserId][weekShowStart])
     const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample[compareUserId][compareWeekShowStart])
+
+    const width=useWindowSize()
 
     useEffect(()=>{
         WeekPageFrontPageProps.axiosWeekDataExchange(setWeekShowData,UserId,weekShowStart)
@@ -88,7 +91,8 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                 <Grid item xs={5}>
 
                     <Paper elevation={5} sx={{borderRadius:"10px"}}>
-                        <Typography variant={"h6"} sx={{marginLeft:2}}>社会ペンギン</Typography>
+                        <pre></pre>
+                        <Typography variant={"h6"} sx={{marginLeft:2,display:"flex"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#1960d2",marginTop:"auto",marginBottom:"auto"}}></Box>社会ペンギン</Typography>
                     <SelectWeekDataBox
                         UserId={UserId}
                         SetUserId={SetUserId}
@@ -105,13 +109,14 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                 <Grid item xs={2}>
                     <Paper elevation={5} sx={{borderRadius:"10px"}}>
 
-                        <Box sx={{fontSize:"69px",fontWeight:900,textAlign:"center"}}>V</Box>
-                        <Box sx={{fontSize:"69px",fontWeight:900,textAlign:"center"}}>S</Box>
+                        <Box sx={{fontSize:"75px",fontWeight:1000,textAlign:"center"}}>V</Box>
+                        <Box sx={{fontSize:"75px",fontWeight:1000,textAlign:"center"}}>S</Box>
                     </Paper>
                 </Grid>
                 <Grid item xs={5}>
                         <Paper elevation={5} sx={{borderRadius:"10px"}}>
-                            <Typography variant={"h6"} sx={{marginLeft:2}}>学生ワニ</Typography>
+                            <pre></pre>
+                            <Typography variant={"h6"} sx={{marginLeft:2,display:"flex"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#FF6600",marginTop:"auto",marginBottom:"auto"}}></Box>学生ワニ</Typography>
                         <SelectWeekDataBox
                             UserId={compareUserId}
                             SetUserId={SetCompareUserId}

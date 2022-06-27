@@ -24,7 +24,7 @@ export const SearchDataAPI =async (setSample:(sample:exampleSearchDataType)=>voi
             if (return_Json.userData){
                 console.log(return_Json);
                 setConnect(true)
-                setSample(Object.assign(return_Json,exampleSearchData))};
+                setSample({userData:exampleSearchData.userData.concat(return_Json.userData)})};
         })
         .catch((error) => {
             console.log('通信失敗');

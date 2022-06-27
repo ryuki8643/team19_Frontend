@@ -43,8 +43,8 @@ const FrontPage: React.FC = () => {
             <Routes>
 
 
-                        <Route index  element={<ComparePageHome axiosSearchData={exampleSearchData} axiosWeekDataExchange={weekDataFunc}/>}/>
-                        <Route path="/Individual" element={<WeekShowHomeAxios SearchData={exampleSearchData} axiosWeekDataExchange={weekDataFunc}/>}/>
+                        <Route index  element={<ComparePageHome axiosSearchData={searchData} axiosWeekDataExchange={weekDataFunc}/>}/>
+                        <Route path="/Individual" element={<WeekShowHomeAxios SearchData={searchData} axiosWeekDataExchange={weekDataFunc}/>}/>
 
 
 
