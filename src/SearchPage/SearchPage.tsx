@@ -1,5 +1,17 @@
 import { useLocation, useNavigate} from "react-router-dom";
-import {Box, Button, Container, Grid, Paper, TextField, Select, MenuItem} from "@mui/material";
+import {
+    Box,
+    Button,
+    Container,
+    Grid,
+    Paper,
+    TextField,
+    Select,
+    MenuItem,
+    makeStyles,
+    Theme,
+    createStyles
+} from "@mui/material";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
 import {useEffect, useState} from "react";
 import {useWindowSize} from "./windowSize";
@@ -89,6 +101,7 @@ export const SearchPage=()=>{
     },[width])
 
 
+
     return (
         <Container maxWidth="xl" sx={{marginTop:2}}>
 
@@ -140,7 +153,8 @@ export const SearchPage=()=>{
 
                 return (
                     <Grid item xs={xs} key={value.company+locationState.SearchData["userData"][index].role+value.age}>
-                        <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user)} sx={{borderRadius:"10px"}}>
+                        <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user)} sx={{borderRadius:"10px"}} >
+                            <Box sx={[{"&:hover":{backgroundColor:"#EEEEEE"}}]}>
                             <Box>企業：{value.company}</Box>
                             <Box>役職：{value.role}</Box>
                             <Box>年齢；{value.age}</Box>
@@ -158,6 +172,7 @@ export const SearchPage=()=>{
                                     )
                             })}
                             </Select>
+                            </Box>
                         </Paper>
                     </Grid>
                 )
