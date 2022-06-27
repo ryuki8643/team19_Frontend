@@ -99,6 +99,51 @@ export const exampleSearchData:exampleSearchDataType=
 
                 ],
         },
+        {
+            userId:"2",
+            age:21,
+            role:"学生",
+            company:"Yahoo",
+            weekList:
+                [
+                    {
+                        day:"2022/06/13",
+                        dayCount:7,
+                        eventCount:0
+                    },
+
+                ],
+        },
+        {
+            userId:"3",
+            age:19,
+            role:"学生",
+            company:"Yahoo",
+            weekList:
+                [
+                    {
+                        day:"2022/06/13",
+                        dayCount:7,
+                        eventCount:0
+                    },
+
+                ],
+        },
+        {
+            userId:"4",
+            age:20,
+            role:"学生",
+            company:"Yahoo",
+            weekList:
+                [
+                    {
+                        day:"2022/06/13",
+                        dayCount:7,
+                        eventCount:0
+                    },
+
+                ],
+        },
     ],
 }
 
@@ -336,7 +381,7 @@ export const exampleWeekData3:exampleWeekDataType={
 
 export const exampleWeekData4:exampleWeekDataType={
     userId:"cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
-    startDate:"2022/06/13",
+    startDate:"2022/06/06",
     age:29,
     role:"ペンギン",
     company:"Yahoo",
@@ -449,4 +494,342 @@ export const exampleCurrentIdData:{[key:string]:currentUserIdDataType}={
             role:"神",
             company:"Yahoo"
         }
+}
+
+
+export const exampleWeekData5:exampleWeekDataType={
+    userId:"2",
+    startDate:"2022/06/13",
+    age:21,
+    role:"学生",
+    company:"Yahoo",
+    monday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"9:00",
+                eventEnd:"12:00",
+                eventDescription:"プログラミング"
+            },
+
+            {
+                eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            },
+        ],
+    tuesday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    wednesday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    thursday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    friday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    saturday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    sunday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+
+}
+
+
+export const exampleWeekData6:exampleWeekDataType={
+    userId:"2",
+    startDate:"2022/06/20",
+    age:17,
+    role:"学生",
+    company:"Yahoo",
+    monday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"9:00",
+                eventEnd:"12:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    tuesday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    wednesday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    thursday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    friday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    saturday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+
+    sunday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+
+}
+
+
+
+export const exampleWeekData7:exampleWeekDataType={
+    userId:"3",
+    startDate:"2022/06/13",
+    age:20,
+    role:"学生",
+    company:"Yahoo",
+    monday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"9:00",
+                eventEnd:"12:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    tuesday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    wednesday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    thursday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    friday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    saturday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+    sunday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            }
+        ],
+
+}
+
+export const exampleWeekData8:exampleWeekDataType={
+    userId:"4",
+    startDate:"2022/06/06",
+    age:17,
+    role:"学生",
+    company:"Yahoo",
+    monday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"9:00",
+                eventEnd:"12:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    tuesday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    wednesday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    thursday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    friday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    saturday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+    sunday:
+        [
+            {   eventName:"コーディング",
+                eventStart:"10:00",
+                eventEnd:"11:00",
+                eventDescription:"プログラミング"
+            },
+
+            {   eventName:"ミーティング",
+                eventStart:"12:00",
+                eventEnd:"16:00",
+                eventDescription:"偉い人と会議"
+            }
+        ],
+
 }

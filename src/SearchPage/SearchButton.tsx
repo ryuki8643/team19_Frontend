@@ -33,19 +33,7 @@ export const SearchButton=(SearchButtonProps:SearchButtonPropsType)=> {
         }
     },[EnterKey])
     return (
-        <Box >
-        {/*<TextField sx={{*/}
 
-        {/*    backgroundColor:"white"*/}
-        {/*}}*/}
-        {/*           onChange={(event)=>setSearchInput(event.target?.value)}*/}
-        {/*           onKeyPress={event => {*/}
-        {/*               if (event.key==="Enter"){*/}
-        {/*                   setEnterKey(true)*/}
-        {/*               }*/}
-
-        {/*           }}*/}
-        {/*></TextField>*/}
 
         <Button variant="contained" size="large" sx={ButtonStyle}
                 onClick={()=>SearchButtonProps.navigate("/Search",
@@ -56,7 +44,7 @@ export const SearchButton=(SearchButtonProps:SearchButtonPropsType)=> {
                                 SearchData:SearchButtonProps.SearchData,
 
 
-                            }})} startIcon={<SearchIcon/>}></Button>
+                            }})}><SearchIcon/>Search</Button>
 
-    </Box>)
+    )
 }
