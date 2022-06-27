@@ -153,15 +153,17 @@ export const SearchPage=()=>{
 
                 return (
                     <Grid item xs={xs} key={value.company+locationState.SearchData["userData"][index].role+value.age}>
-                        <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user)} sx={{borderRadius:"10px"}} >
-                            <Box sx={[{"&:hover":{backgroundColor:"#EEEEEE"}}]}>
-                            <Box>企業：{value.company}</Box>
-                            <Box>役職：{value.role}</Box>
-                            <Box>年齢；{value.age}</Box>
+                        <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user)}
+                               sx={{borderRadius:"10px", }} >
+                            <Box sx={[{borderRadius:"10px",borderBottom:"5px solid orangered",borderRight:"5px solid orangered"},{"&:hover":{backgroundColor:"#EEEEEE",borderBottom:"2px solid orangered",borderRight:"2px solid orangered"}}]}>
+                                <pre></pre>
+                                <Box sx={{margin:1.3}}>企業：{value.company}</Box>
+                                <Box sx={{margin:1.3}}>役職：{value.role}</Box>
+                                <Box sx={{margin:1.3}}>年齢；{value.age}</Box>
                             <Select
                                 multiple
                                 native
-                                sx={{flexGrow:1,width:"100%",height:"50%"}}
+                                sx={{flexGrow:1,width:"100%",height:"50%",borderRadius:"10px",backgroundColor:"rgba(0,0,0,0)",marginBottom:-1.7}}
                                 >
                             {Object.values(locationState.SearchData["userData"][index].weekList).map((value)=>{
                                 return (
@@ -172,6 +174,7 @@ export const SearchPage=()=>{
                                     )
                             })}
                             </Select>
+                                <pre ></pre>
                             </Box>
                         </Paper>
                     </Grid>
