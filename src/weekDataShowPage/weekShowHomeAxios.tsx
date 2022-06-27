@@ -3,10 +3,11 @@ import React from 'react'
 import WeekPageFrontPage from "./WeekPageFront";
 
 import {exampleSearchDataType, exampleWeekDataType} from "../ExampleData/ExampleDataType";
+import {axiosDataExchangeType} from "../DataExchange/DataExchangeExample";
 
 type WeekShowHomeAxiosPropsType={
     SearchData:exampleSearchDataType
-    axiosWeekDataExchange:{[key:string]:{[key:string]:exampleWeekDataType}}
+    axiosWeekDataExchange:axiosDataExchangeType
 
 }
 

@@ -9,6 +9,9 @@ import IndeterminateCheckBoxIcon from "@mui/icons-material/IndeterminateCheckBox
 import FullCalendarApp from "../weekDataShowPage/fullCarendar/fullCalendar";
 import {WeekPageFrontPageType} from "../weekDataShowPage/WeekPageFront";
 import CloseIcon from '@mui/icons-material/Close';
+import { SearchDataAPI} from "../DataExchange/APIaxios";
+import {DataExchangeExample} from "../DataExchange/DataExchangeExample";
+
 
 export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const [UserId,SetUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
@@ -25,6 +28,15 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const [compareWeekShowStart,SetCompareWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
             return value.role!=="学生"
         })}.userData[0].weekList[0].day)
+    const [weekShowData,setWeekShowData]=useState(DataExchangeExample[UserId][weekShowStart])
+    const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample[compareUserId][compareWeekShowStart])
+
+    useEffect(()=>{
+        WeekPageFrontPageProps.axiosWeekDataExchange(setWeekShowData,UserId,weekShowStart)
+    },[UserId,weekShowStart])
+    useEffect(()=>{
+        WeekPageFrontPageProps.axiosWeekDataExchange(setCompareWeekShowData,compareUserId,compareWeekShowStart)
+    },[compareWeekShowData,compareWeekShowStart])
 
     const location=useLocation()
 
@@ -41,6 +53,8 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
             }
         }
     },[location])
+
+
 
 
     const searchTreeExampleArray={} as {[key:string]:string[]}
@@ -68,6 +82,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
 
             <Grid container spacing={2}  >
+
 
 
                 <Grid item xs={5}>
@@ -125,9 +140,9 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
             <FullCalendarApp
                 compareButtonDisabled={compareButtonDisabled}
                 setCompareButtonDisabled={setCompareButtonDisabled}
-                weekShowData={WeekPageFrontPageProps.axiosWeekDataExchange[UserId][weekShowStart]}
+                weekShowData={weekShowData}
                 compareBool={compareBool}
-                compareWeekShowData={WeekPageFrontPageProps.axiosWeekDataExchange[compareUserId][compareWeekShowStart]}
+                compareWeekShowData={compareWeekShowData}
                 weekShowStart={weekShowStart}
                 SetWeekShowStart={SetWeekShowStart}
                 userId={UserId}

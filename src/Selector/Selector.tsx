@@ -70,15 +70,16 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
     return (
 
             <Box sx={{ flexGrow: 1 ,marginTop:1}}>
-                <AppBar position="static">
+                <AppBar position="static" >
+                    <Box sx={{display:"flex"}}>
 
-                        <ButtonGroup sx={{borderRadius:"10px"}}>
+
 
                         <Button   sx={ButtonStyle}
                               onClick={()=>navigate("/")}
 
                         >
-                            <HomeIcon/>HOME
+                            <HomeIcon/>
                         </Button>
 
                         <SearchButton
@@ -109,8 +110,8 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                         </Button>
                         <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
                         <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>
-                        </ButtonGroup>
 
+                    </Box>
                 </AppBar>
             </Box>
 

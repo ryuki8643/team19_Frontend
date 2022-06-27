@@ -249,6 +249,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 dayHeaderClassNames={"dayHeader"}
                 eventClick={(info)=>{handleClick(info)}}
                 dayHeaderFormat={{weekday:"narrow"}}
+                displayEventTime={false}
 
 
 

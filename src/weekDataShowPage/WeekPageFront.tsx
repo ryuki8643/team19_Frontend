@@ -4,7 +4,7 @@ import FullCalendarApp from "./fullCarendar/fullCalendar";
 import SelectWeekDataBox from "./selectWeekDataBox/SelectWeekDataBox";
 import SelectWeekDataBox2 from "./selectWeekDataBox/SelectWeekDataBox2";
 
-import {axiosDataExchangeType} from "../DataExchange/DataExchangeExample";
+import {axiosDataExchangeType, DataExchangeExample} from "../DataExchange/DataExchangeExample";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
 import Grid from '@mui/material/Grid';
 import {Container, Fab, Paper, Typography} from "@mui/material";
@@ -13,6 +13,7 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
 import {useLocation} from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
+import {exampleSearchData} from "../ExampleData/ExampleData";
 
 
 export type WeekPageFrontPageType={
@@ -26,15 +27,27 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
     const [UserId,SetUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
             return value.role!=="学生"
         })}.userData[0].userId)
-    const [weekShowStart,SetWeekShowStart]=useState(WeekPageFrontPageProps.axiosSearchData.userData[0].weekList[0].day)
+    const [weekShowStart,SetWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role!=="学生"
+        })}.userData[0].weekList[0].day)
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
     const [compareBool,setCompareBool]=useState(true)
     const [compareUserId,SetCompareUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
             return value.role==="学生"
         })}.userData[0].userId)
     const [compareWeekShowStart,SetCompareWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role!=="学生"
+            return value.role==="学生"
         })}.userData[0].weekList[0].day)
+
+    const [weekShowData,setWeekShowData]=useState(DataExchangeExample[UserId][weekShowStart])
+    const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample[compareUserId][compareWeekShowStart])
+
+    useEffect(()=>{
+        WeekPageFrontPageProps.axiosWeekDataExchange(setWeekShowData,UserId,weekShowStart,)
+    },[UserId,weekShowStart])
+    useEffect(()=>{
+        WeekPageFrontPageProps.axiosWeekDataExchange(setCompareWeekShowData,compareUserId,compareWeekShowStart)
+    },[compareWeekShowData,compareWeekShowStart])
 
     const location=useLocation()
 
@@ -99,9 +112,9 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
             <FullCalendarApp
                 compareButtonDisabled={compareButtonDisabled}
                 setCompareButtonDisabled={setCompareButtonDisabled}
-                weekShowData={WeekPageFrontPageProps.axiosWeekDataExchange[UserId][weekShowStart]}
+                weekShowData={weekShowData}
                 compareBool={compareBool}
-                compareWeekShowData={WeekPageFrontPageProps.axiosWeekDataExchange[compareUserId][compareWeekShowStart]}
+                compareWeekShowData={compareWeekShowData}
                 weekShowStart={weekShowStart}
                 SetWeekShowStart={SetWeekShowStart}
                 userId={UserId}
