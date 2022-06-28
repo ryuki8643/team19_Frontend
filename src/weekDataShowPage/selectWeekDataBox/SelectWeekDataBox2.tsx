@@ -64,6 +64,7 @@ const SelectWeekDataBox2 = (SelectWeekDataProps:SelectWeekDataType) => {
 
                 </Select></>}
             {which && <Autocomplete
+                sx={{margin:2}}
                 renderInput={(params) => <TextField {...params} label="Weeks" /> }
                 getOptionLabel={(option) => option.text}
                 options={Object.values(weekDataAutoCompleteObject)}

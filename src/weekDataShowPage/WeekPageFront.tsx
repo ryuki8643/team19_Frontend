@@ -7,7 +7,7 @@ import SelectWeekDataBox2 from "./selectWeekDataBox/SelectWeekDataBox2";
 import {axiosDataExchangeType} from "../DataExchange/DataExchangeExample";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
 import Grid from '@mui/material/Grid';
-import {Container, Fab} from "@mui/material";
+import {Container, Fab, Paper, Typography} from "@mui/material";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import RemoveIcon from '@mui/icons-material/Remove';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
@@ -15,7 +15,7 @@ import {useLocation} from "react-router-dom";
 import AddIcon from '@mui/icons-material/Add';
 
 
-type WeekPageFrontPageType={
+export type WeekPageFrontPageType={
     axiosSearchData:exampleSearchDataType
     axiosWeekDataExchange:axiosDataExchangeType
 
@@ -23,12 +23,18 @@ type WeekPageFrontPageType={
 
 const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
-    const [UserId,SetUserId]=useState("1234")
-    const [weekShowStart,SetWeekShowStart]=useState("2022/06/13")
+    const [UserId,SetUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role!=="学生"
+        })}.userData[0].userId)
+    const [weekShowStart,SetWeekShowStart]=useState(WeekPageFrontPageProps.axiosSearchData.userData[0].weekList[0].day)
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
-    const [compareBool,setCompareBool]=useState(false)
-    const [compareUserId,SetCompareUserId]=useState("1234")
-    const [compareWeekShowStart,SetCompareWeekShowStart]=useState("2022/06/13")
+    const [compareBool,setCompareBool]=useState(true)
+    const [compareUserId,SetCompareUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role==="学生"
+        })}.userData[0].userId)
+    const [compareWeekShowStart,SetCompareWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role!=="学生"
+        })}.userData[0].weekList[0].day)
 
     const location=useLocation()
 
@@ -68,9 +74,10 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
 
     return (
-        <Container maxWidth="xl" sx={{marginTop:2}}>
+        <Container maxWidth="xl" sx={{marginTop:4}}>
 
-
+            <Paper elevation={5} sx={{borderRadius:"10px"}}>
+                <Typography variant={"h6"} sx={{marginLeft:2,marginTop:3}}>匿名ウサギ</Typography>
             <Grid container spacing={2} >
                 <Grid item xs={6}>
                     <SelectWeekDataBox
@@ -84,46 +91,9 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
                     <SelectWeekDataBox2 UserId={UserId} SetWeekShowStart={SetWeekShowStart} weekShowStart={weekShowStart} searchTree={searchTreeExampleArray}/>
                 </Grid>
             </Grid>
-
-            {!compareBool &&
-                <Fab onClick={()=>{setCompareBool(true);setCompareButtonDisabled(true)}}
-                            color={"primary"}>
-                    <AddIcon/>
-
-                </Fab>}
-            {compareBool &&
-                <IndeterminateCheckBoxIcon
-                    onClick={()=>{setCompareBool(false);setCompareButtonDisabled(false)}}
-                    color={"primary"}
-                    sx={{zIndex:100,marginBottom:2}}
-                >
-
-                </IndeterminateCheckBoxIcon>}
+            </Paper>
 
 
-            {compareBool &&
-                <Grid container spacing={2} >
-                    <Grid item xs={6}>
-                        <SelectWeekDataBox
-                            UserId={compareUserId}
-                            SetUserId={SetCompareUserId}
-                            SearchData={WeekPageFrontPageProps.axiosSearchData}
-
-                        />
-
-
-                    </Grid>
-                    <Grid item xs={6}>
-                        <SelectWeekDataBox2
-                            UserId={compareUserId}
-                            SetWeekShowStart={SetCompareWeekShowStart}
-                            weekShowStart={compareWeekShowStart}
-                            searchTree={searchTreeExampleArray}/>
-                    </Grid>
-                </Grid>
-
-
-            }
 
 
             <FullCalendarApp

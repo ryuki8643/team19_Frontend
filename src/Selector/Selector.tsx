@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import './Style/Selector.css'
 
@@ -14,9 +14,15 @@ import {onAuthStateChanged} from "firebase/auth";
 import {authExample} from "../SignUpPage/firebaseConfig";
 import {ButtonStyle, UserDialog} from "./LoginAndUserPageDailog";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
-import {Drawer, List, ListItemButton, ListItemIcon, ListItemText,ListItem} from "@mui/material";
 import {SearchButton} from "../SearchPage/SearchButton";
 import {SelectorDrawer} from "./SelectorDrawer";
+import EditIcon from '@mui/icons-material/Edit';
+import LockOpenIcon from '@mui/icons-material/LockOpen';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
+import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
+import HomeIcon from '@mui/icons-material/Home';
+import {ButtonGroup} from "@mui/material";
 
 type SelectorPropsType={
     SearchData:exampleSearchDataType
@@ -31,6 +37,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
 
     const [signUpBool,setSignUpBool]=useState(false)
     const [drawerOpen,setDrawerOpen]=useState(false)
+    const [loginButton,setLoginButton]=useState(<LockOpenIcon/>)
 
 
     const navigate=useNavigate()
@@ -52,33 +59,26 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
 
                 setDrawerOpen(open)
             };
+    useEffect(()=>{
+        if (loginUser){
+            setLoginButton(<AccountCircleIcon/>)
+        } else {
+            setLoginButton(<LockOpenIcon/>)
+        }
+    },[loginUser])
 
     return (
 
-            <Box sx={{ flexGrow: 1 }}>
+            <Box sx={{ flexGrow: 1 ,marginTop:1}}>
                 <AppBar position="static">
-                    <Toolbar>
-                        <IconButton
-                            size="large"
-                            edge="start"
-                            color="inherit"
-                            aria-label="menu"
-                            sx={{ mr: 2 }}
-                            onClick={()=>setDrawerOpen(true)}
+
+                        <ButtonGroup sx={{borderRadius:"10px"}}>
+
+                        <Button   sx={ButtonStyle}
+                              onClick={()=>navigate("/")}
+
                         >
-                            <MenuIcon />
-                        </IconButton>
-                        <SelectorDrawer drawerOpen={drawerOpen} toggleDrawer={toggleDrawer} navigate={navigate} SearchData={SelectorProps.SearchData}/>
-                        <Button   sx={[ {
-                            color:'#FFFFFF',
-                            height: '70%',
-                            fontSize:'160%'},   {
-                            '&:hover': {
-                                color: '#EEEEEE',
-                                backgroundColor: '#3085D2',
-                            }}]}
-                              onClick={()=>navigate("/")}>
-                            IT Life App
+                            <HomeIcon/>HOME
                         </Button>
 
                         <SearchButton
@@ -86,21 +86,31 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                             SearchData={SelectorProps.SearchData}
 
                         />
-                        <Button   sx={[ {
-                            color:'#FFFFFF',
-                            height: '70%',
-                            fontSize:'160%'},   {
-                            '&:hover': {
-                                color: '#EEEEEE',
-                                backgroundColor: '#3085D2',
-                            }}]}
-                                  onClick={()=>navigate("/Edit")}>
-                            Edit
+                        <Button   sx={ButtonStyle}
+                                  size="large"
+                                  onClick={()=>navigate("/Edit")}
+
+                                  variant={"contained"}
+                        ><EditIcon />EDIT
+
                         </Button>
-                        <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true)}>{loginUser ? "User Info":"Login"}</Button>
+
+                        <Button   sx={ButtonStyle}
+                                  size="large"
+                                  onClick={()=>navigate("/Individual")}
+
+                                  variant={"contained"}
+                        >
+                            <CalendarMonthIcon />DATAS
+
+                        </Button>
+                        <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true) }  size="large">
+                            {loginButton}LOGIN
+                        </Button>
                         <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
                         <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>
-                    </Toolbar>
+                        </ButtonGroup>
+
                 </AppBar>
             </Box>
 

@@ -69,20 +69,6 @@ const EventForm: React.FC<Prop> = ({ addItems }) => {
 
     return (
         <Stack spacing={4}>
-            <LocalizationProvider dateAdapter={AdapterDateFns}>
-                <DatePicker
-                    label="Date desktop"
-                    mask="____/__/__"
-                    inputFormat="yyyy/MM/dd"
-                    value={date}
-                    onChange={(newValue) => {
-                        if (newValue != null) {
-                            setDate(newValue);
-                        }
-                    }}
-                    renderInput={(params) => <TextField {...params} />}
-                />
-            </LocalizationProvider>
             <TextField
                 id="do-something"
                 label="What did you do?"

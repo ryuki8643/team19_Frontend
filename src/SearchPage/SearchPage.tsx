@@ -85,7 +85,7 @@ export const SearchPage=()=>{
             <Grid container spacing={2}>
 
                     <Grid item xs={12} key={"a"}>
-                        <Paper>
+                        <Paper elevation={5} sx={{borderRadius:"10px"}}>
 
                             <Box>
 
@@ -125,7 +125,7 @@ export const SearchPage=()=>{
 
                 return (
                     <Grid item xs={4} key={value.company+locationState.SearchData["userData"][index].role+value.age}>
-                        <Paper elevation={4} onClick={()=>goToHomeWithUser(value.user)}>
+                        <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user)} sx={{borderRadius:"10px"}}>
                             <Box>企業：{value.company}</Box>
                             <Box>役職：{value.role}</Box>
                             <Box>年齢；{value.age}</Box>
@@ -133,7 +133,7 @@ export const SearchPage=()=>{
                                 return (
 
                                         <Box key={value.day}>
-                                            {value.day}の週:{value.dayCount}日分のデータ
+                                            {value.day}の週:{value.dayCount}日分
                                         </Box>
                                     )
                             })}
