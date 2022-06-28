@@ -54,7 +54,7 @@ export const exampleSearchData:exampleSearchDataType=
                         {
                             day:"2022/06/13",
                             dayCount:7,
-                            eventCount:0
+                            eventCount:5
                         },
 
                 ],
@@ -70,12 +70,12 @@ export const exampleSearchData:exampleSearchDataType=
                         {
                             day:"2022/06/13",
                             dayCount:7,
-                            eventCount:0},
+                            eventCount:4},
 
                         {
                             day:"2022/06/20",
                             dayCount:7,
-                            eventCount:0}
+                            eventCount:2}
 
 
 
@@ -94,7 +94,7 @@ export const exampleSearchData:exampleSearchDataType=
                         {
                             day:"2022/06/13",
                             dayCount:7,
-                            eventCount:0
+                            eventCount:6
                         },
 
                 ],
@@ -109,12 +109,12 @@ export const exampleSearchData:exampleSearchDataType=
                     {
                         day:"2022/06/13",
                         dayCount:7,
-                        eventCount:0
+                        eventCount:22
                     },
                     {
                         day: "2022/06/20",
                         dayCount: 7,
-                        eventCount: 0
+                        eventCount: 11
                     }
 
                 ],
@@ -144,7 +144,7 @@ export const exampleSearchData:exampleSearchDataType=
                     {
                         day:"2022/06/06",
                         dayCount:7,
-                        eventCount:0
+                        eventCount:7
                     },
 
                 ],

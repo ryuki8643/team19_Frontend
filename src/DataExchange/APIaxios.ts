@@ -3,6 +3,7 @@ import axios from 'axios';
 import {exampleDayDataType, exampleSearchDataType, exampleUserDataType, exampleWeekDataType} from "../ExampleData/ExampleDataType";
 import {exampleSearchData} from "../ExampleData/ExampleData";
 import {axiosDataExchangeType, DataExchangeExample, DataExchangeExampleAPI} from "./DataExchangeExample";
+import {sortData} from "../weekDataShowPage/fullCarendar/functions/sortData";
 
 interface jsonType {
     id:number,
@@ -24,12 +25,12 @@ export const SearchDataAPI =async (setSample:(sample:exampleSearchDataType)=>voi
             if (return_Json.userData){
                 console.log(return_Json);
                 setConnect(true)
-                setSample({userData:exampleSearchData.userData.concat(return_Json.userData)})};
+                setSample(sortData({userData:exampleSearchData.userData.concat(return_Json.userData)}))};
         })
         .catch((error) => {
             console.log('通信失敗');
             console.log(error.status);
-            setSample(exampleSearchData)
+            setSample(sortData(exampleSearchData))
             // 失敗したときは空のjsonを返す
         });
 }
