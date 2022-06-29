@@ -1,0 +1,66 @@
+.calendarEventView{
+    border-radius: 10px;
+    color:red;
+}
+.calendarRootView{
+
+}
+.calendarIndicatorClassNames{
+    border-radius: 10px;
+    color:red;
+    background-color:lightblue;
+}
+.dayHeader{
+    margin-top: 0;
+}
+.fc .fc-col-header-cell-cushion {
+    font-size: 10px;
+}
+@media screen and (min-width: 600px) {
+    .fc .fc-col-header-cell-cushion {
+        font-size: 100%;
+    }
+}
+
+
+
+
+
+
+* {
+    border-radius: 10px;
+}
+
+
+a.default-event {
+    color: #000;
+    background-color: #1960d2;
+    border-bottom: 5px solid #039be5;
+    border-right: 5px solid #039be5;
+    border-radius: 10px;
+}
+
+a.default-event:hover {
+    margin-top: 3px;
+    color: #000;
+    background: #1976d2;
+    border-bottom: 2px solid #039be5;
+    border-right: 2px solid #039be5;;
+}
+
+
+a.compare-event {
+    color: #000;
+    background-color: #FF6600;
+    border-bottom: 5px solid orangered;
+    border-right: 5px solid orangered;
+    border-radius: 10px;
+}
+
+a.compare-event:hover {
+    margin-top: 3px;
+    color: #000;
+    background: #FF6600;
+    border-bottom: 2px solid orangered;
+    border-right: 2px solid orangered;;
+}

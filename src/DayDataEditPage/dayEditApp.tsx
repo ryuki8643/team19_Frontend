@@ -1,9 +1,12 @@
 import React from "react";
-
+import DayCalender from "./dayCalender";
 
 const DayEditApp = () => {
     return (
-        <div>Edit Page</div>
+        <div>
+            <DayCalender
+            />
+        </div>
     )
 }
 
