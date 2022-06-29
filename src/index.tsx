@@ -5,7 +5,7 @@ import FrontPage from "./FrontPage";
 import { BrowserRouter } from "react-router-dom";
 
 render(
-    // BrowserRouterタグでAppタグを囲む。
+    // BrouserRouerタグでAppタグを囲む。
     <BrowserRouter>
         <FrontPage />
     </BrowserRouter>,
