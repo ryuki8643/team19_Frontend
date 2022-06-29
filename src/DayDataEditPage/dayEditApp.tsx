@@ -4,11 +4,8 @@ import DayCalender from "./dayCalender";
 const DayEditApp = () => {
     return (
         <div>
-            <div>Edit Page</div>
             <DayCalender
-
             />
-
         </div>
     )
 }
