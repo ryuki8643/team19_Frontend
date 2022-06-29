@@ -52,11 +52,11 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
     useEffect(()=>{
         const getUser=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role!=="学生"
+            return value.role.indexOf("学生")<0
         })[0].userId
         SetUserId(getUser)
         const getCompareUser=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role==="学生"
+            return value.role.indexOf("学生")>-1
         })[0].userId
         SetCompareUserId(getCompareUser)
 
@@ -137,7 +137,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                         UserId={UserId}
                         SetUserId={SetUserId}
                         SearchData={{"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-                                return value.role!=="学生"
+                                return value.role.indexOf("学生")<0
                             })}}
 
                     />
@@ -163,7 +163,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                             UserId={compareUserId}
                             SetUserId={SetCompareUserId}
                             SearchData={{"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-                                return value.role==="学生"
+                                return value.role.indexOf("学生")>-1
                             })}}
 
                         />
