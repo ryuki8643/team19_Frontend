@@ -88,11 +88,11 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
         if (width===0){
 
         }else if (width<445){
-            setFontSize1("80%")
-            setFontSize2("60%")
+            setFontSize1("90%")
+            setFontSize2("70%")
             setMargin("45px")
             setMargin2("-80px")
-            setMargin3("80px")
+            setMargin3("60px")
         }else if(width<600){setFontSize("120%")
             setFontSize1("100%")
             setFontSize2("75%")
