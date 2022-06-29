@@ -40,7 +40,7 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
     }
     useEffect(()=>{
         if(MyPageProps.user){
-            userIdAPI(setUserData, MyPageProps.user.uid)
+            userIdAPI(setUserData, MyPageProps.user.uid).then(()=>{})
 
 
         }
@@ -59,15 +59,16 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                             <Box sx={{margin:1}}>
                                 <pre></pre>
 
-                            {MyPageProps.user.uid ?
+                            {MyPageProps.user.uid ? userData.age>0 ?
                                 <>
                                     <Box>年齢:{userData.age}</Box>
                                     <Box>企業:{userData.company}</Box>
                                     <Box>役職:{userData.role}</Box>
+                                    <Box>メール:{userData.email}</Box>
+                                    <pre></pre>
                                 </>
-                                :""}
-                            <Box>メール:{userData.email}</Box>
-                                <pre></pre>
+                                :"":""}
+
                             </Box>
 
                         </Paper>
