@@ -15,6 +15,7 @@ import {
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
 import {useEffect, useState} from "react";
 import {useWindowSize} from "./windowSize";
+import {DrawPaint} from "./Canvas";
 
 
 export const SearchPage=()=>{
@@ -42,7 +43,7 @@ export const SearchPage=()=>{
     const [searchInputCustom,setSearchInputCustom]=useState(locationState.searchInput)
     const [xs,setXs]=useState(4)
     const [fontSize,setFontSize]=useState("80%")
-
+    const [draw,setDraw]=useState(false)
     const navigate=useNavigate()
     const [filteredData,setFilteredData]=useState(Object.values(autoCompleteObject).filter((value,index)=>{
         return value.text.toLowerCase().indexOf(searchInputCustom.toLowerCase()) > -1
@@ -104,6 +105,14 @@ export const SearchPage=()=>{
         }
 
     },[width])
+
+    useEffect(()=>{
+        if(companyInput==="おえかき"){
+            setDraw(true)
+        } else {
+            setDraw(false)
+        }
+    },[companyInput])
 
 
 
@@ -174,7 +183,7 @@ export const SearchPage=()=>{
                         </Paper>
                     </Grid>
 
-            {(filteredData).map((value,index)=>{
+            {draw ? <DrawPaint width={800} height={300}/> :(filteredData).map((value,index)=>{
 
                 return (
                     <Grid item xs={xs} key={value.company+locationState.SearchData["userData"][index].role+value.age}>
