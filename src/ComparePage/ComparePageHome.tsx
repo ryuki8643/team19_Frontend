@@ -29,6 +29,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const [fontSize2,setFontSize2]=useState("100%")
     const [margin,setMargin]=useState("22px")
     const [margin2,setMargin2]=useState("60px")
+    const [margin3,setMargin3]=useState("10px")
 
     const width=useWindowSize()
 
@@ -86,17 +87,20 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     useEffect(()=>{
         if (width<445){
             setMargin2("-80px")
+            setMargin3("60px")
         }else if(width<600){setFontSize("120%")
             setFontSize1("100%")
             setFontSize2("75%")
             setMargin("36px")
             setMargin2("-60px")
+            setMargin3("50px")
         } else if (width<800){
             setFontSize("150%")
             setFontSize1("150%")
             setFontSize2("100%")
             setMargin("22px")
             setMargin2("-70px")
+            setMargin3("0px")
         } else {
             setFontSize2("150%")
             setFontSize("200%")
@@ -157,8 +161,8 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
                         <Box sx={{fontSize:fontSize,fontWeight:1000,textAlign:"center"}}>比較</Box>
                         <Box sx={{textAlign:"center",marginY:margin,fontSize:fontSize1}}><ConstructionTwoToneIcon sx={{fontSize:"300%",textAlign:"center"}}/></Box>
-                        <Box sx={{position:"relative"}}>
-                        <Paper elevation={5} sx={{zIndex:1,margin:1,fontSize:fontSize,textAlign:"center",fontWeight:1000,}}>{resultValue}%</Paper>
+                        <Box sx={{position:"relative",marginTop:margin3}}>
+                        <Paper elevation={5} sx={{marginTop:margin3,zIndex:1,margin:1,fontSize:fontSize,textAlign:"center",fontWeight:1000,}}>{resultValue}%</Paper>
                         <Paper elevation={5} sx={{margin:1,position:"relative",top:margin2,fontSize:fontSize2,textAlign:"center",fontWeight:1000,}}> 一致率</Paper>
                     </Box><pre></pre>
                     </Paper>
