@@ -21,12 +21,26 @@ const style = {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: '50%',
+    width: 'fit-content',
     bgcolor: 'background.paper',
-    border: '2px solid #000',
     boxShadow: 24,
     p: 4,
 };
+
+const SubmitModalStyle = {
+    position: 'absolute' as 'absolute',
+    top: '50%',
+    left: '50%',
+    transform: 'translate(-50%, -50%)',
+    width: 'fit-content',
+    bgcolor: 'background.paper',
+    boxShadow: 24,
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    p: 4,
+};
+
 const useStyles = makeStyles(theme => ({
     buttonStyle: {
         width: "100%",
@@ -35,13 +49,26 @@ const useStyles = makeStyles(theme => ({
         display: "flex",
         alignItems: "center",
         justifyContent: "center",
+        cursor: 'pointer',
         '&:hover': {
             background: "#a3a3a3",
             color: "#FFF",
         }
     },
+    CloseButton: {
+        position: 'fixed',
+        top: '-10px',
+        right: '-10px',
+        width: '25px',
+        height: '25px',
+        background: '#f2f2f2',
+        border: '1px solid #f2f2f2',
+        borderRadius: '50%',
+        textAlign: 'center',
+        fontSize: '16px',
+        cursor: 'pointer',
+    },
 }));
-
 
 export type calendarEventsType = {
     id: string,
@@ -65,10 +92,8 @@ const ModalComponent: React.FC<modalProp> = ({ date, getDate }) => {
     return (
         <>
             <Paper elevation={4} sx={{ marginBottom: 2, width: "100%", borderRadius: "10px" }}>
-                <div onClick={handleOpen} className={classes.buttonStyle}>Choose Date</div>
+                <div onClick={handleOpen} className={classes.buttonStyle}>日付を選択</div>
             </Paper>
-
-
             <Modal
                 open={open}
                 onClose={handleClose}
@@ -76,6 +101,7 @@ const ModalComponent: React.FC<modalProp> = ({ date, getDate }) => {
                 aria-describedby="modal-modal-description"
             >
                 <Box sx={style}>
+                    <span className={classes.CloseButton} onClick={() => handleClose()}>×</span>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
                         <StaticDatePicker
                             displayStaticWrapperAs="desktop"
@@ -85,7 +111,6 @@ const ModalComponent: React.FC<modalProp> = ({ date, getDate }) => {
                                 getDate(newValue);
                             }}
                             renderInput={(params) => <TextField {...params} />}
-
                         />
                     </LocalizationProvider>
                 </Box>
@@ -138,6 +163,11 @@ const widthParam = () => {
 const DayCalender = () => {
     const [dayEvents, setDayEvents] = useState([] as calendarEventsType[])
     const [date, setDate] = useState<Date | null>(new Date());
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+
+
     const addItems = (items: calendarEventsType) => {
         const item: calendarEventsType[] = [];
         dayEvents.map((e) => {
@@ -191,7 +221,7 @@ const DayCalender = () => {
         console.log(date)
         setDate(date)
     }
-
+    const classes = useStyles();
 
     return (
         <>
@@ -247,8 +277,8 @@ const DayCalender = () => {
                                     locale="ja"
                                     contentHeight={'390px'}
                                 />
-                                <Button variant="contained" disableElevation endIcon={<SendIcon />} onClick={() => sendingData()} >
-                                    Submit
+                                <Button variant="contained" disableElevation endIcon={<SendIcon />} onClick={() => handleOpen()} >
+                                    登録
                                 </Button>
                             </Stack>
                         </Paper>
@@ -256,6 +286,22 @@ const DayCalender = () => {
 
                 </Grid>
             </Container >
+
+            <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+
+                <Box sx={SubmitModalStyle}>
+                    <span className={classes.CloseButton} onClick={() => handleClose()}>×</span>
+                    <div >送信しますか？</div>
+                    <div>
+                        <Button sx={{ margin: 2, width: 100 }} variant="outlined" color="error" onClick={() => handleClose()}>いいえ</Button><Button sx={{ margin: 2, width: 100 }} variant="contained" disableElevation onClick={() => sendingData()}>はい</Button>
+                    </div>
+                </Box>
+            </Modal>
         </>
     );
 }
