@@ -11,7 +11,7 @@ import {
 } from "../ExampleData/ExampleData";
 
 export type axiosDataExchangeType={
-    [key:string]:{[key:string]:exampleWeekDataType}
+    (setSample:(sample:exampleWeekDataType)=>void,userId:string,startDate:string):void
 }
 
 export const DataExchangeExample:{[key:string]:{[key:string]:exampleWeekDataType}}={
@@ -32,17 +32,21 @@ export const DataExchangeExample:{[key:string]:{[key:string]:exampleWeekDataType
 
 
     },
-    "2":{
+    "2224":{
         "2022/06/13":exampleWeekData5,
         "2022/06/20":exampleWeekData6,
     },
-    "3":{
+    "3334":{
         "2022/06/13":exampleWeekData7,
     },
-    "4":{
+    "4444":{
         "2022/06/06":exampleWeekData8,
     },
 
+
+}
+export const DataExchangeExampleAPI:axiosDataExchangeType=(setSample:(sample:exampleWeekDataType)=>void,userId:string,startDate:string):void=>{
+    setSample( DataExchangeExample[userId][startDate])
 
 }
 

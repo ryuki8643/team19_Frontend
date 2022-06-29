@@ -1,7 +1,20 @@
 import { useLocation, useNavigate} from "react-router-dom";
-import {Box, Button, Container, Grid, Paper, TextField} from "@mui/material";
+import {
+    Box,
+    Button,
+    Container,
+    Grid,
+    Paper,
+    TextField,
+    Select,
+    MenuItem,
+    makeStyles,
+    Theme,
+    createStyles
+} from "@mui/material";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
 import {useEffect, useState} from "react";
+import {useWindowSize} from "./windowSize";
 
 
 export const SearchPage=()=>{
@@ -27,6 +40,7 @@ export const SearchPage=()=>{
     const [customSearch,setCustomSearch]=useState(false)
     const [EnterKey,setEnterKey]=useState(false)
     const [searchInputCustom,setSearchInputCustom]=useState(locationState.searchInput)
+    const [xs,setXs]=useState(4)
 
 
     const navigate=useNavigate()
@@ -76,6 +90,16 @@ export const SearchPage=()=>{
             setUpAgeInput(10000)
         }
     },[ageUpInput])
+    const width=useWindowSize()
+    useEffect(()=>{
+        if(width>700){
+            setXs(4)
+        } else {
+            setXs(6)
+        }
+
+    },[width])
+
 
 
     return (
@@ -84,30 +108,34 @@ export const SearchPage=()=>{
 
             <Grid container spacing={2}>
 
-                    <Grid item xs={12} key={"a"}>
+                    <Grid item xs={12} key={"a"} sx={{}}>
                         <Paper elevation={5} sx={{borderRadius:"10px"}}>
 
                             <Box>
 
-                                <TextField sx={{width:"25%",margin:"2%"}} label={"企業"} onChange={(event)=>setCompanyInput(event.target.value)} onKeyPress={event => {
+                                <TextField sx={{width:"25%",margin:"2%"}} label={"企業"} InputProps={{ style: { fontSize: "80%" } }}
+                                           InputLabelProps={{ style: { fontSize: "80%" } }} onChange={(event)=>setCompanyInput(event.target.value)} onKeyPress={event => {
                                     if (event.key==="Enter"){
                                         setEnterKey(true)
                                     }
 
                                 }}>企業</TextField>
-                                <TextField sx={{width:"25%",margin:"2%"}}　label={"役職"} onChange={(event)=>setRoleInput(event.target.value)} onKeyPress={event => {
+                                <TextField sx={{width:"25%",margin:"2%"}}　label={"役職"} InputProps={{ style: { fontSize: "80%" } }}
+                                           InputLabelProps={{ style: { fontSize: "80%" } }} onChange={(event)=>setRoleInput(event.target.value)} onKeyPress={event => {
                                     if (event.key==="Enter"){
                                         setEnterKey(true)
                                     }
 
                                 }}>役職</TextField>
-                                <TextField　type={"number"} sx={{width:"17%",margin:"2%"}}　label={"年齢下限"} onChange={(event)=>setDownAgeInput(Number(event.target.value))} onKeyPress={event => {
+                                <TextField　type={"number"} sx={{width:"17%",margin:"2%"}} InputProps={{ style: { fontSize: "80%" } }}
+                                           InputLabelProps={{ style: { fontSize: "80%" } }} label={"年齢下限"} onChange={(event)=>setDownAgeInput(Number(event.target.value))} onKeyPress={event => {
                                     if (event.key==="Enter"){
                                         setEnterKey(true)
                                     }
 
                                 }}>年齢</TextField>
-                                <TextField　type={"number"} sx={{width:"17%",margin:"2%"}}label={"年齢上限"} onChange={(event)=>setUpAgeInput(Number(event.target.value))} onKeyPress={event => {
+                                <TextField　type={"number"} sx={{width:"17%",margin:"2%"}} InputProps={{ style: { fontSize: "80%" } }}
+                                           InputLabelProps={{ style: { fontSize: "80%" } }} label={"年齢上限"} onChange={(event)=>setUpAgeInput(Number(event.target.value))} onKeyPress={event => {
                                     if (event.key==="Enter"){
                                         setEnterKey(true)
                                     }
@@ -124,19 +152,30 @@ export const SearchPage=()=>{
             {(filteredData).map((value,index)=>{
 
                 return (
-                    <Grid item xs={4} key={value.company+locationState.SearchData["userData"][index].role+value.age}>
-                        <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user)} sx={{borderRadius:"10px"}}>
-                            <Box>企業：{value.company}</Box>
-                            <Box>役職：{value.role}</Box>
-                            <Box>年齢；{value.age}</Box>
+                    <Grid item xs={xs} key={value.company+locationState.SearchData["userData"][index].role+value.age}>
+                        <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user)}
+                               sx={{borderRadius:"10px", }} >
+                            <Box sx={[{borderRadius:"10px",borderBottom:"5px solid orangered",borderRight:"5px solid orangered"},{"&:hover":{backgroundColor:"#EEEEEE",borderBottom:"2px solid orangered",borderRight:"2px solid orangered"}}]}>
+                                <pre></pre>
+                                <Box sx={{margin:1.3}}>企業：{value.company}</Box>
+                                <Box sx={{margin:1.3}}>役職：{value.role}</Box>
+                                <Box sx={{margin:1.3}}>年齢；{value.age}</Box>
+                            <Select
+                                multiple
+                                native
+                                sx={{flexGrow:1,width:"100%",height:"50%",borderRadius:"10px",backgroundColor:"rgba(0,0,0,0)",marginBottom:-1.7}}
+                                >
                             {Object.values(locationState.SearchData["userData"][index].weekList).map((value)=>{
                                 return (
 
-                                        <Box key={value.day}>
+                                        <option value={value.day} key={value.day}>
                                             {value.day}の週:{value.dayCount}日分
-                                        </Box>
+                                        </option>
                                     )
                             })}
+                            </Select>
+                                <pre ></pre>
+                            </Box>
                         </Paper>
                     </Grid>
                 )

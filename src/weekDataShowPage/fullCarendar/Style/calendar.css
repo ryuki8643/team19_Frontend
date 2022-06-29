@@ -34,7 +34,7 @@
 
 a.default-event {
     color: #000;
-    background-color: blue;
+    background-color: #1960d2;
     border-bottom: 5px solid #039be5;
     border-right: 5px solid #039be5;
     border-radius: 10px;
@@ -43,7 +43,7 @@ a.default-event {
 a.default-event:hover {
     margin-top: 3px;
     color: #000;
-    background: blue;
+    background: #1976d2;
     border-bottom: 2px solid #039be5;
     border-right: 2px solid #039be5;;
 }

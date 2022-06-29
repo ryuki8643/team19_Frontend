@@ -23,6 +23,7 @@ import CompareArrowsIcon from '@mui/icons-material/CompareArrows';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import HomeIcon from '@mui/icons-material/Home';
 import {ButtonGroup} from "@mui/material";
+import {useWindowSize} from "../SearchPage/windowSize";
 
 type SelectorPropsType={
     SearchData:exampleSearchDataType
@@ -38,7 +39,9 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
     const [signUpBool,setSignUpBool]=useState(false)
     const [drawerOpen,setDrawerOpen]=useState(false)
     const [loginButton,setLoginButton]=useState(<LockOpenIcon/>)
+    const [fontSize,setFontSize]=useState("130%")
 
+    const width=useWindowSize()
 
     const navigate=useNavigate()
     useEffect(() => {
@@ -67,50 +70,153 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
         }
     },[loginUser])
 
+    useEffect(()=>{
+        if (width==0){
+
+        }else if(width<400){
+            setFontSize("70%")
+            console.log(width)
+        }else if (width<600){
+            setFontSize("80%")
+
+        }else if (width<800){
+            setFontSize("100%")
+        }else if (width<1000){
+            setFontSize("130%")
+
+        }
+        console.log(width,"width")
+
+    },[width])
+
     return (
 
             <Box sx={{ flexGrow: 1 ,marginTop:1}}>
-                <AppBar position="static">
+                <AppBar position="static" >
+                    <Box sx={{display:"flex"}}>
 
-                        <ButtonGroup sx={{borderRadius:"10px"}}>
 
-                        <Button   sx={ButtonStyle}
-                              onClick={()=>navigate("/")}
+
+                        <Button   sx={[{
+
+
+                            fontSize:fontSize,
+                            color:"white",
+                            backgroundColor:'#FF6600',
+                            borderBottom:"5px solid orangered",
+                            borderRight:"5px solid orangered",
+                            borderRadius:"10px",
+
+                            width:"20%",
+
+                            margin:"1%",
+                            textTransform: 'none'
+
+
+                        },{'&:hover': {
+                                backgroundColor:'#FF6600',
+                                borderBottom:"2px solid orangered",
+                                borderRight:"2px solid orangered",
+                            }}]}
+                                  onClick={()=>navigate("/")}
+
 
                         >
-                            <HomeIcon/>HOME
+                            <HomeIcon/>
                         </Button>
 
                         <SearchButton
                             navigate={navigate}
                             SearchData={SelectorProps.SearchData}
+                            fontSize={fontSize}
+                            width={width}
 
                         />
-                        <Button   sx={ButtonStyle}
+                        <Button   sx={[{
+
+
+                            fontSize:fontSize,
+                            color:"white",
+                            backgroundColor:'#FF6600',
+                            borderBottom:"5px solid orangered",
+                            borderRight:"5px solid orangered",
+                            borderRadius:"10px",
+
+                            width:"20%",
+
+                            margin:"1%",
+                            textTransform: 'none'
+
+
+                        },{'&:hover': {
+                                backgroundColor:'#FF6600',
+                                borderBottom:"2px solid orangered",
+                                borderRight:"2px solid orangered",
+                            }}]}
                                   size="large"
                                   onClick={()=>navigate("/Edit")}
 
                                   variant={"contained"}
-                        ><EditIcon />EDIT
+                        ><EditIcon />{width>400 && "Edit"}
 
                         </Button>
 
-                        <Button   sx={ButtonStyle}
+                        <Button   sx={[{
+
+
+                            fontSize:fontSize,
+                            color:"white",
+                            backgroundColor:'#FF6600',
+                            borderBottom:"5px solid orangered",
+                            borderRight:"5px solid orangered",
+                            borderRadius:"10px",
+
+                            width:"20%",
+
+                            margin:"1%",
+                            textTransform: 'none'
+
+
+                        },{'&:hover': {
+                                backgroundColor:'#FF6600',
+                                borderBottom:"2px solid orangered",
+                                borderRight:"2px solid orangered",
+                            }}]}
                                   size="large"
                                   onClick={()=>navigate("/Individual")}
 
                                   variant={"contained"}
                         >
-                            <CalendarMonthIcon />DATAS
+                            <CalendarMonthIcon />{width>400 && "Datas"}
 
                         </Button>
-                        <Button variant='contained' sx={ButtonStyle} onClick={()=>setModalOpen(true) }  size="large">
-                            {loginButton}LOGIN
+                        <Button variant='contained' sx={[{
+
+
+                            fontSize:fontSize,
+                            color:"white",
+                            backgroundColor:'#FF6600',
+                            borderBottom:"5px solid orangered",
+                            borderRight:"5px solid orangered",
+                            borderRadius:"10px",
+
+                            width:"20%",
+
+                            margin:"1%",
+                            textTransform: 'none'
+
+
+                        },{'&:hover': {
+                                backgroundColor:'#FF6600',
+                                borderBottom:"2px solid orangered",
+                                borderRight:"2px solid orangered",
+                            }}]} onClick={()=>setModalOpen(true) }  size="large">
+                            {loginButton}{width>400 && "login"}
                         </Button>
                         <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
                         <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>
-                        </ButtonGroup>
 
+                    </Box>
                 </AppBar>
             </Box>
 
