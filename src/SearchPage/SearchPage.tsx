@@ -183,7 +183,7 @@ export const SearchPage=()=>{
                         </Paper>
                     </Grid>
 
-            {draw ? <DrawPaint width={800} height={300}/> :(filteredData).map((value,index)=>{
+                {draw ? <Grid item xs={12}><DrawPaint width={800} height={300}/></Grid> :(filteredData).map((value,index)=>{
 
                 return (
                     <Grid item xs={xs} key={value.company+locationState.SearchData["userData"][index].role+value.age}>

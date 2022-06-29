@@ -31,7 +31,7 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
             return value.role!=="学生"
         })}.userData[0].weekList[0].day)
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
-    const [compareBool,setCompareBool]=useState(true)
+    const [compareBool,setCompareBool]=useState(false)
     const [compareUserId,SetCompareUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
             return value.role==="学生"
         })}.userData[0].userId)

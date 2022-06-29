@@ -89,8 +89,8 @@ export const DrawPaint: React.FC<IProps> = (props) => {
 
 
     return (
-        <Container  sx={{marginTop:2}} >
-        <Paper elevation={5} sx={{borderRadius:"10px"}}>
+
+        <Paper elevation={5} sx={{borderRadius:"10px",marginTop:2}}>
             <div>
                 <canvas onMouseDown={OnClick}
                         onMouseMove={OnMove}
@@ -157,7 +157,7 @@ export const DrawPaint: React.FC<IProps> = (props) => {
             )}
             </Box>
         </Paper>
-        </Container>
+
     );
 }
 
