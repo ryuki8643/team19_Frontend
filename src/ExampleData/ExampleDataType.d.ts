@@ -2,84 +2,82 @@
 
 export type exampleDayDataType =
     {
-        userId: number,
-        date: string,
-        events:
-        eventDataType[]
+        userId: string,
+        day: string,
+        content:
+            eventDataType[]
     }
-export type exampleUserDataType = {
-    firebaseUid: string,
-    email: string,
-    age: number,
-    role: string,
-    company: string,
+export type exampleUserDataType={
+    firebaseUid:string,
+    email:string,
+    age:number,
+    role:string,
+    company:string,
 }
 
-export type exampleSearchDataType = {
+export type exampleSearchDataType={
     userData:
-    {
-        userId: string
-        age: number,
-        role: string,
-        company: string,
-        weekList:
-
-
         {
-            day: string,
-            dayCount: number,
-            eventCount: number
+            userId:string
+            age:number,
+            role:string,
+            company:string,
+            weekList:
+
+
+                        {
+                            day:string,
+                            dayCount:number,
+                            eventCount:number}[],
+
+
+
+
+
+
         }[],
 
-
-
-
-
-
-    }[],
-
 }
 
-export type exampleWeekDataType = {
-    userId: string,
-    startDate: string,
-    age: number,
-    role: string,
-    company: string,
+export type exampleWeekDataType={
+    userId:string,
+    startDate:string,
+    age:number,
+    role:string,
+    company:string,
     monday:
-    eventDataType[]
+        eventDataType[]
     tuesday:
-    eventDataType[]
+        eventDataType[]
     wednesday:
-    eventDataType[]
+        eventDataType[]
     thursday:
-    eventDataType[]
+        eventDataType[]
     friday:
-    eventDataType[]
+        eventDataType[]
     saturday:
-    eventDataType[]
+        eventDataType[]
     sunday:
-    eventDataType[]
+        eventDataType[]
 
 }
 
-export type exampleDayDataShowType =
-    {
-        [key: number]:
+export type exampleDayDataShowType=
+    {[key:number]:
         eventDataType
     }
-export type eventDataType =
+export type eventDataType=
     {
-        name: string,
-        startTime: string,
-        endTime: string,
-        description: string
+        eventName:string,
+        eventStart:string,
+        eventEnd:string,
+        eventDescription:string
     }
 
-export type currentUserIdDataType =
-    {
-        age: number,
-        role: string,
-        company: string,
-    }
+export type currentUserIdDataType=
+        {
+            age:number,
+            role:string,
+            company:string,
+        }
 
