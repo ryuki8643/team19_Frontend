@@ -143,7 +143,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
 
 
                         >
-                            <HomeIcon/>
+                            <HomeIcon/>IT LIFE
                         </Button>
 
                         <SearchButton

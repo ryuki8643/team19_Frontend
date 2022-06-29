@@ -57,30 +57,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
     const [defaultDay,setDefaultDay]=useState("2022-06-13")
     const ref=useRef<FullCalendar>(null!);
 
-    const setEventsFunc=()=>{
-        if (!FullCalendarAppProps.compareButtonDisabled){
-            let getItems=MakeEventsArrayAppend(FullCalendarAppProps.compareWeekShowData,defaultDay)
 
-            getItems.forEach(
-                function(item){
-
-                    item["className"]="compare-event"
-                }
-
-            )
-            setDayEvents(dayEvents.concat(getItems))
-        } else{
-            if (FullCalendarAppProps.weekShowData!==undefined){
-                let getItems=MakeEventsArray(FullCalendarAppProps.weekShowData)
-
-
-
-                setDayEvents(getItems)
-
-            }
-        }
-        FullCalendarAppProps.setCompareButtonDisabled(!FullCalendarAppProps.compareButtonDisabled)
-    }
 
 
 
