@@ -41,7 +41,7 @@ export const SearchPage=()=>{
     const [EnterKey,setEnterKey]=useState(false)
     const [searchInputCustom,setSearchInputCustom]=useState(locationState.searchInput)
     const [xs,setXs]=useState(4)
-
+    const [fontSize,setFontSize]=useState("80%")
 
     const navigate=useNavigate()
     const [filteredData,setFilteredData]=useState(Object.values(autoCompleteObject).filter((value,index)=>{
@@ -49,12 +49,15 @@ export const SearchPage=()=>{
 
 
     }) )
-    const goToHomeWithUser=(user:string)=>{
-
+    const goToHomeWithUser=(user:string,role:string)=>{
+        const studentBool=role==="学生" ? true : false
         navigate("/",{
             state:{
                 user:user,
-                getFromSearch:true
+                getFromSearch:true,
+                student:studentBool,
+
+
             }
 
         })
@@ -93,8 +96,10 @@ export const SearchPage=()=>{
     const width=useWindowSize()
     useEffect(()=>{
         if(width>700){
+            setFontSize("120%")
             setXs(4)
         } else {
+            setFontSize("80%")
             setXs(6)
         }
 
@@ -113,37 +118,57 @@ export const SearchPage=()=>{
 
                             <Box>
 
-                                <TextField sx={{width:"25%",margin:"2%"}} label={"企業"} InputProps={{ style: { fontSize: "80%" } }}
-                                           InputLabelProps={{ style: { fontSize: "80%" } }} onChange={(event)=>setCompanyInput(event.target.value)} onKeyPress={event => {
+                                <TextField sx={{width:"25%",margin:"2%",borderRadius:"10px"}} label={"企業"} InputProps={{ style: { fontSize: fontSize } }}
+                                           InputLabelProps={{ style: { fontSize: fontSize } }} onChange={(event)=>setCompanyInput(event.target.value)} onKeyPress={event => {
                                     if (event.key==="Enter"){
                                         setEnterKey(true)
                                     }
 
                                 }}>企業</TextField>
-                                <TextField sx={{width:"25%",margin:"2%"}}　label={"役職"} InputProps={{ style: { fontSize: "80%" } }}
-                                           InputLabelProps={{ style: { fontSize: "80%" } }} onChange={(event)=>setRoleInput(event.target.value)} onKeyPress={event => {
+                                <TextField sx={{width:"25%",margin:"2%",borderRadius:"10px"}}　label={"役職"} InputProps={{ style: { fontSize: fontSize } }}
+                                           InputLabelProps={{ style: { fontSize: fontSize } }} onChange={(event)=>setRoleInput(event.target.value)} onKeyPress={event => {
                                     if (event.key==="Enter"){
                                         setEnterKey(true)
                                     }
 
                                 }}>役職</TextField>
-                                <TextField　type={"number"} sx={{width:"17%",margin:"2%"}} InputProps={{ style: { fontSize: "80%" } }}
-                                           InputLabelProps={{ style: { fontSize: "80%" } }} label={"年齢下限"} onChange={(event)=>setDownAgeInput(Number(event.target.value))} onKeyPress={event => {
+                                <TextField　type={"number"} sx={{width:"17%",margin:"2%",borderRadius:"10px"}} InputProps={{ style: { fontSize: fontSize } }}
+                                           InputLabelProps={{ style: { fontSize: fontSize } }} label={"年齢下限"} onChange={(event)=>setDownAgeInput(Number(event.target.value))} onKeyPress={event => {
                                     if (event.key==="Enter"){
                                         setEnterKey(true)
                                     }
 
                                 }}>年齢</TextField>
-                                <TextField　type={"number"} sx={{width:"17%",margin:"2%"}} InputProps={{ style: { fontSize: "80%" } }}
-                                           InputLabelProps={{ style: { fontSize: "80%" } }} label={"年齢上限"} onChange={(event)=>setUpAgeInput(Number(event.target.value))} onKeyPress={event => {
+                                <TextField　type={"number"} sx={{width:"17%",margin:"2%",borderRadius:"10px"}} InputProps={{ style: { fontSize: fontSize } }}
+                                           InputLabelProps={{ style: { fontSize: fontSize } }} label={"年齢上限"} onChange={(event)=>setUpAgeInput(Number(event.target.value))} onKeyPress={event => {
                                     if (event.key==="Enter"){
                                         setEnterKey(true)
                                     }
 
                                 }}>年齢</TextField>
                             </Box>
-                            <Box　sx={{display:"flex"}}>
-                                <Button sx={{width:"25%",margin:"2%",flexGrow:1}} variant={"contained"} onClick={()=>setCustomSearch(true)}>詳細検索</Button>
+                            <Box　sx={{display:"flex",flexGrow:1}}>
+                                <Button sx={[{
+
+
+                                    fontSize:fontSize,
+                                    color:"white",
+                                    backgroundColor:'#FF6600',
+                                    borderBottom:"5px solid orangered",
+                                    borderRight:"5px solid orangered",
+                                    borderRadius:"10px",
+                                    flexGrow:1,
+
+
+                                    margin:"2%",
+
+
+
+                                },{'&:hover': {
+                                        backgroundColor:'#FF6600',
+                                        borderBottom:"2px solid orangered",
+                                        borderRight:"2px solid orangered",
+                                    }}]} variant={"contained"} onClick={()=>setCustomSearch(true)}>詳細検索</Button>
 
                             </Box>
                         </Paper>
@@ -153,7 +178,7 @@ export const SearchPage=()=>{
 
                 return (
                     <Grid item xs={xs} key={value.company+locationState.SearchData["userData"][index].role+value.age}>
-                        <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user)}
+                        <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user,value.role)}
                                sx={{borderRadius:"10px", }} >
                             <Box sx={[{borderRadius:"10px",borderBottom:"5px solid orangered",borderRight:"5px solid orangered"},{"&:hover":{backgroundColor:"#EEEEEE",borderBottom:"2px solid orangered",borderRight:"2px solid orangered"}}]}>
                                 <pre></pre>
@@ -163,7 +188,7 @@ export const SearchPage=()=>{
                             <Select
                                 multiple
                                 native
-                                sx={{flexGrow:1,width:"100%",height:"50%",borderRadius:"10px",backgroundColor:"rgba(0,0,0,0)",marginBottom:-1.7}}
+                                sx={{flexGrow:1,width:"100%",height:"50%",borderRadius:"10px",backgroundColor:"rgba(0,0,0,0)",marginBottom:-1.6}}
                                 >
                             {Object.values(locationState.SearchData["userData"][index].weekList).map((value)=>{
                                 return (

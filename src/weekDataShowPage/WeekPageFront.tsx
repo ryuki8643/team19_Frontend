@@ -7,7 +7,7 @@ import SelectWeekDataBox2 from "./selectWeekDataBox/SelectWeekDataBox2";
 import {axiosDataExchangeType, DataExchangeExample} from "../DataExchange/DataExchangeExample";
 import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
 import Grid from '@mui/material/Grid';
-import {Container, Fab, Paper, Typography} from "@mui/material";
+import {Box, Container, Fab, Paper, Typography} from "@mui/material";
 import AddBoxIcon from '@mui/icons-material/AddBox';
 import RemoveIcon from '@mui/icons-material/Remove';
 import IndeterminateCheckBoxIcon from '@mui/icons-material/IndeterminateCheckBox';
@@ -41,6 +41,7 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
     const [weekShowData,setWeekShowData]=useState(DataExchangeExample[UserId][weekShowStart])
     const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample[compareUserId][compareWeekShowStart])
+    const [resultValue,setResultValue]=useState(0)
 
     useEffect(()=>{
         WeekPageFrontPageProps.axiosWeekDataExchange(setWeekShowData,UserId,weekShowStart,)
@@ -54,7 +55,7 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
     useEffect(()=>{
         if(location.state){
 
-            const getSearchState=location.state as {user:string,getFromSearch:boolean}
+            const getSearchState=location.state as {user:string,getFromSearch:boolean,student:boolean}
 
             if (getSearchState.getFromSearch) {
                 SetUserId(getSearchState.user)
@@ -90,8 +91,11 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
         <Container maxWidth="xl" sx={{marginTop:4}}>
 
             <Paper elevation={5} sx={{borderRadius:"10px"}}>
-                <Typography variant={"h6"} sx={{marginLeft:2,marginTop:3}}>匿名ウサギ</Typography>
-            <Grid container spacing={2} >
+                <pre></pre>
+                <Typography variant={"h6"} sx={{marginLeft:2,display:"flex"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#1960d2",marginTop:"auto",marginBottom:"auto",marginRight:1}}></Box>社会ペンギン</Typography>
+
+
+                <Grid container spacing={2} >
                 <Grid item xs={6}>
                     <SelectWeekDataBox
                         UserId={UserId}
@@ -110,6 +114,7 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
 
             <FullCalendarApp
+                setResultValue={setResultValue}
                 compareButtonDisabled={compareButtonDisabled}
                 setCompareButtonDisabled={setCompareButtonDisabled}
                 weekShowData={weekShowData}

@@ -8,15 +8,17 @@ import {
     Navigate
 } from "react-router-dom";
 import firebase from "firebase/compat";
-import {DialogContent, Box, Button} from "@mui/material";
+import {DialogContent, Box, Button, Paper} from "@mui/material";
 import SignIn from "./SignIn";
 import Register from "./SignUp";
 import {DataExchangeExample} from "../../DataExchange/DataExchangeExample";
 import {exampleCurrentIdData, exampleSearchData} from "../../ExampleData/ExampleData";
+import {exampleUserDataType} from "../../ExampleData/ExampleDataType";
 
 type MyPagePropsType={
     signUpBool:boolean
     user:firebase.User|null
+    setUserPostObject(userObject:null|exampleUserDataType):void
 }
 
 const MyPage = (MyPageProps:MyPagePropsType )=> {
@@ -35,10 +37,13 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                     {!MyPageProps.user ? (
                         <>
                         {MyPageProps.signUpBool ? <SignIn/>:
-                            <Register/>}
+                            <Register setUserPostObject={MyPageProps.setUserPostObject}/>}
                         </>
                     ) : (
-                        <>
+                        <Paper elevation={5} sx={{marginX:-2,marginTop:-2,marginBottom:-3}}>
+                            <Box sx={{margin:1}}>
+                                <pre></pre>
+
                             {MyPageProps.user.uid ? exampleCurrentIdData[MyPageProps.user.uid] ?
                                 <>
                                     <Box>年齢:{exampleCurrentIdData[MyPageProps.user.uid].age}</Box>
@@ -47,8 +52,10 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                                 </>
                                 :"":""}
                             <Box>メール:{MyPageProps.user?.email}</Box>
-                            <Button onClick={logout}>ログアウト</Button>
-                        </>
+                                <pre></pre>
+                            </Box>
+
+                        </Paper>
                     )}
 
 
