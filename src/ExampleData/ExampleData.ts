@@ -49,11 +49,12 @@ export const exampleSearchData: exampleSearchDataType =
             age: 29,
             role: "ペンギン",
             company: "Yahoo",
-            weekList:
+            weekData:
                 [
+
                     {
-                        day: "2022/06/13",
-                        dayCount: 7,
+                        date: "2022/06/13",
+                        dateCount: 7,
                         eventCount: 5
                     },
 
@@ -65,17 +66,17 @@ export const exampleSearchData: exampleSearchDataType =
             age: 20,
             role: "エンジニア",
             company: "Yahoo",
-            weekList:
+            weekData:
                 [
                     {
-                        day: "2022/06/13",
-                        dayCount: 7,
+                        date: "2022/06/13",
+                        dateCount: 7,
                         eventCount: 4
                     },
 
                     {
-                        day: "2022/06/20",
-                        dayCount: 7,
+                        date: "2022/06/20",
+                        dateCount: 7,
                         eventCount: 2
                     }
 
@@ -91,11 +92,11 @@ export const exampleSearchData: exampleSearchDataType =
             age: 25,
             role: "神",
             company: "Yahoo",
-            weekList:
+            weekData:
                 [
                     {
-                        day: "2022/06/13",
-                        dayCount: 7,
+                        date: "2022/06/13",
+                        dateCount: 7,
                         eventCount: 6
                     },
 
@@ -106,16 +107,16 @@ export const exampleSearchData: exampleSearchDataType =
             age: 21,
             role: "学生",
             company: "Yahoo",
-            weekList:
+            weekData:
                 [
                     {
-                        day: "2022/06/13",
-                        dayCount: 7,
+                        date: "2022/06/13",
+                        dateCount: 7,
                         eventCount: 22
                     },
                     {
-                        day: "2022/06/20",
-                        dayCount: 7,
+                        date: "2022/06/20",
+                        dateCount: 7,
                         eventCount: 11
                     }
 
@@ -126,11 +127,11 @@ export const exampleSearchData: exampleSearchDataType =
             age: 19,
             role: "学生",
             company: "Yahoo",
-            weekList:
+            weekData:
                 [
                     {
-                        day: "2022/06/13",
-                        dayCount: 7,
+                        date: "2022/06/13",
+                        dateCount: 7,
                         eventCount: 0
                     },
 
@@ -141,11 +142,11 @@ export const exampleSearchData: exampleSearchDataType =
             age: 20,
             role: "学生",
             company: "Yahoo",
-            weekList:
+            weekData:
                 [
                     {
-                        day: "2022/06/06",
-                        dayCount: 7,
+                        date: "2022/06/06",
+                        dateCount: 7,
                         eventCount: 7
                     },
 

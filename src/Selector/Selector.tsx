@@ -106,9 +106,10 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
             }
             SignUpPostAPI(postData).then(()=>{})
             setSignUpBool(false)
+            setUserPostObject(null)
         }
 
-    },[loginUser])
+    },[userPostObject])
 
     return (
 

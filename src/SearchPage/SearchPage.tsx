@@ -199,11 +199,11 @@ export const SearchPage=()=>{
                                 native
                                 sx={{flexGrow:1,width:"100%",height:"50%",borderRadius:"10px",backgroundColor:"rgba(0,0,0,0)",marginBottom:-1.6}}
                                 >
-                            {Object.values(locationState.SearchData["userData"][index].weekList).map((value)=>{
+                            {Object.values(locationState.SearchData["userData"][index].weekData).map((value)=>{
                                 return (
 
-                                        <option value={value.day} key={value.day}>
-                                            {value.day}の週:{value.dayCount}日分
+                                        <option value={value.date} key={value.date}>
+                                            {value.date}の週:{value.dateCount}日分
                                         </option>
                                     )
                             })}

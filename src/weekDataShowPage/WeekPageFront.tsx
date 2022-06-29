@@ -24,31 +24,39 @@ export type WeekPageFrontPageType={
 
 const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
 
-    const [UserId,SetUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role!=="学生"
-        })}.userData[0].userId)
-    const [weekShowStart,SetWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role!=="学生"
-        })}.userData[0].weekList[0].day)
+    const [UserId,SetUserId]=useState("1234")
+    const [weekShowStart,SetWeekShowStart]=useState("2022/06/13")
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
     const [compareBool,setCompareBool]=useState(false)
-    const [compareUserId,SetCompareUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role==="学生"
-        })}.userData[0].userId)
+    const [compareUserId,SetCompareUserId]=useState("4444")
     const [compareWeekShowStart,SetCompareWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
             return value.role==="学生"
-        })}.userData[0].weekList[0].day)
+        })}.userData[0].weekData[0].date)
 
-    const [weekShowData,setWeekShowData]=useState(DataExchangeExample[UserId][weekShowStart])
-    const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample[compareUserId][compareWeekShowStart])
+    const [weekShowData,setWeekShowData]=useState(DataExchangeExample["1234"]["2022/06/13"])
+    const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample["4444"]["2022/06/06"])
     const [resultValue,setResultValue]=useState(0)
 
     useEffect(()=>{
+        const weekList=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.userId===UserId
+        })[0].weekData
+        console.log(weekList,"weekList")
+        const weekBool=weekList.filter((value)=>{return value.date===weekShowStart})
+        console.log(weekBool,weekBool.length>0,"weekBool",weekShowStart)
+        if(weekBool.length>0){
         WeekPageFrontPageProps.axiosWeekDataExchange(setWeekShowData,UserId,weekShowStart,)
+        }
     },[UserId,weekShowStart])
     useEffect(()=>{
+        const weekList=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.userId===compareUserId
+        })[0].weekData
+        const weekBool=weekList.filter((value)=>{return value.date===compareWeekShowStart})
+        if(weekBool.length>0){
         WeekPageFrontPageProps.axiosWeekDataExchange(setCompareWeekShowData,compareUserId,compareWeekShowStart)
-    },[compareWeekShowData,compareWeekShowStart])
+        }
+    },[compareUserId,compareWeekShowStart])
 
     const location=useLocation()
 
@@ -72,12 +80,12 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
     WeekPageFrontPageProps.axiosSearchData["userData"].forEach(
         function(item){
 
-            (item["weekList"]).forEach(
+            (item["weekData"]).forEach(
                 function(itemChild){
                     if (searchTreeExampleArray[item.userId]){
-                        searchTreeExampleArray[item.userId].push(itemChild.day)
+                        searchTreeExampleArray[item.userId].push(itemChild.date)
                     } else{
-                        searchTreeExampleArray[item.userId]=[itemChild.day]
+                        searchTreeExampleArray[item.userId]=[itemChild.date]
                     }
                 }
             )
@@ -105,7 +113,11 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
                     />
                 </Grid>
                 <Grid item xs={6}>
-                    <SelectWeekDataBox2 UserId={UserId} SetWeekShowStart={SetWeekShowStart} weekShowStart={weekShowStart} searchTree={searchTreeExampleArray}/>
+                    <SelectWeekDataBox2
+                        UserId={UserId}
+                        SetWeekShowStart={SetWeekShowStart}
+                        weekShowStart={weekShowStart}
+                        searchTree={searchTreeExampleArray}/>
                 </Grid>
             </Grid>
             </Paper>
@@ -121,9 +133,9 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
                 compareBool={compareBool}
                 compareWeekShowData={compareWeekShowData}
                 weekShowStart={weekShowStart}
-                SetWeekShowStart={SetWeekShowStart}
+
                 userId={UserId}
-                weekDataExchange={WeekPageFrontPageProps.axiosWeekDataExchange}
+
             />
 
         </Container>
