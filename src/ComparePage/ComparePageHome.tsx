@@ -28,6 +28,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const [fontSize1,setFontSize1]=useState("100%")
     const [fontSize2,setFontSize2]=useState("100%")
     const [margin,setMargin]=useState("22px")
+    const [margin2,setMargin2]=useState("60px")
 
     const width=useWindowSize()
 
@@ -83,18 +84,23 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     },[location])
 
     useEffect(()=>{
-        if(width<600){setFontSize("120%")
+        if (width<445){
+            setMargin2("-80px")
+        }else if(width<600){setFontSize("120%")
             setFontSize1("100%")
-            setFontSize2("50%")
+            setFontSize2("75%")
             setMargin("36px")
+            setMargin2("-60px")
         } else if (width<800){
             setFontSize("150%")
             setFontSize1("150%")
             setFontSize2("100%")
             setMargin("22px")
+            setMargin2("-70px")
         } else {
             setFontSize2("150%")
             setFontSize("200%")
+            setMargin2("-90px")
         }
 
     },[width])
@@ -132,7 +138,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
                     <Paper elevation={5} sx={{borderRadius:"10px",height:"220px"}}>
                         <pre></pre>
-                        <Typography variant={"h6"} sx={{marginLeft:2,display:"flex",fontSize:"100%"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#1960d2",marginTop:"auto",marginBottom:"auto",marginRight:1}}></Box>社会ペンギン</Typography>
+                        <Typography variant={"h6"} sx={{marginLeft:2,display:"flex",fontSize:"100%"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#1960d2",marginTop:"auto",marginBottom:"auto",marginRight:1}}></Box>社会パンダ</Typography>
                     <SelectWeekDataBox
                         UserId={UserId}
                         SetUserId={SetUserId}
@@ -151,8 +157,10 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
                         <Box sx={{fontSize:fontSize,fontWeight:1000,textAlign:"center"}}>比較</Box>
                         <Box sx={{textAlign:"center",marginY:margin,fontSize:fontSize1}}><ConstructionTwoToneIcon sx={{fontSize:"300%",textAlign:"center"}}/></Box>
-                        <Paper elevation={5} sx={{margin:1,fontSize:fontSize,textAlign:"center",fontWeight:1000,}}>{resultValue}%</Paper>
-                        <pre></pre>
+                        <Box sx={{position:"relative"}}>
+                        <Paper elevation={5} sx={{zIndex:1,margin:1,fontSize:fontSize,textAlign:"center",fontWeight:1000,}}>{resultValue}%</Paper>
+                        <Paper elevation={5} sx={{margin:1,position:"relative",top:margin2,fontSize:fontSize2,textAlign:"center",fontWeight:1000,}}> 一致率</Paper>
+                    </Box><pre></pre>
                     </Paper>
                 </Grid>
                 <Grid item xs={5}>
