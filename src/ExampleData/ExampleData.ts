@@ -51,6 +51,12 @@ export const exampleSearchData: exampleSearchDataType =
             company: "Yahoo",
             weekData:
                 [
+                    {
+                        date: "2022/06/06",
+                        dateCount: 7,
+                        eventCount: 5
+                    },
+
 
                     {
                         date: "2022/06/13",
@@ -105,7 +111,7 @@ export const exampleSearchData: exampleSearchDataType =
         {
             userId: "2224",
             age: 21,
-            role: "学生",
+            role: "エンジニア志望学生",
             company: "Yahoo",
             weekData:
                 [
@@ -125,7 +131,7 @@ export const exampleSearchData: exampleSearchDataType =
         {
             userId: "3334",
             age: 19,
-            role: "学生",
+            role: "エンジニア志望学生",
             company: "Yahoo",
             weekData:
                 [
@@ -140,7 +146,7 @@ export const exampleSearchData: exampleSearchDataType =
         {
             userId: "4444",
             age: 20,
-            role: "学生",
+            role: "エンジニア志望学生",
             company: "Yahoo",
             weekData:
                 [
