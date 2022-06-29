@@ -178,7 +178,7 @@ const DayCalender = () => {
 
 
         const sendData: exampleDayDataType = {
-            userId: 2224,
+            userId: 3,
             date: day,
             events: content
         }

@@ -15,6 +15,15 @@ export type exampleUserDataType = {
     company: string,
 }
 
+export type getUserDataType = {
+    id:number,
+    firebaseUid: string,
+    email: string,
+    age: number,
+    role: string,
+    company: string,
+}
+
 export type exampleSearchDataType = {
     userData:
     {
@@ -22,14 +31,14 @@ export type exampleSearchDataType = {
         age: number,
         role: string,
         company: string,
-        weekList:
+        weekData:
 
 
         {
-            day: string,
-            dayCount: number,
+            date: string,
+            dateCount: number,
             eventCount: number
-        }[],
+        }[]|[],
 
 
 
@@ -37,6 +46,51 @@ export type exampleSearchDataType = {
 
 
     }[],
+
+}
+
+export type getSearchDataType={
+
+    userId: number|string,
+    age: number,
+    role: string,
+    company: string,
+    weekData:
+
+
+        {
+            date: string,
+            dateCount: number,
+            eventCount: number
+        }[]|[],
+
+
+
+
+
+
+}[]
+
+export type getWeekDataType = {
+    userId: number|string,
+    startDate: string,
+    age: number,
+    role: string,
+    company: string,
+    monday:
+        eventDataType[]
+    tuesday:
+        eventDataType[]
+    wednesday:
+        eventDataType[]
+    thursday:
+        eventDataType[]
+    friday:
+        eventDataType[]
+    saturday:
+        eventDataType[]
+    sunday:
+        eventDataType[]
 
 }
 

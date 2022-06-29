@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 /* ↓「createUserWithEmailAndPassword」と「auth」をimport */
-import { createUserWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword,onAuthStateChanged} from "firebase/auth";
 import {authExample} from "../firebaseConfig";
 import firebase from "firebase/compat";
 import {SignUpInput} from "../SignUpInput";
@@ -39,6 +39,13 @@ const Register = (RegisterProps:RegisterPropsType) => {
                                 role:registerRole,
                                 company:registerCompany,
                             })
+                            console.log({
+                                firebaseUid:"",
+                                email:registerEmail,
+                                age:Number(registerAge),
+                                role:registerRole,
+                                company:registerCompany,
+                            },"登録するもの")
                         } catch (error) {
                             alert("すでに登録されたメールアドレスです");
 

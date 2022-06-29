@@ -4,13 +4,13 @@ const reduceObject=(dayData:eventDataType[],initialValue:{[key:string]:number})=
     return dayData.reduce(
 
         function(previousValue, currentValue){
-            if (previousValue[currentValue.eventName]) {
-                previousValue[currentValue.eventName]+=Number(currentValue.eventEnd.split(":")[0])*60+Number(currentValue.eventEnd.split(":")[1])-
-                    Number(currentValue.eventStart.split(":")[0])*60+Number(currentValue.eventStart.split(":")[1])
+            if (previousValue[currentValue.name]) {
+                previousValue[currentValue.name]+=Number(currentValue.endTime.split(":")[0])*60+Number(currentValue.endTime.split(":")[1])-
+                    Number(currentValue.startTime.split(":")[0])*60+Number(currentValue.startTime.split(":")[1])
                 return previousValue
             } else {
-                previousValue[currentValue.eventName]=Number(currentValue.eventEnd.split(":")[0])*60+Number(currentValue.eventEnd.split(":")[1])-
-                    Number(currentValue.eventStart.split(":")[0])*60+Number(currentValue.eventStart.split(":")[1])
+                previousValue[currentValue.name]=Number(currentValue.endTime.split(":")[0])*60+Number(currentValue.endTime.split(":")[1])-
+                    Number(currentValue.startTime.split(":")[0])*60+Number(currentValue.startTime.split(":")[1])
                 return previousValue
             }
 
