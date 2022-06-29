@@ -176,7 +176,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                                 borderRight:"2px solid orangered",
                             }}]}
                                   size="large"
-                                  onClick={()=>navigate("/Edit")}
+                                  onClick={()=>{loginUser ? navigate("/Edit"):alert("ログインしてください")}}
 
                                   variant={"contained"}
                         ><EditIcon />{width>400 && "Edit"}
