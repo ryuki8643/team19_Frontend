@@ -101,7 +101,7 @@ export const WeekDataAPI: axiosDataExchangeType = async (setSample: (sample: exa
 export const userIdAPI = async (setSample: (sample: getUserDataType) => void,uuid:string) => {
 
     const response = await axios
-        .get<getUserDataType>(URL + "/firebase/"+uuid)
+        .get<getUserDataType>(URL + "/users/firebase/"+uuid)
         .then((results) => {
             let return_Json = results.data ;
             console.log("通信成功",return_Json);

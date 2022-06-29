@@ -94,7 +94,7 @@ export function UserDialog(UserDialogProps:UserDialogPropsType) {
                 sx={{borderRadius:"10px"}}
             >
 
-                <Box sx={{marginX:3,marginY:2,fontSize:"200%"}} >{!UserDialogProps.user ? signUpBool ? <><LockOpenIcon />ログイン</>: <><FiberNewIcon/>新規登録</>:<><AccountCircleIcon/>ユーザー情報</>}</Box>
+                <Box sx={{marginX:3,marginY:2,fontSize:"200%"}} >{!UserDialogProps.user ? signUpBool ? <><LockOpenIcon />ログイン</>: <><FiberNewIcon/>新規登録</>:<><AccountCircleIcon/>ユーザーページ</>}</Box>
 
 
                 <DialogContent dividers={scroll === 'paper'} ref={componentRef}>
