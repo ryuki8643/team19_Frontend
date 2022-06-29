@@ -100,7 +100,7 @@ export const exampleSearchData:exampleSearchDataType=
                 ],
         },
         {
-            userId:"2",
+            userId:"2224",
             age:21,
             role:"学生",
             company:"Yahoo",
@@ -111,11 +111,16 @@ export const exampleSearchData:exampleSearchDataType=
                         dayCount:7,
                         eventCount:0
                     },
+                    {
+                        day: "2022/06/20",
+                        dayCount: 7,
+                        eventCount: 0
+                    }
 
                 ],
         },
         {
-            userId:"3",
+            userId:"3334",
             age:19,
             role:"学生",
             company:"Yahoo",
@@ -130,14 +135,14 @@ export const exampleSearchData:exampleSearchDataType=
                 ],
         },
         {
-            userId:"4",
+            userId:"4444",
             age:20,
             role:"学生",
             company:"Yahoo",
             weekList:
                 [
                     {
-                        day:"2022/06/13",
+                        day:"2022/06/06",
                         dayCount:7,
                         eventCount:0
                     },
@@ -498,7 +503,7 @@ export const exampleCurrentIdData:{[key:string]:currentUserIdDataType}={
 
 
 export const exampleWeekData5:exampleWeekDataType={
-    userId:"2",
+    userId:"2224",
     startDate:"2022/06/13",
     age:21,
     role:"学生",
@@ -571,7 +576,7 @@ export const exampleWeekData5:exampleWeekDataType={
 
 
 export const exampleWeekData6:exampleWeekDataType={
-    userId:"2",
+    userId:"2224",
     startDate:"2022/06/20",
     age:17,
     role:"学生",
@@ -645,7 +650,7 @@ export const exampleWeekData6:exampleWeekDataType={
 
 
 export const exampleWeekData7:exampleWeekDataType={
-    userId:"3",
+    userId:"3334",
     startDate:"2022/06/13",
     age:20,
     role:"学生",
@@ -728,7 +733,7 @@ export const exampleWeekData7:exampleWeekDataType={
 }
 
 export const exampleWeekData8:exampleWeekDataType={
-    userId:"4",
+    userId:"4444",
     startDate:"2022/06/06",
     age:17,
     role:"学生",

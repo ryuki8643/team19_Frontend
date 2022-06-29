@@ -18,19 +18,25 @@ import firebase from "firebase/compat";
 
 
 
-export const ButtonStyle={
+export const ButtonStyle=[{
 
 
     fontSize:'80%',
     color:"white",
     backgroundColor:'#FF6600',
+    borderBottom:"5px solid orangered",
+    borderRight:"5px solid orangered",
 
     width:"20%",
 
-    margin:"1%"
+    margin:"1%",
+    textTransform: 'none'
 
 
-}
+},{'&:hover': {
+        borderBottom:"2px solid orangered",
+        borderRight:"2px solid orangered",
+}}]
 
 type UserDialogPropsType={
     modalOpen:boolean
