@@ -88,8 +88,11 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
         if (width===0){
 
         }else if (width<445){
+            setFontSize1("80%")
+            setFontSize2("60%")
+            setMargin("45px")
             setMargin2("-80px")
-            setMargin3("60px")
+            setMargin3("80px")
         }else if(width<600){setFontSize("120%")
             setFontSize1("100%")
             setFontSize2("75%")
@@ -166,8 +169,8 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
                         <Box sx={{fontSize:fontSize,fontWeight:1000,textAlign:"center"}}>比較</Box>
                         <Box sx={{textAlign:"center",marginY:margin,fontSize:fontSize1}}><ConstructionTwoToneIcon sx={{fontSize:"300%",textAlign:"center"}}/></Box>
-                        <Box sx={{position:"relative",marginTop:"auto",verticalAlign:"bottom"}}>
-                        <Paper elevation={5} sx={{marginTop:"auto",zIndex:1,margin:1,fontSize:fontSize,textAlign:"center",fontWeight:1000,}}>{resultValue}%</Paper>
+                        <Box sx={{position:"relative",marginTop:margin3,verticalAlign:"bottom"}}>
+                        <Paper elevation={5} sx={{marginTop:margin3,zIndex:1,margin:1,fontSize:fontSize,textAlign:"center",fontWeight:1000,}}>{resultValue}%</Paper>
                         <Paper elevation={5} sx={{margin:1,position:"relative",top:margin2,fontSize:fontSize2,textAlign:"center",fontWeight:1000,}}> 一致率</Paper>
                     </Box><pre></pre>
                     </Paper>
