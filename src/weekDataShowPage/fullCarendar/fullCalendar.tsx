@@ -18,6 +18,7 @@ import 'bootstrap-icons/font/bootstrap-icons.css'; // needs additional webpack c
 import "./Style/calendar.css"
 import {MakeEventsArrayAppend} from "./functions/makeEventsArrayAppend";
 import listPlugin from '@fullcalendar/list';
+import {compareResultCalc} from "../../ComparePage/CompareResultCalc";
 
 
 
@@ -42,6 +43,7 @@ type FullCalendarAppPropsType={
     weekDataExchange:axiosDataExchangeType
     compareButtonDisabled:boolean
     setCompareButtonDisabled(compare:boolean):void
+    setResultValue(resultValue:number):void
 }
 
 
@@ -208,6 +210,11 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
         }
 
     },[defaultDay])
+    useEffect(()=>{
+        if(FullCalendarAppProps.weekShowData && FullCalendarAppProps.compareWeekShowData){
+            compareResultCalc(FullCalendarAppProps.weekShowData,FullCalendarAppProps.compareWeekShowData,FullCalendarAppProps.setResultValue)
+        }
+    },[FullCalendarAppProps.weekShowData,FullCalendarAppProps.compareWeekShowData])
 
 
 

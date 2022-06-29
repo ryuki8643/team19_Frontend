@@ -13,7 +13,7 @@ import firebase from "firebase/compat";
 import {onAuthStateChanged} from "firebase/auth";
 import {authExample} from "../SignUpPage/firebaseConfig";
 import {ButtonStyle, UserDialog} from "./LoginAndUserPageDailog";
-import {exampleSearchDataType} from "../ExampleData/ExampleDataType";
+import {exampleSearchDataType, exampleUserDataType} from "../ExampleData/ExampleDataType";
 import {SearchButton} from "../SearchPage/SearchButton";
 import {SelectorDrawer} from "./SelectorDrawer";
 import EditIcon from '@mui/icons-material/Edit';
@@ -24,6 +24,8 @@ import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import HomeIcon from '@mui/icons-material/Home';
 import {ButtonGroup} from "@mui/material";
 import {useWindowSize} from "../SearchPage/windowSize";
+import {SignUpPostAPI} from "../DataExchange/APIaxios";
+
 
 type SelectorPropsType={
     SearchData:exampleSearchDataType
@@ -40,6 +42,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
     const [drawerOpen,setDrawerOpen]=useState(false)
     const [loginButton,setLoginButton]=useState(<LockOpenIcon/>)
     const [fontSize,setFontSize]=useState("130%")
+    const [userPostObject,setUserPostObject]=useState<null|exampleUserDataType>(null)
 
     const width=useWindowSize()
 
@@ -88,6 +91,24 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
         console.log(width,"width")
 
     },[width])
+    useEffect(()=>{
+        if(loginUser){
+            setLoginButton(<AccountCircleIcon/>)
+        }
+        if(loginUser && userPostObject){
+
+            const postData={
+                firebaseUid:loginUser.uid,
+                email:userPostObject.email,
+                age:userPostObject.age,
+                role:userPostObject.role,
+                company:userPostObject.company,
+            }
+            SignUpPostAPI(postData).then(()=>{})
+            setSignUpBool(false)
+        }
+
+    },[loginUser])
 
     return (
 
@@ -211,10 +232,10 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                                 borderBottom:"2px solid orangered",
                                 borderRight:"2px solid orangered",
                             }}]} onClick={()=>setModalOpen(true) }  size="large">
-                            {loginButton}{width>400 && "login"}
+                            {loginButton}{400<width ? loginUser ? "user":"login":""}
                         </Button>
-                        <UserDialog modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
-                        <UserDialog modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>
+                        <UserDialog setUserPostObject={setUserPostObject} modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
+                        <UserDialog setUserPostObject={setUserPostObject} modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>
 
                     </Box>
                 </AppBar>

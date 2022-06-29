@@ -41,7 +41,29 @@ const SignIn = () => {
             <form onSubmit={handleSubmit}>
                 <SignUpInput showType={"email"} contentTitle={"メールアドレス"} registerContent={loginEmail} setRegisterContent={setLoginEmail}/>
                 <SignUpInput showType={"password"} contentTitle={"パスワード"} registerContent={loginPassword} setRegisterContent={setLoginPassword}/>
-                <Button sx={{textAlign:"left",display:"block"}} onClick={handleSubmit}>ログイン</Button>
+                <Button sx={[{
+
+
+
+                    color:"white",
+                    backgroundColor:'#FF6600',
+                    borderBottom:"5px solid orangered",
+                    borderRight:"5px solid orangered",
+                    borderRadius:"10px",
+
+
+
+                    marginTop:1,
+                    flexGrow:1,
+                    width:"100%",
+                    textTransform: 'none'
+
+
+                },{'&:hover': {
+                        backgroundColor:'#FF6600',
+                        borderBottom:"2px solid orangered",
+                        borderRight:"2px solid orangered",
+                    }}]} onClick={handleSubmit}>ログイン</Button>
 
             </form>
         </>
