@@ -99,18 +99,19 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
             setMargin("36px")
             setMargin2("-60px")
             setMargin3("50px")
+            setFontSize("220%")
         } else if (width<800){
-            setFontSize("150%")
+            setFontSize("250%")
             setFontSize1("150%")
             setFontSize2("100%")
-            setMargin("22px")
+            setMargin("16px")
             setMargin2("-70px")
             setMargin3("20px")
         } else {
-            setMargin("22px")
+            setMargin("16px")
             setFontSize1("150%")
             setFontSize2("150%")
-            setFontSize("200%")
+            setFontSize("300%")
             setMargin2("-90px")
             setMargin3("20px")
         }
@@ -167,11 +168,11 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                 <Grid item xs={2}>
                     <Paper elevation={5} sx={{borderRadius:"10px",height:"220px"}}>
 
-                        <Box sx={{fontSize:fontSize,fontWeight:1000,textAlign:"center"}}>比較</Box>
+                        <Box sx={{fontSize:fontSize2,fontWeight:700,textAlign:"center"}}>比較</Box>
                         <Box sx={{textAlign:"center",marginY:margin,fontSize:fontSize1}}><ConstructionTwoToneIcon sx={{fontSize:"300%",textAlign:"center"}}/></Box>
                         <Box sx={{position:"relative",marginTop:margin3,verticalAlign:"bottom"}}>
-                        <Paper elevation={5} sx={{marginTop:margin3,zIndex:1,margin:1,fontSize:fontSize,textAlign:"center",fontWeight:1000,}}>{resultValue}%</Paper>
-                        <Paper elevation={5} sx={{margin:1,position:"relative",top:margin2,fontSize:fontSize2,textAlign:"center",fontWeight:1000,}}> 一致率</Paper>
+                            <Paper elevation={5} sx={{marginTop:margin3,zIndex:1,margin:"5%",fontSize:fontSize,textAlign:"center",fontWeight:900,display:"flex"}}><Box sx={{marginX:"auto"}}>{resultValue}<sub>%</sub></Box></Paper>
+                        <Box sx={{margin:1,position:"relative",top:margin2,fontSize:fontSize2,textAlign:"center",fontWeight:700,}}> 一致率</Box>
                     </Box><pre></pre>
                     </Paper>
                 </Grid>
