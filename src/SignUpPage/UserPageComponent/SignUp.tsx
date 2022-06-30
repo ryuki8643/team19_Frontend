@@ -38,7 +38,7 @@ const Register = (RegisterProps:RegisterPropsType) => {
                                 firebaseUid:"",
                                 email:registerEmail,
                                 age:Number(registerAge),
-                                role:registerRole+"志望"+student ? "学生":"",
+                                role:registerRole+student && "志望学生",
                                 company:registerCompany,
                             })
                             console.log({

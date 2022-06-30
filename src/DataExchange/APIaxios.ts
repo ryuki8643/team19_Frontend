@@ -18,7 +18,7 @@ interface jsonType {
     flag: boolean
 }
 
-const URL = "http://localhost:8000"
+const URL = "https://it-life-api.herokuapp.com"
 export const SearchDataAPI = async (setSample: (sample: exampleSearchDataType) => void, setConnect: (connect: boolean) => void) => {
 
     const response = await axios

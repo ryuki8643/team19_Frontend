@@ -29,9 +29,7 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
     const [compareBool,setCompareBool]=useState(false)
     const [compareUserId,SetCompareUserId]=useState("4444")
-    const [compareWeekShowStart,SetCompareWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role==="学生"
-        })}.userData[0].weekData[0].date)
+    const [compareWeekShowStart,SetCompareWeekShowStart]=useState("2022/06/06")
 
     const [weekShowData,setWeekShowData]=useState(DataExchangeExample["1234"]["2022/06/13"])
     const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample["4444"]["2022/06/06"])

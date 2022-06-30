@@ -189,15 +189,16 @@ export const SearchPage=()=>{
                     <Grid item xs={xs} key={value.company+locationState.SearchData["userData"][index].role+value.age}>
                         <Paper elevation={5} onClick={()=>goToHomeWithUser(value.user,value.role)}
                                sx={{borderRadius:"10px", }} >
-                            <Box sx={[{borderRadius:"10px",borderBottom:"5px solid orangered",borderRight:"5px solid orangered"},{"&:hover":{backgroundColor:"#EEEEEE",borderBottom:"2px solid orangered",borderRight:"2px solid orangered"}}]}>
+                            <Box sx={[{borderRadius:"10px",borderBottom:"5px solid orangered",borderRight:"5px solid orangered",height:"300px"},{"&:hover":{backgroundColor:"#EEEEEE",borderBottom:"2px solid orangered",borderRight:"2px solid orangered"}}]}>
                                 <pre></pre>
                                 <Box sx={{margin:1.3}}>企業：{value.company}</Box>
                                 <Box sx={{margin:1.3}}>役職：{value.role}</Box>
                                 <Box sx={{margin:1.3}}>年齢；{value.age}</Box>
+                                <pre></pre>
                             <Select
                                 multiple
                                 native
-                                sx={{flexGrow:1,width:"100%",height:"50%",borderRadius:"10px",backgroundColor:"rgba(0,0,0,0)",marginBottom:-1.6}}
+                                sx={{flexGrow:1,width:"100%",height:"50%",borderRadius:"10px",backgroundColor:"rgba(0,0,0,0)",marginBottom:-4,display: "inline-block"}}
                                 >
                             {Object.values(locationState.SearchData["userData"][index].weekData).map((value)=>{
                                 return (
