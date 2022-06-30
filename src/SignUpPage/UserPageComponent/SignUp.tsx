@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from "react";
 /* ↓「createUserWithEmailAndPassword」と「auth」をimport */
-import { createUserWithEmailAndPassword,onAuthStateChanged } from "firebase/auth";
+import { createUserWithEmailAndPassword,onAuthStateChanged} from "firebase/auth";
 import {authExample} from "../firebaseConfig";
 import firebase from "firebase/compat";
 import {SignUpInput} from "../SignUpInput";
-import {Button, Box, TextField} from "@mui/material";
+import {Button, Box, TextField,Checkbox,FormControlLabel} from "@mui/material";
 import {exampleSearchDataType, exampleUserDataType} from "../../ExampleData/ExampleDataType";
+import Paper from "@mui/material/Paper";
 
 type RegisterPropsType={
     setUserPostObject(userObject:null|exampleUserDataType):void
@@ -16,6 +17,7 @@ const Register = (RegisterProps:RegisterPropsType) => {
     const [registerRole,setRegisterRole]=useState("")
     const [registerCompany,setRegisterCompany]=useState("")
     const [registerAge,setRegisterAge]=useState("")
+    const [student,setStudent]=useState(true)
 
     /* ↓関数「handleSubmit」を定義 */
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
@@ -36,9 +38,16 @@ const Register = (RegisterProps:RegisterPropsType) => {
                                 firebaseUid:"",
                                 email:registerEmail,
                                 age:Number(registerAge),
-                                role:registerRole,
+                                role:registerRole+"志望"+student ? "学生":"",
                                 company:registerCompany,
                             })
+                            console.log({
+                                firebaseUid:"",
+                                email:registerEmail,
+                                age:Number(registerAge),
+                                role:registerRole,
+                                company:registerCompany,
+                            },"登録するもの")
                         } catch (error) {
                             alert("すでに登録されたメールアドレスです");
 
@@ -69,9 +78,10 @@ const Register = (RegisterProps:RegisterPropsType) => {
             <Box >
                 <SignUpInput showType={"email"} registerContent={registerEmail} setRegisterContent={setRegisterEmail} contentTitle={"メールアドレス"}/>
                 <SignUpInput showType={"password"} registerContent={registerPassword} setRegisterContent={setRegisterPassword}　contentTitle={"パスワード(６文字以上)"}/>
-                <SignUpInput showType={"text"} registerContent={registerRole} setRegisterContent={setRegisterRole} contentTitle={"役職"}/>
+                <Box sx={{border:"solid 1px #AAAAAA",marginTop:1,borderRadius:"3px"}}><FormControlLabel control={<Checkbox defaultChecked onChange={()=>{setStudent(!student)}}/>} label="学生" /></Box>
+                <SignUpInput showType={"text"} registerContent={registerRole} setRegisterContent={setRegisterRole} contentTitle={student ? "なりたい職業" :"役職"}/>
 
-                <SignUpInput showType={"text"} registerContent={registerCompany} setRegisterContent={setRegisterCompany} contentTitle={"会社"}/>
+                <SignUpInput showType={"text"} registerContent={registerCompany} setRegisterContent={setRegisterCompany} contentTitle={student ? "行きたい会社" :"会社"}/>
                 <SignUpInput showType={"number"} contentTitle={"年齢"} registerContent={registerAge} setRegisterContent={setRegisterAge}/>
 
                 <Button sx={[{

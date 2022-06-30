@@ -3,8 +3,8 @@ import FullCalendar, { EventSourceInput, RefObject } from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import allLocales from "@fullcalendar/core/locales-all";
-import { useState, useRef } from "react";
-import { exampleDayDataType, eventDataType } from "../ExampleData/ExampleDataType";
+import React, {useState, useRef, useEffect} from "react";
+import {exampleDayDataType, eventDataType, getUserDataType} from "../ExampleData/ExampleDataType";
 import { Box, Button, Container, Grid, Paper, Stack, TextField } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -14,7 +14,10 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { GetWindowSize } from '../hooks/GetWindowSize'
 import Modal from '@mui/material/Modal';
 import { makeStyles } from '@material-ui/core';
-import { DayDataPostAPI } from '../../src/DataExchange/APIaxios';
+import {DayDataPostAPI, userIdAPI} from '../../src/DataExchange/APIaxios';
+import {onAuthStateChanged} from "firebase/auth";
+import {authExample} from "../SignUpPage/firebaseConfig";
+import firebase from "firebase/compat";
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -163,9 +166,21 @@ const widthParam = () => {
 const DayCalender = () => {
     const [dayEvents, setDayEvents] = useState([] as calendarEventsType[])
     const [date, setDate] = useState<Date | null>(new Date());
+
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+
+
+    const [loginUser, setLoginUser] = React.useState<firebase.User|null>(null)
+    const [userData,setUserData]=useState({
+        id:0,
+        firebaseUid: "",
+        email: "",
+        age: 0,
+        role: "",
+        company: "",
+    } as getUserDataType)
 
 
     const addItems = (items: calendarEventsType) => {
@@ -208,7 +223,7 @@ const DayCalender = () => {
 
 
         const sendData: exampleDayDataType = {
-            userId: 2224,
+            userId: userData.id,
             date: day,
             events: content
         }
@@ -221,7 +236,24 @@ const DayCalender = () => {
         console.log(date)
         setDate(date)
     }
+
     const classes = useStyles();
+
+
+    useEffect(() => {
+        onAuthStateChanged(authExample, (currentUser ) => {
+            setLoginUser(currentUser as firebase.User|null);
+        });
+    }, []);
+    useEffect(()=>{
+        if(loginUser){
+            userIdAPI(setUserData, loginUser.uid).then(()=>{})
+
+
+        }
+    },[loginUser])
+
+
 
     return (
         <>

@@ -1,8 +1,8 @@
 import {exampleSearchDataType} from "../../../ExampleData/ExampleDataType";
 
 export const sortData=(searchData:exampleSearchDataType):exampleSearchDataType=>{
-    let sortResult=searchData.userData.sort(function (a,b){
-        return (calcScore(a.weekList) <calcScore(b.weekList)) ? 1 :-1;
+    let sortResult=searchData.userData.filter((elem)=>{return elem.weekData.length>0}).sort(function (a,b){
+        return (calcScore(a.weekData) <calcScore(b.weekData)) ? 1 :-1;
     }
 
     )
@@ -12,12 +12,12 @@ export const sortData=(searchData:exampleSearchDataType):exampleSearchDataType=>
 }
 
 const calcScore=(reduceData:{
-    day:string,
-    dayCount:number,
+    date:string,
+    dateCount:number,
     eventCount:number}[])=>{
     const initialValue = 0;
     let reduceResult=reduceData.reduce((previousValue,currentValue)=>
-        previousValue + currentValue.dayCount*currentValue.eventCount,
+        previousValue + currentValue.dateCount*currentValue.eventCount,
             initialValue
     )
 

@@ -38,9 +38,9 @@ type FullCalendarAppPropsType={
     compareBool:boolean
     compareWeekShowData:exampleWeekDataType
     weekShowStart:string
-    SetWeekShowStart(week:string):void
+
     userId:string
-    weekDataExchange:axiosDataExchangeType
+
     compareButtonDisabled:boolean
     setCompareButtonDisabled(compare:boolean):void
     setResultValue(resultValue:number):void

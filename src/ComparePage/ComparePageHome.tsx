@@ -15,22 +15,14 @@ import {useWindowSize} from "../SearchPage/windowSize";
 import ConstructionTwoToneIcon from '@mui/icons-material/ConstructionTwoTone';
 
 export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
-    const [UserId,SetUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role!=="学生"
-        })}.userData[0].userId)
-    const [weekShowStart,SetWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role!=="学生"
-        })}.userData[0].weekList[0].day)
+    const [UserId,SetUserId]=useState("1234")
+    const [weekShowStart,SetWeekShowStart]=useState("2022/06/13")
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
     const [compareBool,setCompareBool]=useState(true)
-    const [compareUserId,SetCompareUserId]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role==="学生"
-        })}.userData[0].userId)
-    const [compareWeekShowStart,SetCompareWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role!=="学生"
-        })}.userData[0].weekList[0].day)
-    const [weekShowData,setWeekShowData]=useState(DataExchangeExample[UserId][weekShowStart])
-    const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample[compareUserId][compareWeekShowStart])
+    const [compareUserId,SetCompareUserId]=useState("4444")
+    const [compareWeekShowStart,SetCompareWeekShowStart]=useState("2022/06/06")
+    const [weekShowData,setWeekShowData]=useState(DataExchangeExample["1234"]["2022/06/13"])
+    const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample["4444"]["2022/06/06"])
     const [resultValue,setResultValue]=useState(0)
     const [fontSize,setFontSize]=useState("100%")
     const [fontSize1,setFontSize1]=useState("100%")
@@ -40,11 +32,36 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const width=useWindowSize()
 
     useEffect(()=>{
-        WeekPageFrontPageProps.axiosWeekDataExchange(setWeekShowData,UserId,weekShowStart)
+        const weekList=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.userId===UserId
+        })[0].weekData
+        const weekBool=weekList.filter((value)=>{return value.date===weekShowStart})
+        if(weekBool.length>0){
+            WeekPageFrontPageProps.axiosWeekDataExchange(setWeekShowData,UserId,weekShowStart,)
+        }
     },[UserId,weekShowStart])
     useEffect(()=>{
-        WeekPageFrontPageProps.axiosWeekDataExchange(setCompareWeekShowData,compareUserId,compareWeekShowStart)
-    },[compareWeekShowData,compareWeekShowStart])
+        const weekList=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.userId===compareUserId
+        })[0].weekData
+        const weekBool=weekList.filter((value)=>{return value.date===compareWeekShowStart})
+        if(weekBool.length>0){
+            WeekPageFrontPageProps.axiosWeekDataExchange(setCompareWeekShowData,compareUserId,compareWeekShowStart)
+        }
+    },[compareUserId,compareWeekShowStart])
+
+    useEffect(()=>{
+        const getUser=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role.indexOf("学生")<0
+        })[0].userId
+        SetUserId(getUser)
+        const getCompareUser=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
+            return value.role.indexOf("学生")>-1
+        })[0].userId
+        SetCompareUserId(getCompareUser)
+
+
+    },[WeekPageFrontPageProps.axiosSearchData])
 
     const location=useLocation()
 
@@ -88,12 +105,12 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     WeekPageFrontPageProps.axiosSearchData["userData"].forEach(
         function(item){
 
-            (item["weekList"]).forEach(
+            (item["weekData"]).forEach(
                 function(itemChild){
                     if (searchTreeExampleArray[item.userId]){
-                        searchTreeExampleArray[item.userId].push(itemChild.day)
+                        searchTreeExampleArray[item.userId].push(itemChild.date)
                     } else{
-                        searchTreeExampleArray[item.userId]=[itemChild.day]
+                        searchTreeExampleArray[item.userId]=[itemChild.date]
                     }
                 }
             )
@@ -120,7 +137,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                         UserId={UserId}
                         SetUserId={SetUserId}
                         SearchData={{"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-                                return value.role!=="学生"
+                                return value.role.indexOf("学生")<0
                             })}}
 
                     />
@@ -146,7 +163,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                             UserId={compareUserId}
                             SetUserId={SetCompareUserId}
                             SearchData={{"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-                                return value.role==="学生"
+                                return value.role.indexOf("学生")>-1
                             })}}
 
                         />
@@ -175,9 +192,9 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                 compareBool={compareBool}
                 compareWeekShowData={compareWeekShowData}
                 weekShowStart={weekShowStart}
-                SetWeekShowStart={SetWeekShowStart}
+
                 userId={UserId}
-                weekDataExchange={WeekPageFrontPageProps.axiosWeekDataExchange}
+
             />
 
         </Container>

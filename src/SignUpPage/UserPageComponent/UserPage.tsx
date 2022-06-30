@@ -13,8 +13,8 @@ import SignIn from "./SignIn";
 import Register from "./SignUp";
 import {DataExchangeExample} from "../../DataExchange/DataExchangeExample";
 import {exampleCurrentIdData, exampleSearchData} from "../../ExampleData/ExampleData";
-import {exampleUserDataType} from "../../ExampleData/ExampleDataType";
-
+import {exampleUserDataType, getUserDataType} from "../../ExampleData/ExampleDataType";
+import {userIdAPI} from "../../DataExchange/APIaxios";
 type MyPagePropsType={
     signUpBool:boolean
     user:firebase.User|null
@@ -23,6 +23,14 @@ type MyPagePropsType={
 
 const MyPage = (MyPageProps:MyPagePropsType )=> {
     const [loading, setLoading] = useState(true);
+    const [userData,setUserData]=useState({
+        id:0,
+        firebaseUid: "",
+        email: "",
+        age: 0,
+        role: "",
+        company: "",
+    } as getUserDataType)
 
 
     const navigate = useNavigate();
@@ -30,6 +38,13 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
         await signOut(authExample);
 
     }
+    useEffect(()=>{
+        if(MyPageProps.user){
+            userIdAPI(setUserData, MyPageProps.user.uid).then(()=>{})
+
+
+        }
+    },[MyPageProps.user])
     return (
         <Box>
 
@@ -44,15 +59,16 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                             <Box sx={{margin:1}}>
                                 <pre></pre>
 
-                            {MyPageProps.user.uid ? exampleCurrentIdData[MyPageProps.user.uid] ?
+                            {MyPageProps.user.uid ? userData.age>0 ?
                                 <>
-                                    <Box>年齢:{exampleCurrentIdData[MyPageProps.user.uid].age}</Box>
-                                    <Box>企業:{exampleCurrentIdData[MyPageProps.user.uid].company}</Box>
-                                    <Box>役職:{exampleCurrentIdData[MyPageProps.user.uid].role}</Box>
+                                    <Box>年齢:{userData.age}</Box>
+                                    <Box>企業:{userData.company}</Box>
+                                    <Box>役職:{userData.role}</Box>
+                                    <Box>メール:{userData.email}</Box>
+                                    <pre></pre>
                                 </>
                                 :"":""}
-                            <Box>メール:{MyPageProps.user?.email}</Box>
-                                <pre></pre>
+
                             </Box>
 
                         </Paper>

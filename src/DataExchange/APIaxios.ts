@@ -1,6 +1,13 @@
 
 import axios from 'axios';
-import { exampleDayDataType, exampleSearchDataType, exampleUserDataType, exampleWeekDataType } from "../ExampleData/ExampleDataType";
+import {
+    eventDataType,
+    exampleDayDataType,
+    exampleSearchDataType,
+    exampleUserDataType,
+    exampleWeekDataType,
+    getSearchDataType, getUserDataType, getWeekDataType
+} from "../ExampleData/ExampleDataType";
 import { exampleSearchData } from "../ExampleData/ExampleData";
 import { axiosDataExchangeType, DataExchangeExample, DataExchangeExampleAPI } from "./DataExchangeExample";
 import { sortData } from "../weekDataShowPage/fullCarendar/functions/sortData";
@@ -15,17 +22,24 @@ const URL = "http://localhost:8000"
 export const SearchDataAPI = async (setSample: (sample: exampleSearchDataType) => void, setConnect: (connect: boolean) => void) => {
 
     const response = await axios
-        .get<exampleSearchDataType>(URL + "/users")
+        .get<getSearchDataType>(URL + "/users")
         .then((results) => {
-            let return_Json = results.data;
+            let return_Json = results.data as getSearchDataType;
             console.log("通信成功");
 
 
             // 成功したら取得できたデータを返す
-            if (return_Json.userData) {
-                console.log(return_Json);
+            if (return_Json) {
+                console.log(exampleSearchData.userData,return_Json);
+
+                const transData=return_Json.filter((elem)=>{return elem.weekData}).map((value, index, array)=>{
+                    return {userId:value.userId.toString(),age:value.age,company:value.company,role:value.role,weekData:value.weekData}
+                })
+                console.log(transData)
+                console.log(exampleSearchData.userData.concat(transData))
                 setConnect(true)
-                setSample(sortData({ userData: exampleSearchData.userData.concat(return_Json.userData) }))
+                setSample(sortData({ userData: exampleSearchData.userData.concat(transData) }))
+                console.log("合体成功")
             };
         })
         .catch((error) => {
@@ -42,7 +56,7 @@ export const WeekDataAPI: axiosDataExchangeType = async (setSample: (sample: exa
 
         console.log(Object.keys(DataExchangeExample).indexOf(userId), "値", userId, Object.keys(DataExchangeExample))
         const response = await axios
-            .get<exampleWeekDataType>(URL + "/users/" + userId, { params: { startDate: startDate } })
+            .get<getWeekDataType>(URL + "/users/" + userId, { params: { startDate: startDate.replace("/","-").replace("/","-") } })
             .then((results) => {
                 let return_Json = results.data;
 
@@ -50,8 +64,30 @@ export const WeekDataAPI: axiosDataExchangeType = async (setSample: (sample: exa
                 console.log("通信成功")
                 // 成功したら取得できたデータを返す
                 if (return_Json.userId) {
+                    const transData={
+                        userId: return_Json.userId.toString(),
+                        startDate: return_Json.startDate,
+                        age: return_Json.age,
+                        role: return_Json.role,
+                        company: return_Json.company,
+                        monday:
+                            return_Json.monday,
+                        tuesday:
+                            return_Json.tuesday,
+                        wednesday:
+                            return_Json.wednesday,
+                        thursday:
+                            return_Json.thursday,
+                        friday:
+                            return_Json.friday,
+                        saturday:
+                            return_Json.saturday,
+                        sunday:
+                            return_Json.sunday,
+
+                    }
                     console.log(return_Json);
-                    setSample(return_Json)
+                    setSample(transData)
                 };
             })
             .catch((error) => {
@@ -61,6 +97,28 @@ export const WeekDataAPI: axiosDataExchangeType = async (setSample: (sample: exa
             });
     }
 }
+
+export const userIdAPI = async (setSample: (sample: getUserDataType) => void,uuid:string) => {
+
+    const response = await axios
+        .get<getUserDataType>(URL + "/users/firebase/"+uuid)
+        .then((results) => {
+            let return_Json = results.data ;
+            console.log("通信成功",return_Json);
+            setSample(return_Json)
+
+
+
+
+        })
+        .catch((error) => {
+            console.log('通信失敗',"ユーザーデータ");
+            console.log(error.status);
+
+
+        });
+}
+
 
 export const SignUpPostAPI = async (UserData: exampleUserDataType) => {
 
@@ -72,7 +130,7 @@ export const SignUpPostAPI = async (UserData: exampleUserDataType) => {
 
 
 
-            console.log("通信成功")
+            console.log("通信成功",UserData,"ユーザー")
             // 成功したら取得できたデータを返す
 
         })
