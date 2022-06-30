@@ -47,6 +47,7 @@ const EventForm: React.FC<Prop> = ({ addItems }) => {
         return (numStartTime > numEndTime)
     }
 
+    const errorMessage = timeValidation() ? "開始時間より後の時間を選択してください" : ""
     const setItems = () => {
         const items: calendarEventsType =
         {
@@ -71,13 +72,15 @@ const EventForm: React.FC<Prop> = ({ addItems }) => {
         <Stack spacing={4}>
             <TextField
                 id="do-something"
-                label="What did you do?"
+                label="タイトル"
+                required
                 value={title}
+                placeholder="例）プログラミング"
                 onChange={handleChange}
             />
             <TextField
                 id="time"
-                label="Start Time (Hours and Minutes)"
+                label="開始"
                 type="time"
                 InputLabelProps={{
                     shrink: true,
@@ -93,7 +96,7 @@ const EventForm: React.FC<Prop> = ({ addItems }) => {
             />
             <TextField
                 id="time"
-                label="End Time (Hours and Minutes)"
+                label="終了"
                 type="time"
                 InputLabelProps={{
                     shrink: true,
@@ -106,17 +109,20 @@ const EventForm: React.FC<Prop> = ({ addItems }) => {
                     setEndTime(newTime.target.value);
                 }}
                 error={timeValidation()}
+                helperText={errorMessage}
             />
             <TextField
                 id="do-something"
-                label="How was it?"
+                label="説明"
+                required
+                placeholder="例）モバイルアプリのデザイン調整"
                 multiline
                 rows={4}
                 value={description}
                 onChange={handleChangeDescription}
             />
             <Button variant="contained" disableElevation endIcon={<AddIcon />} disabled={isAbailableButton()} onClick={() => setItems()}>
-                Add
+                追加
             </Button>
         </Stack >
     )
