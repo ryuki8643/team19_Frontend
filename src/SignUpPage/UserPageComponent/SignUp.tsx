@@ -28,6 +28,10 @@ const Register = (RegisterProps:RegisterPropsType) => {
 
                 if (registerPassword.length > 5) {
                     if (Number(registerAge)>0){
+                        let studentStr=""
+                        if (student){
+                            studentStr="志望学生"
+                        }
                         try {
                             await createUserWithEmailAndPassword(
                                 authExample,
@@ -38,14 +42,14 @@ const Register = (RegisterProps:RegisterPropsType) => {
                                 firebaseUid:"",
                                 email:registerEmail,
                                 age:Number(registerAge),
-                                role:registerRole+student && "志望学生",
+                                role:registerRole+studentStr,
                                 company:registerCompany,
                             })
                             console.log({
                                 firebaseUid:"",
                                 email:registerEmail,
                                 age:Number(registerAge),
-                                role:registerRole,
+                                role:registerRole+studentStr,
                                 company:registerCompany,
                             },"登録するもの")
                         } catch (error) {
