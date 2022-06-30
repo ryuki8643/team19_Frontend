@@ -177,6 +177,13 @@ const DayCalender = () => {
     const [dayEvents, setDayEvents] = useState([] as calendarEventsType[])
     const [date, setDate] = useState<Date | null>(new Date());
 
+    const [open, setOpen] = useState(false);
+    const handleOpen = () => setOpen(true);
+    const handleClose = () => setOpen(false);
+    const [loginOpen, setLoginOpen] = useState(false);
+    const handleLoginOpen = () => setLoginOpen(true);
+    const handleLoginClose = () => setLoginOpen(false);
+
     const [loginUser, setLoginUser] = React.useState<firebase.User | null>(null)
     const [userData, setUserData] = useState({
         id: 0,
@@ -187,14 +194,6 @@ const DayCalender = () => {
         company: "",
     } as getUserDataType)
 
-    //送信確認モーダル
-    const [open, setOpen] = useState(false);
-    const handleOpen = () => setOpen(true);
-    const handleClose = () => setOpen(false);
-    //ログイン確認モーダル
-    const [loginOpen, setLoginOpen] = useState(false);
-    const handleLoginOpen = () => setLoginOpen(true);
-    const handleLoginClose = () => setLoginOpen(false);
 
     const addItems = (items: calendarEventsType) => {
         const item: calendarEventsType[] = [];
@@ -249,6 +248,7 @@ const DayCalender = () => {
         console.log(date)
         setDate(date)
     }
+
     useEffect(() => {
         onAuthStateChanged(authExample, (currentUser) => {
             setLoginUser(currentUser as firebase.User | null);
