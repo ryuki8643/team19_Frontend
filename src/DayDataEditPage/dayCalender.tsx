@@ -18,6 +18,7 @@ import { DayDataPostAPI, userIdAPI } from '../../src/DataExchange/APIaxios';
 import { onAuthStateChanged } from "firebase/auth";
 import { authExample } from "../SignUpPage/firebaseConfig";
 import firebase from "firebase/compat";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -71,6 +72,10 @@ const useStyles = makeStyles(theme => ({
         fontSize: '16px',
         cursor: 'pointer',
     },
+    CalendarStyle: {
+        width: '100%',
+        background: '#000',
+    }
 }));
 
 export type calendarEventsType = {
@@ -124,11 +129,13 @@ const ModalComponent: React.FC<modalProp> = ({ date, getDate }) => {
 
 const DatePickCalendar: React.FC<modalProp> = ({ date, getDate }) => {
     const windowSize = GetWindowSize()
+    const classes = useStyles();
     if (windowSize.width > 1200) {
         return (
             <Grid width={"30%"}>
                 <Paper elevation={4} sx={{ padding: 2, height: "520px", borderRadius: "10px" }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
+
                         <StaticDatePicker
                             displayStaticWrapperAs="desktop"
                             openTo="day"
@@ -137,7 +144,10 @@ const DatePickCalendar: React.FC<modalProp> = ({ date, getDate }) => {
                                 getDate(newValue);
                             }}
                             renderInput={(params) => <TextField {...params} />}
+                            className={classes.CalendarStyle}
+
                         />
+
                     </LocalizationProvider>
                 </Paper>
             </Grid>
@@ -347,7 +357,7 @@ const DayCalender = () => {
 
                 <Box sx={SubmitModalStyle}>
                     <span className={classes.CloseButton} onClick={() => handleLoginClose()}>×</span>
-                    <div >イベントを登録するためには、ログインする必要があります</div>
+                    <div >イベントを登録するためには<br />ログインする必要があります</div>
                     <div>
                         <Button sx={{ margin: 2, width: 100 }} variant="outlined" color="error" onClick={() => handleLoginClose()}>戻る</Button>
                     </div>
