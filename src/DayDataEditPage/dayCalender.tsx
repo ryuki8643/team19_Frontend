@@ -160,7 +160,7 @@ const DayCalender = () => {
         setDayEvents(item);
     }
     const removeEvent = (title: string, id: string) => {
-        console.log(id)
+
         const item: calendarEventsType[] = [];
         dayEvents.map((e) => {
             item.push(e);
@@ -195,13 +195,13 @@ const DayCalender = () => {
             date: day,
             events: content
         }
-        console.log(sendData)
+
         DayDataPostAPI(sendData);
 
     }
 
     const getDate = (date: Date) => {
-        console.log(date)
+
         setDate(date)
     }
 

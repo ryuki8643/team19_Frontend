@@ -21,7 +21,7 @@ const FrontPage: React.FC = () => {
     useEffect( ()=>{
         const result=SearchDataAPI(setSearchData,setConnect)
 
-        console.log(result,"result")
+
 
 
     },[])

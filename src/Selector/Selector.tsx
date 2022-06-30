@@ -78,7 +78,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
 
         }else if(width<400){
             setFontSize("70%")
-            console.log(width)
+
         }else if (width<600){
             setFontSize("80%")
 
@@ -88,7 +88,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
             setFontSize("130%")
 
         }
-        console.log(width,"width")
+
 
     },[width])
     useEffect(()=>{

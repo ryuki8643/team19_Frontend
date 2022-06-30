@@ -22,7 +22,7 @@ const Register = (RegisterProps:RegisterPropsType) => {
     /* ↓関数「handleSubmit」を定義 */
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        console.log(e)
+
         if(registerAge && registerCompany && registerEmail && registerPassword && registerRole) {
             if (registerEmail.match(/.+@.+\..+/)) {
 
@@ -45,13 +45,7 @@ const Register = (RegisterProps:RegisterPropsType) => {
                                 role:registerRole+studentStr,
                                 company:registerCompany,
                             })
-                            console.log({
-                                firebaseUid:"",
-                                email:registerEmail,
-                                age:Number(registerAge),
-                                role:registerRole+studentStr,
-                                company:registerCompany,
-                            },"登録するもの")
+
                         } catch (error) {
                             alert("すでに登録されたメールアドレスです");
 

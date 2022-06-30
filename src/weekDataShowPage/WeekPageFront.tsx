@@ -39,9 +39,9 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
         const weekList=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
             return value.userId===UserId
         })[0].weekData
-        console.log(weekList,"weekList")
+
         const weekBool=weekList.filter((value)=>{return value.date===weekShowStart})
-        console.log(weekBool,weekBool.length>0,"weekBool",weekShowStart)
+
         if(weekBool.length>0){
         WeekPageFrontPageProps.axiosWeekDataExchange(setWeekShowData,UserId,weekShowStart,)
         }

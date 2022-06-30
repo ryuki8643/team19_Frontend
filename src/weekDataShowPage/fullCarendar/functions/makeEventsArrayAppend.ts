@@ -10,7 +10,7 @@ export const MakeEventsArrayAppend = (fullCalendarProps: exampleWeekDataType, mi
     const CompareMinusDate = new Date(minusDate)
     const nowDate = new Date(fullCalendarProps.startDate)
     const compareDateNum = nowDate.getDate() - CompareMinusDate.getDate()
-    console.log(compareDateNum)
+
 
     const makeDayArray = (dayData: eventDataType[], NowDate: string) => {
         let dataS = dayData;

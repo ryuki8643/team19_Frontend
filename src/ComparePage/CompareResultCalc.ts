@@ -70,7 +70,7 @@ export const compareResultCalc=(userData:exampleWeekDataType,compareData:example
         },
         0
     )
-    console.log(sun1,sun2,"ペンギン",result,sumOfData)
+
     setResult(Math.round(result*100/sumOfData))
 
 

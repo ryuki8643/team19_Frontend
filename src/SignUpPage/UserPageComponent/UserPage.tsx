@@ -44,7 +44,7 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
 
 
         }
-    },[MyPageProps.user])
+    },[MyPageProps.user,userData])
     return (
         <Box>
 
@@ -59,7 +59,7 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                             <Box sx={{margin:1}}>
                                 <pre></pre>
 
-                            {MyPageProps.user.uid ? userData.age>0 ?
+
                                 <>
                                     <Box>年齢:{userData.age}</Box>
                                     <Box>企業:{userData.company}</Box>
@@ -67,7 +67,7 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                                     <Box>メール:{userData.email}</Box>
                                     <pre></pre>
                                 </>
-                                :"":""}
+
 
                             </Box>
 
