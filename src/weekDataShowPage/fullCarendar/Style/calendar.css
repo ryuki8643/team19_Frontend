@@ -48,6 +48,9 @@ a.default-event:hover {
     border-right: 2px solid #039be5;;
 }
 
+.compare {
+    background: linear-gradient(to right,#039be5,white, #FF6600);
+}
 
 a.compare-event {
     color: #000;

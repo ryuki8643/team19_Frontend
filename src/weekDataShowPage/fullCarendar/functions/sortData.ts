@@ -6,7 +6,7 @@ export const sortData=(searchData:exampleSearchDataType):exampleSearchDataType=>
     }
 
     )
-    console.log(sortResult,"ソート")
+
     return {userData:sortResult}
 
 }

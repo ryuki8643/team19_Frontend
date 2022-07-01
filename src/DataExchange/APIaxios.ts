@@ -18,7 +18,7 @@ interface jsonType {
     flag: boolean
 }
 
-const URL = "http://localhost:8000"
+const URL = "https://it-life-api.herokuapp.com"
 export const SearchDataAPI = async (setSample: (sample: exampleSearchDataType) => void, setConnect: (connect: boolean) => void) => {
 
     const response = await axios
@@ -30,21 +30,20 @@ export const SearchDataAPI = async (setSample: (sample: exampleSearchDataType) =
 
             // 成功したら取得できたデータを返す
             if (return_Json) {
-                console.log(exampleSearchData.userData,return_Json);
+
 
                 const transData=return_Json.filter((elem)=>{return elem.weekData}).map((value, index, array)=>{
                     return {userId:value.userId.toString(),age:value.age,company:value.company,role:value.role,weekData:value.weekData}
                 })
-                console.log(transData)
-                console.log(exampleSearchData.userData.concat(transData))
+
                 setConnect(true)
                 setSample(sortData({ userData: exampleSearchData.userData.concat(transData) }))
-                console.log("合体成功")
+                console.log("検索データ取り込み成功")
             };
         })
         .catch((error) => {
-            console.log('通信失敗');
-            console.log(error.status);
+            console.log('検索通信失敗');
+
             setSample(sortData(exampleSearchData))
             // 失敗したときは空のjsonを返す
         });
@@ -54,14 +53,14 @@ export const WeekDataAPI: axiosDataExchangeType = async (setSample: (sample: exa
 
     if (Object.keys(DataExchangeExample).indexOf(userId) > -1) { DataExchangeExampleAPI(setSample, userId, startDate) } else {
 
-        console.log(Object.keys(DataExchangeExample).indexOf(userId), "値", userId, Object.keys(DataExchangeExample))
+
         const response = await axios
             .get<getWeekDataType>(URL + "/users/" + userId, { params: { startDate: startDate.replace("/","-").replace("/","-") } })
             .then((results) => {
                 let return_Json = results.data;
 
 
-                console.log("通信成功")
+                console.log("週データ通信成功")
                 // 成功したら取得できたデータを返す
                 if (return_Json.userId) {
                     const transData={
@@ -86,13 +85,13 @@ export const WeekDataAPI: axiosDataExchangeType = async (setSample: (sample: exa
                             return_Json.sunday,
 
                     }
-                    console.log(return_Json);
+
                     setSample(transData)
                 };
             })
             .catch((error) => {
-                console.log('通信失敗');
-                console.log(error.status);
+                console.log('週データ通信失敗');
+
                 // 失敗したときは空のjsonを返す
             });
     }
@@ -104,7 +103,7 @@ export const userIdAPI = async (setSample: (sample: getUserDataType) => void,uui
         .get<getUserDataType>(URL + "/users/firebase/"+uuid)
         .then((results) => {
             let return_Json = results.data ;
-            console.log("通信成功",return_Json);
+            console.log("ユーザー情報通信成功",return_Json);
             setSample(return_Json)
 
 
@@ -112,8 +111,8 @@ export const userIdAPI = async (setSample: (sample: getUserDataType) => void,uui
 
         })
         .catch((error) => {
-            console.log('通信失敗',"ユーザーデータ");
-            console.log(error.status);
+            console.log('ユーザー情報通信失敗',"ユーザーデータ");
+
 
 
         });
@@ -130,13 +129,13 @@ export const SignUpPostAPI = async (UserData: exampleUserDataType) => {
 
 
 
-            console.log("通信成功",UserData,"ユーザー")
+            console.log("サインアップ通信成功",UserData,"ユーザー")
             // 成功したら取得できたデータを返す
 
         })
         .catch((error) => {
-            console.log('通信失敗');
-            console.log(error.status);
+            console.log('サインアップ通信失敗');
+
             // 失敗したときは空のjsonを返す
         });
 
@@ -152,13 +151,13 @@ export const DayDataPostAPI = async (dayData: exampleDayDataType) => {
 
 
 
-            console.log("通信成功")
+            console.log("データ送信通信成功")
             // 成功したら取得できたデータを返す
 
         })
         .catch((error) => {
-            console.log('通信失敗');
-            console.log(error.status);
+            console.log('データ送信通信失敗');
+
             // 失敗したときは空のjsonを返す
         });
 

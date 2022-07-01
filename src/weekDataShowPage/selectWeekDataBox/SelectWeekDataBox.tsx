@@ -56,7 +56,7 @@ const SelectWeekDataBox = (SelectWeekDataProps:SelectWeekDataType) => {
 
 
                 renderInput={(params) => <TextField {...params} label="Users" /> }
-                options={Object.values(autoCompleteObject)}
+                options={Object.values(autoCompleteObject).reverse()}
                 value={autoCompleteObject[SelectWeekDataProps.UserId]}
                 getOptionLabel={(option) => option.text}
                 onChange={((event, value, reason, details) => {

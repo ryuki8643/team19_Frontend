@@ -10,6 +10,8 @@ import Paper from "@mui/material/Paper";
 
 type RegisterPropsType={
     setUserPostObject(userObject:null|exampleUserDataType):void
+    handleClose():void
+    setOnceSignUp(OnceSignUp:boolean):void
 }
 const Register = (RegisterProps:RegisterPropsType) => {
     const [registerEmail, setRegisterEmail] = useState("");
@@ -22,32 +24,30 @@ const Register = (RegisterProps:RegisterPropsType) => {
     /* ↓関数「handleSubmit」を定義 */
     const handleSubmit = async (e: { preventDefault: () => void; }) => {
         e.preventDefault();
-        console.log(e)
+
         if(registerAge && registerCompany && registerEmail && registerPassword && registerRole) {
             if (registerEmail.match(/.+@.+\..+/)) {
 
                 if (registerPassword.length > 5) {
                     if (Number(registerAge)>0){
+                        let studentStr=""
+                        if (student){
+                            studentStr="志望学生"
+                        }
                         try {
                             await createUserWithEmailAndPassword(
                                 authExample,
                                 registerEmail,
                                 registerPassword
-                            );
+                            ).then(()=>{RegisterProps.handleClose();RegisterProps.setOnceSignUp(true)});
                             RegisterProps.setUserPostObject({
                                 firebaseUid:"",
                                 email:registerEmail,
                                 age:Number(registerAge),
-                                role:registerRole+"志望"+student ? "学生":"",
+                                role:registerRole+studentStr,
                                 company:registerCompany,
                             })
-                            console.log({
-                                firebaseUid:"",
-                                email:registerEmail,
-                                age:Number(registerAge),
-                                role:registerRole,
-                                company:registerCompany,
-                            },"登録するもの")
+
                         } catch (error) {
                             alert("すでに登録されたメールアドレスです");
 

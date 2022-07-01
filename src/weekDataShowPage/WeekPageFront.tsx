@@ -29,9 +29,7 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
     const [compareButtonDisabled,setCompareButtonDisabled]=useState(false)
     const [compareBool,setCompareBool]=useState(false)
     const [compareUserId,SetCompareUserId]=useState("4444")
-    const [compareWeekShowStart,SetCompareWeekShowStart]=useState({"userData":WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
-            return value.role==="学生"
-        })}.userData[0].weekData[0].date)
+    const [compareWeekShowStart,SetCompareWeekShowStart]=useState("2022/06/06")
 
     const [weekShowData,setWeekShowData]=useState(DataExchangeExample["1234"]["2022/06/13"])
     const [compareWeekShowData,setCompareWeekShowData]=useState(DataExchangeExample["4444"]["2022/06/06"])
@@ -41,9 +39,9 @@ const WeekPageFrontPage = (WeekPageFrontPageProps:WeekPageFrontPageType) => {
         const weekList=WeekPageFrontPageProps.axiosSearchData.userData.filter((value)=>{
             return value.userId===UserId
         })[0].weekData
-        console.log(weekList,"weekList")
+
         const weekBool=weekList.filter((value)=>{return value.date===weekShowStart})
-        console.log(weekBool,weekBool.length>0,"weekBool",weekShowStart)
+
         if(weekBool.length>0){
         WeekPageFrontPageProps.axiosWeekDataExchange(setWeekShowData,UserId,weekShowStart,)
         }

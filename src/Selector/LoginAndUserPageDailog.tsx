@@ -18,6 +18,7 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import {Box} from "@mui/material";
 import LockOpenIcon from '@mui/icons-material/LockOpen';
 import {exampleUserDataType} from "../ExampleData/ExampleDataType";
+import {useEffect} from "react";
 
 
 
@@ -48,6 +49,7 @@ type UserDialogPropsType={
     setModalOpen(open:boolean):void
     user:firebase.User|null
     setUserPostObject(userObject:null|exampleUserDataType):void
+    setOnceSignUp(OnceSignUp:boolean):void
 }
 
 export function UserDialog(UserDialogProps:UserDialogPropsType) {
@@ -59,9 +61,9 @@ export function UserDialog(UserDialogProps:UserDialogPropsType) {
 
     }
 
-    const handleClickOpen = (scrollType:"paper" | "body" | undefined) => () => {
+    const handleClickOpen = () => () => {
         UserDialogProps.setModalOpen(true);
-        setScroll(scrollType );
+
     };
 
     const handleClose = () => {
@@ -77,6 +79,8 @@ export function UserDialog(UserDialogProps:UserDialogPropsType) {
     const returnMiddle = () => {
         if (componentRef!==null){componentRef.current?.scrollTo(0,7000)};
     };
+
+
 
 
 
@@ -98,7 +102,7 @@ export function UserDialog(UserDialogProps:UserDialogPropsType) {
 
 
                 <DialogContent dividers={scroll === 'paper'} ref={componentRef}>
-                    <UserPage signUpBool={signUpBool} user={UserDialogProps.user} setUserPostObject={UserDialogProps.setUserPostObject}/>
+                    <UserPage signUpBool={signUpBool} user={UserDialogProps.user} setUserPostObject={UserDialogProps.setUserPostObject} handleClose={handleClose} setOnceSignUp={UserDialogProps.setOnceSignUp}/>
                 </DialogContent>
 
                 <DialogActions>

@@ -13,7 +13,7 @@ import { SearchDataAPI} from "../DataExchange/APIaxios";
 import {DataExchangeExample} from "../DataExchange/DataExchangeExample";
 import {useWindowSize} from "../SearchPage/windowSize";
 import ConstructionTwoToneIcon from '@mui/icons-material/ConstructionTwoTone';
-
+import "../weekDataShowPage/fullCarendar/Style/calendar.css"
 export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const [UserId,SetUserId]=useState("1234")
     const [weekShowStart,SetWeekShowStart]=useState("2022/06/13")
@@ -28,6 +28,8 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const [fontSize1,setFontSize1]=useState("100%")
     const [fontSize2,setFontSize2]=useState("100%")
     const [margin,setMargin]=useState("22px")
+    const [margin2,setMargin2]=useState("60px")
+    const [margin3,setMargin3]=useState("20px")
 
     const width=useWindowSize()
 
@@ -83,18 +85,35 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     },[location])
 
     useEffect(()=>{
-        if(width<600){setFontSize("120%")
+        if (width===0){
+
+        }else if (width<445){
+            setFontSize1("90%")
+            setFontSize2("70%")
+            setMargin("22px")
+            setMargin2("-95px")
+            setMargin3("60px")
+        }else if(width<600){setFontSize("120%")
             setFontSize1("100%")
-            setFontSize2("50%")
-            setMargin("36px")
+            setFontSize2("75%")
+            setMargin("26px")
+            setMargin2("-60px")
+            setMargin3("50px")
+            setFontSize("220%")
         } else if (width<800){
-            setFontSize("150%")
+            setFontSize("250%")
             setFontSize1("150%")
             setFontSize2("100%")
-            setMargin("22px")
+            setMargin("16px")
+            setMargin2("-70px")
+            setMargin3("20px")
         } else {
+            setMargin("-5px")
+            setFontSize1("150%")
             setFontSize2("150%")
-            setFontSize("200%")
+            setFontSize("300%")
+            setMargin2("-90px")
+            setMargin3("20px")
         }
 
     },[width])
@@ -132,7 +151,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
                     <Paper elevation={5} sx={{borderRadius:"10px",height:"220px"}}>
                         <pre></pre>
-                        <Typography variant={"h6"} sx={{marginLeft:2,display:"flex",fontSize:"100%"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#1960d2",marginTop:"auto",marginBottom:"auto",marginRight:1}}></Box>社会ペンギン</Typography>
+                        <Typography variant={"h6"} sx={{marginLeft:2,display:"flex",fontSize:"100%"}}><Box sx={{borderRadius:"50%",height:"20px",width:"20px",backgroundColor:"#1960d2",marginTop:"auto",marginBottom:"auto",marginRight:1}}></Box>社会パンダ</Typography>
                     <SelectWeekDataBox
                         UserId={UserId}
                         SetUserId={SetUserId}
@@ -148,11 +167,13 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
                 <Grid item xs={2}>
                     <Paper elevation={5} sx={{borderRadius:"10px",height:"220px"}}>
-
-                        <Box sx={{fontSize:fontSize,fontWeight:1000,textAlign:"center"}}>比較</Box>
-                        <Box sx={{textAlign:"center",marginY:margin,fontSize:fontSize1}}><ConstructionTwoToneIcon sx={{fontSize:"300%",textAlign:"center"}}/></Box>
-                        <Paper elevation={5} sx={{margin:1,fontSize:fontSize,textAlign:"center",fontWeight:1000,}}>{resultValue}%</Paper>
                         <pre></pre>
+                        <Box sx={{fontSize:fontSize2,fontWeight:700,textAlign:"center"}}>比較</Box>
+                        <Box sx={{textAlign:"center",marginY:margin,fontSize:fontSize1}}><ConstructionTwoToneIcon sx={{fontSize:"300%",textAlign:"center"}}/></Box>
+                        <Box sx={{position:"relative",marginTop:margin3,verticalAlign:"bottom"}}>
+                            <Paper elevation={5} sx={{marginTop:margin3,zIndex:1,margin:"5%",fontSize:fontSize,textAlign:"center",fontWeight:900,display:"flex",backgroundColor:'linear-gradient(90deg, #FF0000, #FFBA00)'}} className={"compare"}><Box sx={{marginX:"auto"}}>{resultValue}<sub>%</sub></Box></Paper>
+                        <Box sx={{margin:1,position:"relative",top:margin2,fontSize:fontSize2,textAlign:"center",fontWeight:700,}}> 一致率</Box>
+                    </Box><pre></pre>
                     </Paper>
                 </Grid>
                 <Grid item xs={5}>

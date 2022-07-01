@@ -5,6 +5,8 @@ import FormControl from '@mui/material/FormControl';
 import Select, {SelectChangeEvent} from '@mui/material/Select';
 import {useEffect} from "react";
 import {Autocomplete, TextField} from "@mui/material";
+import {WeekEndCalc} from "./WeekEndCalc";
+import {useWindowSize} from "../../SearchPage/windowSize";
 
 type SelectWeekDataType={
     UserId:string
@@ -14,6 +16,7 @@ type SelectWeekDataType={
     SetWeekShowStart(id:string):void
 }
 const SelectWeekDataBox2 = (SelectWeekDataProps:SelectWeekDataType) => {
+    const width=useWindowSize()
     const handleChange = (event: SelectChangeEvent) => {
         if(event.target.value){SelectWeekDataProps.SetWeekShowStart(event.target.value as string)};
     };
@@ -29,8 +32,13 @@ const SelectWeekDataBox2 = (SelectWeekDataProps:SelectWeekDataType) => {
     (SelectWeekDataProps.searchTree[SelectWeekDataProps.UserId]
 
     ).forEach((value:string)=>{
-
-        weekDataAutoCompleteObject[value]={week:value,text:value.replace("/","年").replace("/","月")+"日の週"}
+        if (width<700){
+            weekDataAutoCompleteObject[value]={week:value,text:value+"の週"}
+        } else if(width>750){
+        weekDataAutoCompleteObject[value]={week:value,text:value+"~"+WeekEndCalc(value)}
+    } else {
+            weekDataAutoCompleteObject[value]={week:value,text:value+"の週"}
+        }
     })
 
 
@@ -57,7 +65,7 @@ const SelectWeekDataBox2 = (SelectWeekDataProps:SelectWeekDataType) => {
                     ).map((value) => {
                         return (
                             <MenuItem value={value}
-                                      key={value}>{value.replace("/", "年").replace("/", "月")}日の週</MenuItem>
+                                      key={value}>{value.replace("/", "年").replace("/", "月")}</MenuItem>
                         )
                     })}
 
