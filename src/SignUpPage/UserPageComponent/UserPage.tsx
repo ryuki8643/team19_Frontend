@@ -19,6 +19,7 @@ type MyPagePropsType={
     signUpBool:boolean
     user:firebase.User|null
     setUserPostObject(userObject:null|exampleUserDataType):void
+    handleClose():void
 }
 
 const MyPage = (MyPageProps:MyPagePropsType )=> {
@@ -44,7 +45,7 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
 
 
         }
-    },[MyPageProps.user,userData])
+    },[MyPageProps.user])
     return (
         <Box>
 
@@ -52,7 +53,7 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                     {!MyPageProps.user ? (
                         <>
                         {MyPageProps.signUpBool ? <SignIn/>:
-                            <Register setUserPostObject={MyPageProps.setUserPostObject}/>}
+                            <Register setUserPostObject={MyPageProps.setUserPostObject} handleClose={MyPageProps.handleClose}/>}
                         </>
                     ) : (
                         <Paper elevation={5} sx={{marginX:-2,marginTop:-2,marginBottom:-3}}>

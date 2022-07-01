@@ -10,6 +10,7 @@ import Paper from "@mui/material/Paper";
 
 type RegisterPropsType={
     setUserPostObject(userObject:null|exampleUserDataType):void
+    handleClose():void
 }
 const Register = (RegisterProps:RegisterPropsType) => {
     const [registerEmail, setRegisterEmail] = useState("");
@@ -37,7 +38,7 @@ const Register = (RegisterProps:RegisterPropsType) => {
                                 authExample,
                                 registerEmail,
                                 registerPassword
-                            );
+                            ).then(()=>{RegisterProps.handleClose()});
                             RegisterProps.setUserPostObject({
                                 firebaseUid:"",
                                 email:registerEmail,

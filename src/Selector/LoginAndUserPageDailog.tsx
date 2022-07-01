@@ -98,7 +98,7 @@ export function UserDialog(UserDialogProps:UserDialogPropsType) {
 
 
                 <DialogContent dividers={scroll === 'paper'} ref={componentRef}>
-                    <UserPage signUpBool={signUpBool} user={UserDialogProps.user} setUserPostObject={UserDialogProps.setUserPostObject}/>
+                    <UserPage signUpBool={signUpBool} user={UserDialogProps.user} setUserPostObject={UserDialogProps.setUserPostObject} handleClose={handleClose}/>
                 </DialogContent>
 
                 <DialogActions>
