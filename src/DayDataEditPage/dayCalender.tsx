@@ -3,8 +3,8 @@ import FullCalendar, { EventSourceInput, RefObject } from "@fullcalendar/react";
 import timeGridPlugin from "@fullcalendar/timegrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import allLocales from "@fullcalendar/core/locales-all";
-import React, {useState, useRef, useEffect} from "react";
-import {exampleDayDataType, eventDataType, getUserDataType} from "../ExampleData/ExampleDataType";
+import React, { useState, useRef, useEffect } from "react";
+import { exampleDayDataType, eventDataType, getUserDataType } from "../ExampleData/ExampleDataType";
 import { Box, Button, Container, Grid, Paper, Stack, TextField } from "@mui/material";
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
@@ -14,10 +14,11 @@ import { StaticDatePicker } from '@mui/x-date-pickers/StaticDatePicker';
 import { GetWindowSize } from '../hooks/GetWindowSize'
 import Modal from '@mui/material/Modal';
 import { makeStyles } from '@material-ui/core';
-import {DayDataPostAPI, userIdAPI} from '../../src/DataExchange/APIaxios';
-import {onAuthStateChanged} from "firebase/auth";
-import {authExample} from "../SignUpPage/firebaseConfig";
+import { DayDataPostAPI, userIdAPI } from '../../src/DataExchange/APIaxios';
+import { onAuthStateChanged } from "firebase/auth";
+import { authExample } from "../SignUpPage/firebaseConfig";
 import firebase from "firebase/compat";
+import { ThemeProvider, createTheme } from '@mui/material/styles';
 
 const style = {
     position: 'absolute' as 'absolute',
@@ -71,6 +72,10 @@ const useStyles = makeStyles(theme => ({
         fontSize: '16px',
         cursor: 'pointer',
     },
+    CalendarStyle: {
+        width: '100%',
+        background: '#000',
+    }
 }));
 
 export type calendarEventsType = {
@@ -94,7 +99,7 @@ const ModalComponent: React.FC<modalProp> = ({ date, getDate }) => {
     const classes = useStyles();
     return (
         <>
-            <Paper elevation={4} sx={{ marginBottom: 2, width: "100%", borderRadius: "10px" }}>
+            <Paper elevation={4} sx={{ marginBottom: 4, width: "100%", borderRadius: "10px" }}>
                 <div onClick={handleOpen} className={classes.buttonStyle}>日付を選択</div>
             </Paper>
             <Modal
@@ -124,11 +129,13 @@ const ModalComponent: React.FC<modalProp> = ({ date, getDate }) => {
 
 const DatePickCalendar: React.FC<modalProp> = ({ date, getDate }) => {
     const windowSize = GetWindowSize()
+    const classes = useStyles();
     if (windowSize.width > 1200) {
         return (
             <Grid width={"30%"}>
                 <Paper elevation={4} sx={{ padding: 2, height: "520px", borderRadius: "10px" }}>
                     <LocalizationProvider dateAdapter={AdapterDateFns}>
+
                         <StaticDatePicker
                             displayStaticWrapperAs="desktop"
                             openTo="day"
@@ -137,7 +144,10 @@ const DatePickCalendar: React.FC<modalProp> = ({ date, getDate }) => {
                                 getDate(newValue);
                             }}
                             renderInput={(params) => <TextField {...params} />}
+                            className={classes.CalendarStyle}
+
                         />
+
                     </LocalizationProvider>
                 </Paper>
             </Grid>
@@ -170,11 +180,13 @@ const DayCalender = () => {
     const [open, setOpen] = useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
+    const [loginOpen, setLoginOpen] = useState(false);
+    const handleLoginOpen = () => setLoginOpen(true);
+    const handleLoginClose = () => setLoginOpen(false);
 
-
-    const [loginUser, setLoginUser] = React.useState<firebase.User|null>(null)
-    const [userData,setUserData]=useState({
-        id:0,
+    const [loginUser, setLoginUser] = React.useState<firebase.User | null>(null)
+    const [userData, setUserData] = useState({
+        id: 0,
         firebaseUid: "",
         email: "",
         age: 0,
@@ -237,23 +249,20 @@ const DayCalender = () => {
         setDate(date)
     }
 
-    const classes = useStyles();
-
-
     useEffect(() => {
-        onAuthStateChanged(authExample, (currentUser ) => {
-            setLoginUser(currentUser as firebase.User|null);
+        onAuthStateChanged(authExample, (currentUser) => {
+            setLoginUser(currentUser as firebase.User | null);
         });
     }, []);
-    useEffect(()=>{
-        if(loginUser){
-            userIdAPI(setUserData, loginUser.uid).then(()=>{})
+    useEffect(() => {
+        if (loginUser) {
+            userIdAPI(setUserData, loginUser.uid).then(() => { })
 
 
         }
-    },[loginUser])
+    }, [loginUser])
 
-
+    const classes = useStyles();
 
     return (
         <>
@@ -264,7 +273,7 @@ const DayCalender = () => {
                         date={date}
                         getDate={getDate}
                     />
-                    <Grid width={widthParam()} marginBottom={10}>
+                    <Grid width={widthParam()} marginBottom={4}>
                         <Paper elevation={4} sx={{ padding: 4, borderRadius: "10px" }}>
                             <EventForm
                                 addItems={addItems}
@@ -283,6 +292,7 @@ const DayCalender = () => {
                                     editable={true}
                                     selectable={true}
                                     allDaySlot={false}
+                                    dayHeaders={false}
                                     customButtons={{
                                         myCustomButton: {
                                             text: 'Custom Button!',
@@ -309,7 +319,11 @@ const DayCalender = () => {
                                     locale="ja"
                                     contentHeight={'390px'}
                                 />
-                                <Button variant="contained" disableElevation endIcon={<SendIcon />} onClick={() => handleOpen()} >
+                                <Button variant="contained" disableElevation endIcon={<SendIcon />} onClick={() => {
+                                    if (loginUser) { handleOpen() }
+                                    else { handleLoginOpen() }
+
+                                }} >
                                     登録
                                 </Button>
                             </Stack>
@@ -331,6 +345,21 @@ const DayCalender = () => {
                     <div >送信しますか？</div>
                     <div>
                         <Button sx={{ margin: 2, width: 100 }} variant="outlined" color="error" onClick={() => handleClose()}>いいえ</Button><Button sx={{ margin: 2, width: 100 }} variant="contained" disableElevation onClick={() => sendingData()}>はい</Button>
+                    </div>
+                </Box>
+            </Modal>
+            <Modal
+                open={loginOpen}
+                onClose={handleLoginClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+            >
+
+                <Box sx={SubmitModalStyle}>
+                    <span className={classes.CloseButton} onClick={() => handleLoginClose()}>×</span>
+                    <div >イベントを登録するためには<br />ログインする必要があります</div>
+                    <div>
+                        <Button sx={{ margin: 2, width: 100 }} variant="outlined" color="error" onClick={() => handleLoginClose()}>戻る</Button>
                     </div>
                 </Box>
             </Modal>

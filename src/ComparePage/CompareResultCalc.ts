@@ -3,7 +3,6 @@ import { eventDataType, exampleWeekDataType } from "../ExampleData/ExampleDataTy
 const reduceObject = (dayData: eventDataType[], initialValue: { [key: string]: number }) => {
     return dayData.reduce(
 
-
         function (previousValue, currentValue) {
             if (previousValue[currentValue.name]) {
                 previousValue[currentValue.name] += Number(currentValue.endTime.split(":")[0]) * 60 + Number(currentValue.endTime.split(":")[1]) -
@@ -12,7 +11,6 @@ const reduceObject = (dayData: eventDataType[], initialValue: { [key: string]: n
             } else {
                 previousValue[currentValue.name] = Number(currentValue.endTime.split(":")[0]) * 60 + Number(currentValue.endTime.split(":")[1]) -
                     Number(currentValue.startTime.split(":")[0]) * 60 + Number(currentValue.startTime.split(":")[1])
-
                 return previousValue
             }
 
