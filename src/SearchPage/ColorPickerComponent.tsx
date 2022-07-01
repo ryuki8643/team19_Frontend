@@ -15,7 +15,7 @@ export default function ColorPic(props:colorPicType) {
                 sx={[{
 
 
-
+                    position:"relative",
                     color:"white",
                     backgroundColor:'#FF6600',
                     borderBottom:"5px solid orangered",

@@ -25,6 +25,7 @@ import HomeIcon from '@mui/icons-material/Home';
 import {ButtonGroup} from "@mui/material";
 import {useWindowSize} from "../SearchPage/windowSize";
 import {SignUpPostAPI} from "../DataExchange/APIaxios";
+import {useDelayedEffect} from "./UseDelayedEffect";
 
 
 type SelectorPropsType={
@@ -43,6 +44,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
     const [loginButton,setLoginButton]=useState(<LockOpenIcon/>)
     const [fontSize,setFontSize]=useState("130%")
     const [userPostObject,setUserPostObject]=useState<null|exampleUserDataType>(null)
+    const [onceSignUp,setOnceSignUp]=useState(false)
 
     const width=useWindowSize()
 
@@ -110,6 +112,13 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
         }
 
     },[userPostObject])
+    useDelayedEffect(()=>{
+        if(onceSignUp ){
+            setModalOpen(true)
+            setOnceSignUp(false)
+        }
+
+    },[onceSignUp],500)
 
     return (
 
@@ -235,8 +244,8 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
                             }}]} onClick={()=>setModalOpen(true) }  size="large">
                             {loginButton}{400<width ? loginUser ? "user":"login":""}
                         </Button>
-                        <UserDialog setUserPostObject={setUserPostObject} modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser}/>
-                        <UserDialog setUserPostObject={setUserPostObject} modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser}/>
+                        <UserDialog setUserPostObject={setUserPostObject} modalOpen={modalOpen} setModalOpen={setModalOpen} user={loginUser} setOnceSignUp={setOnceSignUp}/>
+                        <UserDialog setUserPostObject={setUserPostObject} modalOpen={signUpBool} setModalOpen={setSignUpBool} user={loginUser} setOnceSignUp={setOnceSignUp}/>
 
                     </Box>
                 </AppBar>
