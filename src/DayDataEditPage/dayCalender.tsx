@@ -241,11 +241,13 @@ const DayCalender = () => {
         }
 
         DayDataPostAPI(sendData);
+        setDayEvents([]);
+        handleClose();
 
     }
 
     const getDate = (date: Date) => {
-
+        setDayEvents([]);
         setDate(date)
     }
 
