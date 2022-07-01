@@ -81,7 +81,7 @@ export const DrawPaint: React.FC<IProps> = (props) => {
 
     const Reset = () => {
         const ctx = getContext();
-        ctx.clearRect(0, 0, width, height);
+        ctx.clearRect(0, 0, widthSize-80, height);
     }
 
 
@@ -91,6 +91,23 @@ export const DrawPaint: React.FC<IProps> = (props) => {
     return (
 
         <Paper elevation={5} sx={{borderRadius:"10px",marginTop:2}}>
+            <pre></pre>
+            <Box sx={{
+
+                fontSize:"200%",
+                color: "white",
+                backgroundColor: '#1976d2',
+                borderBottom: "5px solid #039be5",
+                borderRight: "5px solid #039be5",
+                borderRadius: "10px",
+                flexGrow: 1,
+
+
+                margin: "2%",
+                textAlign: "center"
+
+
+            }}>隠し機能へようこそ、おめでとう！お絵かきできます</Box>
             <div>
                 <canvas onMouseDown={OnClick}
                         onMouseMove={OnMove}

@@ -13,7 +13,7 @@ import { SearchDataAPI} from "../DataExchange/APIaxios";
 import {DataExchangeExample} from "../DataExchange/DataExchangeExample";
 import {useWindowSize} from "../SearchPage/windowSize";
 import ConstructionTwoToneIcon from '@mui/icons-material/ConstructionTwoTone';
-
+import "../weekDataShowPage/fullCarendar/Style/calendar.css"
 export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
     const [UserId,SetUserId]=useState("1234")
     const [weekShowStart,SetWeekShowStart]=useState("2022/06/13")
@@ -171,7 +171,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
                         <Box sx={{fontSize:fontSize2,fontWeight:700,textAlign:"center"}}>比較</Box>
                         <Box sx={{textAlign:"center",marginY:margin,fontSize:fontSize1}}><ConstructionTwoToneIcon sx={{fontSize:"300%",textAlign:"center"}}/></Box>
                         <Box sx={{position:"relative",marginTop:margin3,verticalAlign:"bottom"}}>
-                            <Paper elevation={5} sx={{marginTop:margin3,zIndex:1,margin:"5%",fontSize:fontSize,textAlign:"center",fontWeight:900,display:"flex"}}><Box sx={{marginX:"auto"}}>{resultValue}<sub>%</sub></Box></Paper>
+                            <Paper elevation={5} sx={{marginTop:margin3,zIndex:1,margin:"5%",fontSize:fontSize,textAlign:"center",fontWeight:900,display:"flex",backgroundColor:'linear-gradient(90deg, #FF0000, #FFBA00)'}} className={"compare"}><Box sx={{marginX:"auto"}}>{resultValue}<sub>%</sub></Box></Paper>
                         <Box sx={{margin:1,position:"relative",top:margin2,fontSize:fontSize2,textAlign:"center",fontWeight:700,}}> 一致率</Box>
                     </Box><pre></pre>
                     </Paper>
