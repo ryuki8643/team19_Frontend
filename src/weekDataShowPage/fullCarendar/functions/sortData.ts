@@ -6,8 +6,7 @@ export const sortData=(searchData:exampleSearchDataType):exampleSearchDataType=>
     }
 
     )
-    console.log(sortResult.map((value)=>{return calcScore(value.weekData)}))
-    console.log(sortResult,"ソート")
+
     return {userData:sortResult}
 
 }

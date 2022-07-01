@@ -90,13 +90,13 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
         }else if (width<445){
             setFontSize1("90%")
             setFontSize2("70%")
-            setMargin("45px")
-            setMargin2("-80px")
+            setMargin("22px")
+            setMargin2("-95px")
             setMargin3("60px")
         }else if(width<600){setFontSize("120%")
             setFontSize1("100%")
             setFontSize2("75%")
-            setMargin("36px")
+            setMargin("26px")
             setMargin2("-60px")
             setMargin3("50px")
             setFontSize("220%")
@@ -108,7 +108,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
             setMargin2("-70px")
             setMargin3("20px")
         } else {
-            setMargin("16px")
+            setMargin("-5px")
             setFontSize1("150%")
             setFontSize2("150%")
             setFontSize("300%")
@@ -167,7 +167,7 @@ export const ComparePageHome=(WeekPageFrontPageProps:WeekPageFrontPageType)=>{
 
                 <Grid item xs={2}>
                     <Paper elevation={5} sx={{borderRadius:"10px",height:"220px"}}>
-
+                        <pre></pre>
                         <Box sx={{fontSize:fontSize2,fontWeight:700,textAlign:"center"}}>比較</Box>
                         <Box sx={{textAlign:"center",marginY:margin,fontSize:fontSize1}}><ConstructionTwoToneIcon sx={{fontSize:"300%",textAlign:"center"}}/></Box>
                         <Box sx={{position:"relative",marginTop:margin3,verticalAlign:"bottom"}}>

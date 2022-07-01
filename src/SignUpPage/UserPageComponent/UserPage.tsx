@@ -19,6 +19,7 @@ type MyPagePropsType={
     signUpBool:boolean
     user:firebase.User|null
     setUserPostObject(userObject:null|exampleUserDataType):void
+    handleClose():void
 }
 
 const MyPage = (MyPageProps:MyPagePropsType )=> {
@@ -52,14 +53,14 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                     {!MyPageProps.user ? (
                         <>
                         {MyPageProps.signUpBool ? <SignIn/>:
-                            <Register setUserPostObject={MyPageProps.setUserPostObject}/>}
+                            <Register setUserPostObject={MyPageProps.setUserPostObject} handleClose={MyPageProps.handleClose}/>}
                         </>
                     ) : (
                         <Paper elevation={5} sx={{marginX:-2,marginTop:-2,marginBottom:-3}}>
                             <Box sx={{margin:1}}>
                                 <pre></pre>
 
-                            {MyPageProps.user.uid ? userData.age>0 ?
+
                                 <>
                                     <Box>年齢:{userData.age}</Box>
                                     <Box>企業:{userData.company}</Box>
@@ -67,7 +68,7 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
                                     <Box>メール:{userData.email}</Box>
                                     <pre></pre>
                                 </>
-                                :"":""}
+
 
                             </Box>
 

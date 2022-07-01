@@ -62,7 +62,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
 
 
     const handleClick = (info:EventClickArg) => {
-        console.log(info)
+
         setOpen((prev) => !prev);
         const styles: SxProps = {
             position: 'fixed',
@@ -144,11 +144,11 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
                 )
 
             }
-            console.log((getItemsConcat),"a")
+
             setDayEvents(getItems.concat(getItemsConcat))
 
         }
-        console.log(FullCalendarAppProps.compareWeekShowData,)
+
     }),[FullCalendarAppProps.compareWeekShowData])
 
     useEffect((()=>{
@@ -160,7 +160,7 @@ function FullCalendarApp(FullCalendarAppProps:FullCalendarAppPropsType) {
 
     useEffect(()=>{
         setDefaultDay(FullCalendarAppProps.weekShowStart.replace(/\//g,"-"))
-        console.log(FullCalendarAppProps.weekShowStart.replace(/\//g,"-"))
+
     },[FullCalendarAppProps.weekShowStart])
 
     useEffect(()=>{
