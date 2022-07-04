@@ -63,10 +63,10 @@ const MyPage = (MyPageProps:MyPagePropsType )=> {
 
 
                                 <>
-                                    <Box>年齢:{userData.age}</Box>
-                                    <Box>企業:{userData.company}</Box>
-                                    <Box>役職:{userData.role}</Box>
-                                    <Box>メール:{userData.email}</Box>
+                                    <Box sx={{margin:1,fontSize:"150%"}}>年齢:{userData.age}</Box>
+                                    <Box sx={{margin:1,fontSize:"150%"}}>企業:{userData.company}</Box>
+                                    <Box sx={{margin:1,fontSize:"150%"}}>役職:{userData.role}</Box>
+                                    <Box sx={{margin:1,fontSize:"150%"}}>メール:{userData.email}</Box>
                                     <pre></pre>
                                 </>
 

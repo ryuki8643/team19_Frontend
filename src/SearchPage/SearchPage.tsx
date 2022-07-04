@@ -51,7 +51,7 @@ export const SearchPage=()=>{
 
     }) )
     const goToHomeWithUser=(user:string,role:string)=>{
-        const studentBool=role==="学生" ? true : false
+        const studentBool=role.indexOf("学生")>-1 ? true : false
         navigate("/",{
             state:{
                 user:user,

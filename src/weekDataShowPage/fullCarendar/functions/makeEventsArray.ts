@@ -1,6 +1,7 @@
 import { eventDataType, exampleDayDataType, exampleWeekDataType } from "../../../ExampleData/ExampleDataType";
 import { getStringFromDate } from "./getStringFromDate";
 import { calendarEventsType } from "../fullCalendar";
+import {uniq} from "./FilterCommon";
 
 
 
@@ -51,7 +52,7 @@ export const MakeEventsArray = (fullCalendarProps: exampleWeekDataType) => {
         fullCalendarProps["sunday"],
         getStringFromDate(fullCalendarProps["startDate"] as string, 6))
 
-    return items
+    return uniq(items)
 
 
 
