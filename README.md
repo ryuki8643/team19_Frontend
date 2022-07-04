@@ -1,4 +1,5 @@
-develop
+deployed　in
+https://it-life-app.web.app/
 
 
 

@@ -118,7 +118,7 @@ export const Selector = (SelectorProps:SelectorPropsType) => {
             setOnceSignUp(false)
         }
 
-    },[onceSignUp],500)
+    },[onceSignUp],2000)
 
     return (
 

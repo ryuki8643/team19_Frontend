@@ -47,7 +47,7 @@ export const exampleSearchData: exampleSearchDataType =
         {
             userId: "cIZ9KPVRKCSluw9Oqpx6AAIQMLg1",
             age: 29,
-            role: "ペンギン",
+            role: "エンジニア",
             company: "Yahoo",
             weekData:
                 [
@@ -96,7 +96,7 @@ export const exampleSearchData: exampleSearchDataType =
         {
             userId: "2233",
             age: 25,
-            role: "神",
+            role: "社員",
             company: "Yahoo",
             weekData:
                 [
@@ -189,16 +189,22 @@ export const exampleWeekData1: exampleWeekDataType = {
         [
             {
                 name: "コーディング",
-                startTime: "10:00",
+                startTime: "9:00",
                 endTime: "11:00",
                 description: "プログラミング"
-            }
+            },
+            {
+                name: "勉強",
+                startTime: "9:00",
+                endTime: "17:00",
+                description: "偉い人と会議"
+            },
         ],
     wednesday:
         [
             {
                 name: "コーディング",
-                startTime: "10:00",
+                startTime: "9:00",
                 endTime: "11:00",
                 description: "プログラミング"
             }
@@ -207,36 +213,54 @@ export const exampleWeekData1: exampleWeekDataType = {
         [
             {
                 name: "コーディング",
-                startTime: "10:00",
+                startTime: "9:00",
                 endTime: "11:00",
                 description: "プログラミング"
-            }
+            },
+            {
+                name: "勉強",
+                startTime: "9:00",
+                endTime: "16:00",
+                description: "偉い人と会議"
+            },
         ],
     friday:
         [
             {
                 name: "コーディング",
-                startTime: "10:00",
+                startTime: "9:00",
                 endTime: "11:00",
                 description: "プログラミング"
-            }
+            },
+            {
+                name: "勉強",
+                startTime: "12:00",
+                endTime: "16:00",
+                description: "AWS"
+            },
         ],
     saturday:
         [
             {
-                name: "コーディング",
-                startTime: "10:00",
-                endTime: "11:00",
-                description: "プログラミング"
-            }
+                name: "ゲーム",
+                startTime: "9:00",
+                endTime: "15:00",
+                description: "Apex"
+            },
+            {
+                name: "ゲーム",
+                startTime: "12:00",
+                endTime: "16:00",
+                description: "fall guys"
+            },
         ],
     sunday:
         [
             {
-                name: "コーディング",
-                startTime: "10:00",
-                endTime: "11:00",
-                description: "プログラミング"
+                name: "睡眠",
+                startTime: "9:00",
+                endTime: "18:00",
+                description: "睡眠学習"
             }
         ],
 
@@ -444,14 +468,14 @@ export const exampleWeekData4: exampleWeekDataType = {
         [
             {
                 name: "コーディング",
-                startTime: "10:00",
+                startTime: "9:00",
                 endTime: "11:00",
                 description: "プログラミング"
             },
 
             {
                 name: "ミーティング",
-                startTime: "12:00",
+                startTime: "11:00",
                 endTime: "16:00",
                 description: "偉い人と会議"
             }
@@ -460,14 +484,14 @@ export const exampleWeekData4: exampleWeekDataType = {
         [
             {
                 name: "コーディング",
-                startTime: "10:00",
+                startTime: "9:00",
                 endTime: "11:00",
                 description: "プログラミング"
             },
 
             {
                 name: "ミーティング",
-                startTime: "12:00",
+                startTime: "11:00",
                 endTime: "16:00",
                 description: "偉い人と会議"
             }
@@ -476,14 +500,14 @@ export const exampleWeekData4: exampleWeekDataType = {
         [
             {
                 name: "コーディング",
-                startTime: "10:00",
-                endTime: "11:00",
+                startTime: "9:00",
+                endTime: "14:00",
                 description: "プログラミング"
             },
 
             {
                 name: "ミーティング",
-                startTime: "12:00",
+                startTime: "14:00",
                 endTime: "16:00",
                 description: "偉い人と会議"
             }
@@ -492,14 +516,14 @@ export const exampleWeekData4: exampleWeekDataType = {
         [
             {
                 name: "コーディング",
-                startTime: "10:00",
+                startTime: "9:30",
                 endTime: "11:00",
                 description: "プログラミング"
             },
 
             {
                 name: "ミーティング",
-                startTime: "12:00",
+                startTime: "11:00",
                 endTime: "16:00",
                 description: "偉い人と会議"
             }
@@ -507,33 +531,25 @@ export const exampleWeekData4: exampleWeekDataType = {
     saturday:
         [
             {
-                name: "コーディング",
-                startTime: "10:00",
-                endTime: "11:00",
-                description: "プログラミング"
+                name: "ゲーム",
+                startTime: "9:00",
+                endTime: "15:00",
+                description: "Apex"
             },
-
             {
-                name: "ミーティング",
-                startTime: "12:00",
+                name: "ゲーム",
+                startTime: "15:00",
                 endTime: "16:00",
-                description: "偉い人と会議"
-            }
+                description: "fall guys"
+            },
         ],
     sunday:
         [
             {
-                name: "コーディング",
-                startTime: "10:00",
-                endTime: "11:00",
-                description: "プログラミング"
-            },
-
-            {
-                name: "ミーティング",
-                startTime: "12:00",
-                endTime: "16:00",
-                description: "偉い人と会議"
+                name: "睡眠",
+                startTime: "9:00",
+                endTime: "18:00",
+                description: "睡眠学習"
             }
         ],
 
@@ -577,7 +593,7 @@ export const exampleWeekData5: exampleWeekDataType = {
             {
                 name: "コーディング",
                 startTime: "10:00",
-                endTime: "11:00",
+                endTime: "18:00",
                 description: "プログラミング"
             }
         ],
@@ -586,7 +602,7 @@ export const exampleWeekData5: exampleWeekDataType = {
             {
                 name: "コーディング",
                 startTime: "10:00",
-                endTime: "11:00",
+                endTime: "18:00",
                 description: "プログラミング"
             }
         ],
@@ -595,7 +611,7 @@ export const exampleWeekData5: exampleWeekDataType = {
             {
                 name: "コーディング",
                 startTime: "10:00",
-                endTime: "11:00",
+                endTime: "18:00",
                 description: "プログラミング"
             }
         ],
@@ -604,23 +620,23 @@ export const exampleWeekData5: exampleWeekDataType = {
             {
                 name: "コーディング",
                 startTime: "10:00",
-                endTime: "11:00",
+                endTime: "18:00",
                 description: "プログラミング"
             }
         ],
     saturday:
         [
             {
-                name: "コーディング",
+                name: "勉強",
                 startTime: "10:00",
-                endTime: "11:00",
+                endTime: "18:00",
                 description: "プログラミング"
             }
         ],
     sunday:
         [
             {
-                name: "コーディング",
+                name: "勉強",
                 startTime: "10:00",
                 endTime: "11:00",
                 description: "プログラミング"
